@@ -1,0 +1,177 @@
+/*ìƒˆë¡œìš´ element ì„ ì–¸ css
+
+*ê³µí†µìœ¼ë¡œ ì „ ë¬¸ì„œì—ì„œ ì‚¬ìš©ë  ìˆ˜ ìžˆëŠ” elementë¥¼ ì„ ì–¸í•œë‹¤
+
+*pixel-adminì—ì„œ ì¶”ì¶œí•˜ì˜€ìœ¼ë‚˜ ì†ì„±ì— ë³€í™”ê°€ í¬ê³  namingì„ ë³€ê²½í•œ element cssì˜ ê²½ìš°ì—ë„ í•´ë‹¹ íŒŒì¼ì— ê¸°ìž…í•œë‹¤
+
+*css ìœ—ë¶€ë¶„ì— ë‹¤ìŒê³¼ ê°™ì´ ì£¼ì„ì„ ê¸°ìž…í•œë‹¤(ë‚ ì§œ ë‹´ë‹¹ìž ì„¤ëª…)
+*(ex.20151101 Jhee ë°ì´í„°í…Œì´ë¸” ë²„íŠ¼ ì†ì„± ì œì–´)
+
+*ì£¼ì˜ : ìµœëŒ€í•œ pixel-adminê³¼ ìœ ì‚¬í•œ namingì„ ìœ ì§€í•œë‹¤(_(under bar)ì‚¬ìš© ì§€ì–‘) 
+      @media() ì˜ ë‚´ìš©ì€ ê°€ìž¥ ë§ˆì§€ë§‰ì— ìœ„ì¹˜í•˜ë„ë¡ í•œë‹¤
+*/
+
+/* ==================================div==================================  */
+/* Jhee page header ë‹¤ìŒì— ì˜¤ëŠ” content ì¤‘, ê°€ìž¥ ìƒìœ„ì— ìœ„ì¹˜í•˜ëŠ” div */
+.content-top {
+	margin-bottom: 10px;			
+	*zoom: 1;
+}
+.content-top:after {
+	content: ' ';
+	clear: both;
+	display: block;
+}
+
+/* 20151027 Jhee ê²€ìƒ‰ì¡°ê±´ì„ ê°ì‹¸ê³  ìžˆëŠ” panelBody ë‚´ë¶€ì˜ padding ì¤„ì´ê¸° */
+.searchPanelBody {
+	padding:20px 20px 5px 20px !important;
+}
+
+/* ê°•ì˜ê³„íšì„œ ì´í›„ ìƒë‹¨ì— ìœ„ì¹˜í•˜ëŠ” êµê³¼ëª© ì •ë³´ íƒ€ì´í‹€ div */
+.subjectPanelTit {
+	background: #d9edf7;
+	color: #3a87ad;
+	font-size: 14px;
+	text-align: center;
+	font-weight: 600;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border: 1px solid #bce8f1;
+}
+
+/* ê°•ì˜ê³„íšì„œ ì´í›„ ìƒë‹¨ì— ìœ„ì¹˜í•˜ëŠ” êµê³¼ëª© ì •ë³´ contents div */
+.subjectPanelContents {
+	color: #3a87ad;
+	font-size: 14px;
+	line-height: 30px;
+	border: 1px solid #bce8f1;
+}
+
+/* Jhee í…Œì´ë¸” í–‰ í´ë¦­ ì‹œ, í•˜ë‹¨ì— ë‚˜íƒ€ë‚˜ëŠ” alert div(pixel-admin:page-alert) */
+.tbl-alert-success {
+	background-color: #dff0d8;
+	border: 1px solid #d0e6be;
+	color: #468847;
+	padding: 10px;
+}
+
+/* Jhee panel heading ì™¼ìª½ì— ìœ„ì¹˜í•˜ëŠ” title */
+.list-title-l {
+	padding: 7px 0 0 10px;
+	font-size: 12px;
+	font-weight: 600;	
+}
+
+/* 20160111 Jhee ìž…ë ¥í™”ë©´ì˜ panel */
+.form-panel-body {
+  background: #fff;
+  margin: 0 0 15px 0;
+  padding: 15px 0 0 0;
+}
+.form-panel-body:before,
+.form-panel-body:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+.form-panel-body > li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.form-panel-body .control-label {
+	margin-top: 7px;
+}
+
+/* 20160111 Jhee ìž…ë ¥í™”ë©´ ìƒìœ„ì— ìœ„ì¹˜í•˜ëŠ” êµ¬ë¶„field */
+.form-division {
+	padding: 22px;
+}
+
+/* 20160111 Jhee ìž…ë ¥í™”ë©´ ìƒìœ„ì— ìœ„ì¹˜í•˜ëŠ” switch */
+.form-switch {
+	margin-top:4px;
+}
+
+/* 20161226 Jhee ìž‘ì„±ê¸°ê°„ì„ ê°ì‹¸ëŠ”  div */
+.periodWrap {
+	float: left;
+	width: 280px;
+	background: #f0f0f0;
+	border-color: #e8e8e8;
+}
+
+@media (max-width: 544px) {
+	.periodWrap {margin-top: 10px;}
+}
+
+/* 20170110 Jhee stepLineì˜ subStepì˜ ì•„ì´ì½˜ */
+.widget-comnt-icon {
+	font-size: 13px; 
+	line-height: 20px; 
+	width: 20px; 
+	height: 20px;
+	text-align: center;
+	border-radius : 99999px !important;
+	margin-top: 0;
+}
+
+.search-form {
+	margin: -1px;
+	padding: 16px 20px;
+	position: relative;
+}
+
+/* ==================================button==================================  */
+/* íŽ˜ì´ì§€ ê°€ë‹¹ í•˜ë‹¨ì— ìœ„ì¹˜í•˜ëŠ” ì´ì „ buttonì€ ìƒìœ„ divì™€ ê°„ê²©ì„ ìœ ì§€í•œë‹¤ */
+.btn-before {
+	margin-top: 22px;
+}
+
+/* ê³µí†µëª¨ë“ˆ button í¬ê¸°ë¥¼ ì¼ì •í•˜ê²Œ ë§žì¶¤ */
+.modal-button {
+	width: 70px;
+}
+
+/* btn-outlineì— background:whiteë¥¼ ì¶”ê°€í•œ ë²„íŠ¼ */
+.btn-white {
+  border-color: rgba(0,0,0,.12);
+  color: #555;
+  background: #fff;
+}
+.btn-white:hover {
+  color: #555;
+  border-color: #d5d5d5;
+  border-bottom-color: #bcbcbc;
+}
+/* ==================================table==================================  */
+/*20160114 ATOZ LMS table td ì„¸ë¡œ ê°€ìš´ë°ë¡œ ì •ë ¬ */
+table.table.table-bordered.md td{
+	vertical-align:middle
+}
+/* ==================================input==================================  */
+/*20160116 ATOZ LMS textbox ìŠ¤íƒ€ì¼ ë³€ê²½*/
+.form-control.labelb {
+	border-style:none;
+	border-left:1px solid #ddd;
+	display:inline;
+}
+
+/* ê°•ì˜ê³„íšì„œ ì´í›„ ìƒë‹¨ì— ìœ„ì¹˜í•˜ëŠ” êµê³¼ëª© ì •ë³´ contents table */
+.subjectInfoTbl > tbody > tr > td{
+	border-color: #bce8f1 !important;
+	font-size: 14px;
+}
+/* ê°•ì˜ê³„íšì„œ ì´í›„ ìƒë‹¨ì— ìœ„ì¹˜í•˜ëŠ” êµê³¼ëª© ì •ë³´ contents table */
+.subjectInfoTbl .thead {
+	background: #d9edf7;
+	color: #3a87ad;
+	text-align: center;
+	font-weight: 600;
+}
+/* panel-headingì—ì„œ ì“°ì´ëŠ” inputì˜ í¬ê¸°ì¡°ì ˆ */
+.heading-control {
+	height: 26px;
+	padding:3px 8px;
+}

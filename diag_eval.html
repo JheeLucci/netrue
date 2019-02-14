@@ -1,0 +1,1389 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]>         <html class="ie8"> <![endif]-->
+<!--[if IE 9]>         <html class="ie9 gt-ie8"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="gt-ie8 gt-ie9 not-ie"> <!--<![endif]-->
+
+<head>
+<!-- 통합 진단평가 -->
+<title>통합 진단평가</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+<!--[if lt IE 9]>
+	<script src="assets/js/ie.min.js"></script>
+<![endif]-->
+
+<!-- Get jQuery from Google CDN -->
+<!--[if !IE]> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- <![endif]-->
+<!--[if lte IE 9]>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<![endif]-->
+
+<!-- 외부 css -->
+<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="assets/css/pixeladmin.css" rel="stylesheet" type="text/css">
+<link href="assets/css/widgets.css" rel="stylesheet" type="text/css">
+<link href="assets/demo/demo.css" rel="stylesheet" type="text/css">
+<link href="assets/css/loading/iosOverlay.css" rel="stylesheet" type="text/css"><!-- 로딩 프로그레스를 위한 css -->
+<link href="assets/css/tree-style.css" rel="stylesheet" type="text/css">        <!-- 트리 구조를 위한 css -->
+<link href="assets/css/fixedHeader.css" rel="stylesheet" type="text/css">       <!-- 데이터 테이블 컬럼 고정 css -->
+<link href="assets/css/google-font.css" rel="stylesheet" type="text/css">       <!-- pixes-admin에서는 url호출이나, 외부 url을 차단하는 학교가 있을 수 있어 다운로드 받음 -->
+<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">  <!-- pixes-admin에서는 url호출이나, 외부 url을 차단하는 학교가 있을 수 있어 다운로드 받음 -->
+<link href="assets/css/ionicons.min.css" rel="stylesheet" type="text/css">      <!-- pixes-admin에서는 url호출이나, 외부 url을 차단하는 학교가 있을 수 있어 다운로드 받음 -->
+<!-- 외부 css 끝 -->
+
+<!-- body태그에 태마를 적용하기 위한 script(절대 삭제하지 마세요) -->
+<script>var r=(new RegExp(';\\s*'+encodeURIComponent('px-demo-theme')+'\\s*=\\s*([^;]+)\\s*;','g')).exec(';'+document.cookie+';');document.write('<link href="assets/css/themes/'+(r && r[1] ? decodeURIComponent(r[1]) : 'clean')+'.min.css" rel="stylesheet" type="text/css" class="px-demo-theme-stylesheet">');</script>
+
+<!-- custom css -->
+<link href="assets/css/miraecit/dashBoard.css" rel="stylesheet" type="text/css"><!-- dashBoard.jsp에서 사용하는 css파일 -->
+<link href="assets/css/miraecit/elements.css" rel="stylesheet" type="text/css"> <!-- 새로운 element 선언 css파일 -->
+<link href="assets/css/miraecit/subPage.css" rel="stylesheet" type="text/css">  <!-- subPage에서 사용하는 css파일 -->
+<link href="assets/css/miraecit/setUp.css" rel="stylesheet" type="text/css">    <!-- 기본 설정값을 변경한 css -->
+<link href="assets/css/miraecit/common.css" rel="stylesheet" type="text/css">   <!-- 공통 style속성 제어 css파일 -->
+<!-- custom css 끝 -->
+
+<!-- 외부 js -->
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/pixeladmin.js"></script>
+<script src="assets/demo/demo.js"></script>
+<script src="assets/js/moment/moment-2.5.1.js"></script><!-- moment함수를 위한 js -->
+<script src="assets/js/loading/iosOverlay.js"></script> <!-- 로딩 프로그레스를 위한 js -->
+<script src="assets/js/loading/spin.min.js"></script>   <!-- 로딩 프로그레스를 위한 js -->
+<script src="assets/js/jquery.tablesorter.js"></script> <!-- 테이블 소팅을 위한  js -->
+<script src="assets/js/jquery.fixedheadertable.min.js"></script><!-- 데이터 테이블 컬럼 고정 js -->
+<script src="assets/js/dataTables.tableTools.js"></script>      <!-- 데이터 테이블 엑셀 다운로드 등을 위한 js -->
+<script src="assets/js/jquery.doubletap.js"></script>   <!-- 더블클릭 evt js -->
+<!-- 외부 js 끝 -->
+ 
+<!-- custom js -->
+<script src="assets/js/customjs/CommonUtil.js"></script>
+<script src="assets/js/customjs/cmnChkFnc.js"></script>    <!-- 공통함수 js -->
+<script src="assets/js/customjs/common_dialog.js"></script><!-- 공통 Dialog -->
+<script src="assets/js/customjs/commonAlert.js"></script>  <!-- 공통 Alert js -->
+<script src="assets/js/customjs/commonModal.js"></script>  <!-- 공통Modal js -->
+<script src="assets/js/customjs/invalidDataChecker.js"></script><!-- invalidDataChecker -->
+<script src="assets/js/customjs/fixStepChecker.js"></script>
+<!-- custom js 끝 -->
+
+<script type="text/javascript">var context = '/';</script>
+
+<script type="text/javascript">
+	var pxInit = []; //pixel admin함수 활용을 위한 변수
+	
+	$(function() {
+		$(document).on("keyup", "input:text[numberOnly]", function() {$(this).val( $(this).val().replace(/[^0-9\.]/gi,"") );});
+	});
+</script>
+
+<title id="webTitle"></title>
+<script src="assets/js/customjs/invalidNumberData.js"></script>
+<script>
+	var year = '';
+	var majorCode = '';
+	var subjectCode = '';
+	var professorCode = '';
+	var grade = '';
+	var semester = '';
+	var classDivide = '';
+	var evalSeq = '';
+	var subjectType = '';
+	var subjectInfo = '';
+	
+	var evalDateChk = '';  //평가기간 데이터
+	var evalDateChk = '';  //평가 가능 여부  
+	var diagInfo = '';     //진단평가 데이터
+	var evalItemList = ''; //진단평가 문항
+	var stList = '';       //학생리스트 및 평가 데이터
+	
+	var isAddAuth; //권한에따른 UI제어를 위한 전역변수
+	
+	var minPoint = 1; //최소점수
+	var maxPoint = Number('5').toFixed(0); //최대점수
+	
+	$(function() {
+		year = '2018';
+		majorCode = '218';
+		subjectCode = '25004';
+		professorCode = '28008';
+		grade = '1';
+		semester = '1';
+		classDivide = '1';
+		evalSeq = '1';
+		subjectType = 'A';
+		
+		isAddAuth = true; //(isCheckedMenuAuthorize("modify"));
+		
+		//수정 및 저장 권한이 없을 경우 버튼숨김(삭제권한 처리 필요)
+		if(!isAddAuth) {
+			$('#saveBtn').remove();
+			$('#tempSaveBtn').remove();
+			$('#uploadDiv').remove();
+			$('#allDelBtn').remove();
+		}
+		
+		$('.custom-file').pxFile(); //파일첨부 class부여
+		
+		setEvalData(); //데이터 get
+		
+		$('#evalWrap').perfectScrollbar({ suppressScrollY: true });
+
+        $(window).on('resize', function() {
+          $('#evalWrap').perfectScrollbar('update');
+        });
+		
+		//excel download
+		$("#btnExport").click(function () {
+			excelDownMode();
+			document.excelForm.submit();
+		});
+		
+		//excel upload
+		$("#excelUploadForm").validate({
+			rules: {
+				FileData: {
+					required: true,
+					extension: "xls|xlsx"
+				}
+			},
+			messages: {
+				FileData: {
+					required: '파일을 선택해주세요.',
+					extension: "엑셀파일만 업로드 가능합니다."
+				}
+			},
+			submitHandler: function(form) {
+				
+				$("#excelUploadForm").ajaxSubmit({
+					url : "/evaluation.studSubjEval/uploadProcess",
+					type : 'post',
+					dataType : 'json',
+					beforeSend: function (request) {
+					// 권한체크를 위해서 Header에 Ajax 호출로 등록
+						request.setRequestHeader("authCheckAjax", true);
+					},
+					success: function(result) {
+						if(!result) {
+							// 알림 Dialog
+							alertDialog('메뉴접근 권한이 없는 사용자입니다.');
+						} else {
+							// 로딩화면 노출
+							loadingProgressShow();
+							// 엑셀 파싱 목록 생성
+							//alert("filePath:" + result.uploadFilePath);
+							getExcelParserList(result.uploadFilePath);
+						}
+					}
+				});
+			}
+		});
+		
+		//저장
+		$('#saveBtn').click(function(){
+			saveData();
+		});
+	});
+	
+	//테이블 하단 체크박스 개수 표기 fnc
+	function chkCnt(){
+		$('#chkCnt').text($('input[name=saveChk]:checked').length);
+		
+		//모든 체크박스가 선택되지 않았을 경우
+		if($('input[name=saveChk]:checked').length == 0){
+			$('#allChk').prop('checked', false);
+		}
+		
+		//모든 체크박스가 선택되었을 경우
+		if($('input[name=saveChk]:checked').length == $('input[name=saveChk]').length) {
+			$('#allChk').prop('checked', true);
+		}
+	}
+	
+	//데이터 get fnc
+	function setEvalData() {
+		/* 
+		loadingProgressShow();
+		$.ajax({
+			url : '/evaluation/diagnosticTotEval/getDiagTotEvalAjax',
+			data : {
+				"year" : year,
+				"majorCode" : majorCode,
+				"subjectCode" : subjectCode,
+				"professorCode" : professorCode,
+				"grade" : grade,
+				"semester" : semester,
+				"classDivide" : classDivide,
+				"evalSeq" : evalSeq,
+				"subjectType" : subjectType
+			},
+			type : 'POST',
+			dataType : 'json',
+			beforeSend: function (request) {
+				// 권한체크를 위해서 Header에 Ajax 호출로 등록
+				request.setRequestHeader("authCheckAjax", true);
+			},
+			success : function(data) {
+				subjectInfo = data.subjectInfo;
+				evalDate = data.evalDate; //평가기간 데이터
+				evalDateChk = evalDate.evalDateChk; //평가 가능 여부
+				
+				diagInfo = data.diagInfo; //진단평가 데이터
+				evalItemList = data.evalItemList; //진단평가 문항 리스트
+				stList = data.stList; //학생 리스트
+				
+				drawTbl();	
+				
+				$('#diagSeq').empty();
+				$('#diagSeq').append('<span class="text-semibold mr10">진단평가 '+evalSeq+'차</span>('+diagInfo.timeSeq+'주차)');
+				
+				//평가기간 세팅
+				if(evalDateChk != 'B' && evalDateChk != 'D') {
+					$('#diagDate').empty();
+					var sDate = evalDate.levelEvalSdate.substring(0,4)+'.'+evalDate.levelEvalSdate.substring(4,6)+'.'+evalDate.levelEvalSdate.substring(6,8);
+					var eDate = evalDate.levelEvalEdate.substring(0,4)+'.'+evalDate.levelEvalEdate.substring(4,6)+'.'+evalDate.levelEvalEdate.substring(6,8);
+					$('#diagDate').append('평가기간<span class="text-semibold ml20">'+sDate+' ~ '+eDate+'</span>');
+				}
+				
+				//수정 및 저장 권한이 없을 경우 버튼숨김(삭제권한 처리 필요)
+				if(!isAddAuth) {
+					$('.echDelBtn').remove();
+					$('#allDelBtn').remove();
+				}
+				
+			},
+			error : function(request, status, error) {
+				alert("데이터를 가져오는데 실패 하였습니다.\n다시 시도해 주세요.")
+				loadingProgressHide();
+			}
+		}).always(function() {
+			loadingProgressHide();
+		}); */
+		
+		subjectInfo = {classDivide: "1",currCode: "2018218",evalStatus: "E",grade: "1",professorCode: "28008",professorName: "정미예",semester: "1",semesterName: "1",status: "E",stepStatus: "3",studStatus: "S",subjectCode: "25004",subjectType: "A",year: "2018"};
+		evalDate = {evalDateChk: "A",levelEvalEdate: "20180430",levelEvalSdate: "20180305"}; //평가기간 데이터
+		evalDateChk = "A"; //평가 가능 여부
+		
+		diagInfo = {timeSeq: "1"}; //진단평가 데이터
+		evalItemList = [
+						{abilUnitFacCode: "01",abilUnitFacName: "가족사정하기",classDivide: "1",evalContents: "1.1. 문제에 대한 가족의 인식을 조사할 수 있다.",evalItemSeq: "0",evalSeq: "1",freeYn: "N",grade: "1",majorCode: "218",ncsCode: "0701020305",ncsName: "가족상담",ncsVer: "14v2",professorCode: "28008",semester: "1",subjectCode: "25004",year: "2018"}
+						,{abilUnitFacCode: "01",abilUnitFacName: "가족사정하기",classDivide: "1",evalContents: "1.2. 문제와 관련된 가족 상호 작용을 체계론적 관점에서 분석할 수 있다.",evalItemSeq: "1",evalSeq: "1",freeYn: "N",grade: "1",majorCode: "218",ncsCode: "0701020305",ncsName: "가족상담",ncsVer: "14v2",professorCode: "28008",semester: "1",subjectCode: "25004",year: "2018"}
+						,{abilUnitFacCode: "01",abilUnitFacName: "가족사정하기",classDivide: "1",evalContents: "1.3. 가족의 역동을 사례 개념화 할 수 있다.",evalItemSeq: "2",evalSeq: "1",freeYn: "N",grade: "1",majorCode: "218",ncsCode: "0701020305",ncsName: "가족상담",ncsVer: "14v2",professorCode: "28008",semester: "1",subjectCode: "25004",year: "2018"}
+						,{abilUnitFacCode: "01",abilUnitFacName: "가족사정하기",classDivide: "1",evalContents: "1.4. 가족이 가지고 있는 강점과 자원을 조사할 수 있다.",evalItemSeq: "3",evalSeq: "1",freeYn: "N",grade: "1",majorCode: "218",ncsCode: "0701020305",ncsName: "가족상담",ncsVer: "14v2",professorCode: "28008",semester: "1",subjectCode: "25004",year: "2018"}
+						,{abilUnitFacCode: "01",abilUnitFacName: "가족사정하기",classDivide: "1",evalContents: "1.5. 가족과 합의를 통한 구체적인 상담목표를 세울 수 있다.",evalItemSeq: "4",evalSeq: "1",freeYn: "N",grade: "1",majorCode: "218",ncsCode: "0701020305",ncsName: "가족상담",ncsVer: "14v2",professorCode: "28008",semester: "1",subjectCode: "25004",year: "2018"}
+					   ]; //진단평가 문항 리스트
+		stList = [
+					{classDivide: "1",classNo: "201828001"
+					 ,evalList: [
+								{classDivide: "1",classNo: "201828001",evalItemSeq: "0",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{classDivide: "1",classNo: "201828001",evalItemSeq: "1",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{classDivide: "1",classNo: "201828001",evalItemSeq: "2",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{classDivide: "1",classNo: "201828001",evalItemSeq: "3",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{classDivide: "1",classNo: "201828001",evalItemSeq: "4",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					            ]
+					 ,evalSeq: "1",grade: "1",majorCode: "218",maxItemSeq: "4",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"
+					}	
+					,{classDivide: "1",classNo: "201828002"
+					 ,evalList: [
+								{evalPoint: "3",uDate: "2018-03-18 18:35:08.0",uUser: "201828002",userType: "S",classDivide: "1",classNo: "201828002",evalItemSeq: "0",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "2",uDate: "2018-03-18 18:35:08.0",uUser: "201828002",userType: "S",classDivide: "1",classNo: "201828002",evalItemSeq: "1",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "2",uDate: "2018-03-18 18:35:08.0",uUser: "201828002",userType: "S",classDivide: "1",classNo: "201828002",evalItemSeq: "2",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "3",uDate: "2018-03-18 18:35:08.0",uUser: "201828002",userType: "S",classDivide: "1",classNo: "201828002",evalItemSeq: "3",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "3",uDate: "2018-03-18 18:35:08.0",uUser: "201828002",userType: "S",classDivide: "1",classNo: "201828002",evalItemSeq: "4",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					            ]
+					 ,evalSeq: "1",grade: "1",majorCode: "218",maxItemSeq: "4",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"
+					}
+					,{classDivide: "1",classNo: "201828003"
+					 ,evalList: [
+								{evalPoint: "4",uDate: "2018-03-20 18:35:08.0",uUser: "201828003",userType: "S",classDivide: "1",classNo: "201828003",evalItemSeq: "0",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "4",uDate: "2018-03-20 18:35:08.0",uUser: "201828003",userType: "S",classDivide: "1",classNo: "201828003",evalItemSeq: "1",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "3",uDate: "2018-03-20 18:35:08.0",uUser: "201828003",userType: "S",classDivide: "1",classNo: "201828003",evalItemSeq: "2",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "4",uDate: "2018-03-20 18:35:08.0",uUser: "201828003",userType: "S",classDivide: "1",classNo: "201828003",evalItemSeq: "3",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "3",uDate: "2018-03-20 18:35:08.0",uUser: "201828003",userType: "S",classDivide: "1",classNo: "201828003",evalItemSeq: "4",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					            ]
+					 ,evalSeq: "1",grade: "1",majorCode: "218",maxItemSeq: "4",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"
+					}
+					,{classDivide: "1",classNo: "201828004"
+					 ,evalList: [
+								{evalPoint: "5",uDate: "2018-03-11 18:35:08.0",uUser: "201800009",userType: "P",classDivide: "1",classNo: "201828004",evalItemSeq: "0",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "5",uDate: "2018-03-11 18:35:08.0",uUser: "201800009",userType: "P",classDivide: "1",classNo: "201828004",evalItemSeq: "1",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "5",uDate: "2018-03-11 18:35:08.0",uUser: "201800009",userType: "P",classDivide: "1",classNo: "201828004",evalItemSeq: "2",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "5",uDate: "2018-03-11 18:35:08.0",uUser: "201800009",userType: "P",classDivide: "1",classNo: "201828004",evalItemSeq: "3",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "5",uDate: "2018-03-11 18:35:08.0",uUser: "201800009",userType: "P",classDivide: "1",classNo: "201828004",evalItemSeq: "4",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					            ]
+					 ,evalSeq: "1",grade: "1",majorCode: "218",maxItemSeq: "4",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"
+					}
+					,{classDivide: "1",classNo: "201828005"
+					 ,evalList: [
+								{evalPoint: "3",uDate: "2018-03-12 18:35:08.0",uUser: "201828005",userType: "S",classDivide: "1",classNo: "201828005",evalItemSeq: "0",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "2",uDate: "2018-03-12 18:35:08.0",uUser: "201828005",userType: "S",classDivide: "1",classNo: "201828005",evalItemSeq: "1",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "4",uDate: "2018-03-12 18:35:08.0",uUser: "201828005",userType: "S",classDivide: "1",classNo: "201828005",evalItemSeq: "2",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "3",uDate: "2018-03-12 18:35:08.0",uUser: "201828005",userType: "S",classDivide: "1",classNo: "201828005",evalItemSeq: "3",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					           ,{evalPoint: "1",uDate: "2018-03-12 18:35:08.0",uUser: "201828005",userType: "S",classDivide: "1",classNo: "201828005",evalItemSeq: "4",evalSeq: "1",grade: "1",majorCode: "218",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"}
+					            ]
+					 ,evalSeq: "1",grade: "1",majorCode: "218",maxItemSeq: "4",professorCode: "28008",semester: "1",studentName: "김XX",subjectCode: "25004",year: "2018"
+					}
+		         ]; //학생 리스트
+		
+		drawTbl();	
+		
+		$('#diagSeq').empty();
+		$('#diagSeq').append('<span class="text-semibold mr10">진단평가 '+evalSeq+'차</span>('+diagInfo.timeSeq+'주차)');
+		
+		//평가기간 세팅
+		if(evalDateChk != 'B' && evalDateChk != 'D') {
+			$('#diagDate').empty();
+			var sDate = evalDate.levelEvalSdate.substring(0,4)+'.'+evalDate.levelEvalSdate.substring(4,6)+'.'+evalDate.levelEvalSdate.substring(6,8);
+			var eDate = evalDate.levelEvalEdate.substring(0,4)+'.'+evalDate.levelEvalEdate.substring(4,6)+'.'+evalDate.levelEvalEdate.substring(6,8);
+			$('#diagDate').append('평가기간<span class="text-semibold ml20">'+sDate+' ~ '+eDate+'</span>');
+		}
+		
+		//수정 및 저장 권한이 없을 경우 버튼숨김(삭제권한 처리 필요)
+		if(!isAddAuth) {
+			$('.echDelBtn').remove();
+			$('#allDelBtn').remove();
+		}
+	}
+	
+	//평가 가능기간 체크 fnc
+	function chkEvalDate() {
+		if(evalDateChk == 'C') {
+			blueAlert('학생 진단평가 기간으로 일괄평가 불가합니다', '학생들의 진단평가 기간이 종료된 이후<br/>일괄평가가 가능합니다');
+			$('#saveBtn').hide();
+			$('#uploadDiv').hide();
+			/* 20170522 Jhee 기간이 아니더라도 삭제는 가능하도록 수정 
+			$('#allDelBtn').hide();
+			$('.echDelBtn').hide(); */
+			$('.input-point').attr('disabled', true);
+			$('input[type=checkbox]').parent().hide();
+		} else if(evalDateChk == 'D') {
+			yellowAlert('진단평가 기간에 문제가 있습니다', '평가계획서 및 진단평가 기간을 확인해주세요');
+			$('#saveBtn').hide();
+			$('#uploadDiv').hide();
+			$('#allDelBtn').hide();
+			$('.echDelBtn').hide();
+			$('.input-point').attr('disabled', true);
+			$('input[type=checkbox]').parent().hide();
+		}
+	}
+	
+	//데이터 테이블 drw fnc
+	function drawTbl() {
+		var html = '';
+		var stSum = 0; //학생 개인 점수 합계
+		
+		$('#evalWrap').empty();
+		
+		html += '<table class="table table-bordered">';
+		html += '<tbody>';
+		
+		//table-head에 해당하는 부분 =================================================================================================
+		html += 	'<tr>';
+		html += 		'<td class="text-center bg-info w300px minW300px" colspan="5">';
+		html += 			'능력단위(코드)';
+		html += 		'</td>';
+		if (evalItemList != null && evalItemList.length != 0) {
+			for (var i = 0; i < evalItemList.length; i++) {
+				html += '<td class="ncsList' + evalItemList[i].ncsCode + ' bg-title-lightinfo">';
+				if(evalItemList[i].freeYn != 'Y') {
+					html += evalItemList[i].ncsName + ' (' + evalItemList[i].ncsCode + ')';
+				} else {
+					html += '[자율]';
+				}
+				html += '</td>';
+			}
+		}
+		html += 		'<td class="text-center bg-title-gray w160px minW160px" colspan="2"></td>';
+		html +=		'</tr>';
+		
+		html += 	'<tr>';
+		html += 		'<td class="text-center bg-info w300px minW300px" colspan="5">';
+		html += 			'능력단위요소(코드)';
+		html += 		'</td>';
+		if (evalItemList != null && evalItemList.length != 0) {
+			for (var i = 0; i < evalItemList.length; i++) {
+				html += '<td class="abilList' + evalItemList[i].ncsCode + evalItemList[i].abilUnitFacCode + ' bg-title-lightinfo minW250px">';
+				if(evalItemList[i].freeYn != 'Y') {
+					html += evalItemList[i].abilUnitFacName + ' (' + evalItemList[i].ncsCode + '_' + evalItemList[i].abilUnitFacCode + ')';
+				} else {
+					html += '[자율]';
+				}
+				html += '</td>';
+			}
+		}
+		html += 		'<td class="text-center bg-title-gray w160px minW160px" colspan="2"></td>';
+		html += 	'</tr>';
+		
+		html += 	'<tr>';
+		html += 		'<td class="text-center bg-info w300px minW300px" colspan="5">';
+		html += 			'진단평가 문항';
+		html += 		'</td>';
+		if (evalItemList != null && evalItemList.length != 0) {
+			for (var i = 0; i < evalItemList.length; i++) {
+				html += '<td class="evalList' + evalItemList[i].evalItemSeq + ' bg-title-lightinfo minW150px">';
+				if(evalItemList[i].freeYn == 'Y') {
+					html += '[자율] ';
+				}
+				html += evalItemList[i].evalContents;
+				html += '</td>';
+			}
+		}
+		html += 		'<td class="text-center bg-title-gray w160px minW160px" colspan="2"></td>';
+		html += 	'</tr>';
+		
+		html += 	'<tr>';
+		html += 		'<td class="text-center bg-title-flare"style="min-width:40px;">';
+		html += 			'<label class="custom-control custom-checkbox custom-control-blank mb0 ml3" for="allChk">';
+		html += 				'<input type="checkbox" id="allChk" class="custom-control-input" />';
+		html += 				'<span class="custom-control-indicator"></span>';
+		html +=				'</label>';
+		html +=			'</td>';
+		html += 		'<td class="text-center bg-title-flare" style="min-width:40px;">#</td>';
+		html += 		'<td class="text-center bg-title-flare" style="min-width:90px;">학번</td>';
+		html += 		'<td class="text-center bg-title-flare" style="min-width:80px;">학생명</td>';
+		html += 		'<td class="text-center bg-title-flare" style="min-width:60px;">상태</td>';
+		if (evalItemList != null && evalItemList.length != 0) {
+			for (var i = 0; i < evalItemList.length; i++) {
+				html += '<td class="text-center bg-title-success text-bold minW150px">'+(Number(evalItemList[i].evalItemSeq)+1)+'</td>';
+			}
+		}
+		//html += 		'<td class="text-center bg-title-success" colspan="' + (Number(evalItemList.length)) + '">평가결과</td>';
+		html += 		'<td class="text-center bg-default" style="min-width:65px;">점수합계</td>';
+		html += 		'<td class="text-center bg-default" style="min-width:80px;">평가일</td>';
+		html += 	'</tr>';
+		
+		//table-body에 해당하는 부분 =================================================================================================
+		if (stList != null && stList.length != 0) {
+			for (var i = 0; i < stList.length; i++) {
+				html += 	'<tr>';
+				//학생이 평가한 경우 삭제버튼, 그 외는 체크박스 
+				html += 		'<td class="text-center"style="min-width:40px;">';
+				if(stList[i].evalList[0].userType == 'S'){
+					html += 		'<div class="bg-danger well-icon cursor-pointer echDelBtn" onClick="delChk('+i+');"><i class="fa fa-minus margin-xs-t"></i></div>';
+				} else {
+					html += 			'<label class="custom-control custom-checkbox custom-control-blank mb0 ml3">';
+					html += 				'<input type="checkbox" id="chk'+i+'" name="saveChk" class="custom-control-input chk'+stList[i].classNo+'" onClick="chkCnt();"/>';
+					html += 				'<span name="'+i+'" class="custom-control-indicator"></span>';
+					html +=				'</label>';
+				}
+				html +=			'</td>';
+				html += 		'<td class="text-center" style="min-width:40px;">'+(i+1)+'</td>'; //index
+				//학번 ---------------------------------------------------------
+				html += 		'<td class="text-center" style="min-width:90px;">';
+				html += 			'<input type="hidden" id="classNo'+i+'" value="'+stList[i].classNo+'"/>';
+				html += 			'<input type="hidden" id="studentName'+i+'" value="'+stList[i].studentName+'"/>';
+				html += 			stList[i].classNo
+				html += 		'</td>';
+				//학번 끝 -------------------------------------------------------
+				html += 		'<td class="text-center" style="min-width:80px;">'+stList[i].studentName+'</td>'; //이름
+				if(stList[i].evalList[0].userType == null || stList[i].evalList[0].userType == '') {
+					html += 		'<td class="text-center text-warning" style="min-width:60px;">미진행</td>';
+				} else {
+					html += 		'<td class="text-center text-success" style="min-width:60px;">완료</td>';
+				}
+				
+				//문항별 점수 =====================================================================================
+				for(var j=0; j<stList[i].evalList.length; j++) {
+					if(stList[i].evalList[0].userType == null || stList[i].evalList[0].userType == '') {
+						html += '<td class="text-center">';
+						html += 	'<input type="text" id="point'+stList[i].evalList[j].classNo+stList[i].evalList[j].evalItemSeq+'" name="point'+stList[i].evalList[j].evalItemSeq+'" class="form-control text-center p-a-0 input-point" onBlur="setCalcPoint(\'' + stList[i].evalList[j].classNo + '\', this, null, true)">';
+						html += '</td>';
+					} else if(stList[i].evalList[0].userType == 'S') {
+						html += '<td class="text-center bg-light">'+stList[i].evalList[j].evalPoint;
+						html += '<input type="hidden" id="point'+stList[i].evalList[j].classNo+stList[i].evalList[j].evalItemSeq+'" name="point'+stList[i].evalList[j].evalItemSeq+'" value="'+stList[i].evalList[j].evalPoint+'">';
+						html += '</td>'
+						stSum = stSum + Number(stList[i].evalList[j].evalPoint);
+					} else if(stList[i].evalList[0].userType == 'P') {
+						html += '<td class="text-center">';
+						html += 	'<input type="text" id="point'+stList[i].evalList[j].classNo+stList[i].evalList[j].evalItemSeq+'" name="point'+stList[i].evalList[j].evalItemSeq+'" class="form-control text-center p-a-0 input-point" value="'+stList[i].evalList[j].evalPoint+'" onBlur="setCalcPoint(\'' + stList[i].evalList[j].classNo + '\', this, null, true)">';
+						html += '</td>';
+						stSum = stSum + Number(stList[i].evalList[j].evalPoint);
+					}
+				}
+				
+				//점수합계&평가일
+				if(stList[i].evalList[0].userType == null || stList[i].evalList[0].userType == '') {
+					html += '<td class="text-center" style="min-width:65px;">';
+					html += '<span id="stSum'+stList[i].evalList[0].classNo+'">-</span>';
+					html += '<input type="hidden" id="hiddenStSum'+stList[i].evalList[0].classNo+'" value="0"/>';
+					html += '</td>';
+					html += '<td class="text-center" style="min-width:80px;">-</td>';
+				} else { 
+					html += '<td class="text-center" style="min-width:65px;">';
+					html += '<span id="stSum'+stList[i].evalList[0].classNo+'">'+stSum+'</span>';
+					html += '<input type="hidden" id="hiddenStSum'+stList[i].evalList[0].classNo+'" value="'+stSum+'"/>';
+					html += '</td>';
+					html += '<td class="text-center" style="min-width:80px;">'+moment(stList[i].evalList[0].uDate).format('YYYY-MM-DD')+'</td>';
+				} 
+				
+				html += 	'</tr>';
+				
+				stSum = 0; //학생 개인 점수 초기화
+			}
+		}
+		
+		//table-foot에 해당하는 부분 =================================================================================================
+		html += 	'<tr>';
+		html += 		'<td id="chkCnt" class="text-center">0</td>';
+		html += 		'<td class="text-center bg-title-flare" colspan="4">문항별 합계</td>';
+		if(stList != null && stList.length != 0 && stList[0].evalList != null) {
+			for(var j=0; j<stList[0].evalList.length; j++) {
+				html += 		'<td id="ItemPoint'+stList[0].evalList[j].evalItemSeq+'" class="text-center"></td>';
+			}
+		}
+		html += 		'<td id="stTotSum" class="text-center"></td>';
+		html += 		'<td class="text-center bg-title-gray"></td>';
+		html += 	'</tr>';
+		
+		html += 	'<tr>';
+		html += 		'<td class="text-center bg-title-gray"></td>';
+		html += 		'<td class="text-center bg-title-flare" colspan="4">문항별 평균점수</td>';
+		if(stList != null && stList.length != 0 && stList[0].evalList != null) {
+			for(var j=0; j<stList[0].evalList.length; j++) {
+				html += 		'<td id="ItemAvg'+stList[0].evalList[j].evalItemSeq+'" class="text-center"></td>';
+			}
+		}
+		html += 		'<td id="stTotAvg" class="text-center"></td>';
+		html += 		'<td class="text-center bg-title-gray"></td>';
+		html += 	'</tr>';
+		
+		html += '</tbody>';
+		html += '</table>';
+		
+		$('#evalWrap').append(html);
+		setItemSum();  //table footer합계 함수 실행
+		chkEvalDate(); //평가기간 chk
+		
+		//체크박스 전체선택 및 해제
+		$('#allChk').click(function(){
+			var chk = $(this).is(':checked');
+			
+			if(chk){
+				$('input[name=saveChk]').prop('checked',true);
+			} else {
+				$('input[name=saveChk]').prop('checked',false);
+			}
+			
+			chkCnt();
+		});
+		
+	}
+	
+	//점수 input data check fnc
+	function setCalcPoint(classNo, controller, tmpId, popupYn) {
+		var returnError = '';
+		var id = null;
+		if (controller != null) {
+			id = controller.id;
+		} else {
+			id = tmpId;
+			controller = $('#' + id)[0];
+		}
+		var point = controller.value;
+		if ($.isNumeric(point) == false) {
+			if (point != '') {
+				// 160428 dy.kang 엑셀 업로드시 오류사항 모아서 한꺼번에 팝업에 나오도록 팝업 처리
+				if (popupYn == true) {
+					alert('숫자만 입력 가능합니다.');
+				} else {
+					returnError = 'isNumeric';
+				}
+			}
+			// 160426 dy.kang 오류일 경우 0으로 수정하던 부분 제거
+			controller.value = '';
+		} else if (Number(point) < minPoint) {
+			// 160428 dy.kang 엑셀 업로드시 오류사항 모아서 한꺼번에 팝업에 나오도록 팝업 처리
+			if (popupYn == true) {
+				alert('점수는 '+minPoint+'점보다 낮을 수 없습니다.');
+			} else {
+				returnError = 'minData';
+			}
+			// 160426 dy.kang 오류일 경우 0으로 수정하던 부분 제거
+			controller.value = '';
+		} else if (Number(point) != Number(point).toFixed(0)) {
+			// 160428 dy.kang 엑셀 업로드시 오류사항 모아서 한꺼번에 팝업에 나오도록 팝업 처리
+			if (popupYn == true) {
+				alert('점수는 정수만 입력 가능합니다.');
+			} else {
+				returnError = 'toFixed';
+			}
+			controller.value = Number(controller.value).toFixed(0);
+		} else if (Number(point) > maxPoint) {
+			// 160428 dy.kang 엑셀 업로드시 오류사항 모아서 한꺼번에 팝업에 나오도록 팝업 처리
+			if (popupYn == true) {
+				alert(maxPoint+'보다 높은 점수는 줄 수 없습니다.');
+			} else {
+				returnError = 'maxData';
+			}
+			// 160426 dy.kang 오류일 경우 0으로 수정하던 부분 제거
+			controller.value = '';
+		}
+		
+		// 160426 dy.kang 빈칸일 경우 toFixed(2) 사용시 0.00이 자동으로 들어감 - 제거
+		if (controller.value != '') {
+			controller.value = Number(controller.value).toFixed(0);
+		}
+
+		$('#' + id).parent().removeClass("has-warning");
+		if (Number(controller.value) == 0 || controller.value == '') {
+			$('#' + id).parent().addClass("has-warning");
+		}
+		
+		setStSum(classNo);
+
+		// 160428 dy.kang 엑셀 업로드시 오류사항 모아서 한꺼번에 팝업에 나오도록 팝업 처리
+		return returnError;
+	}
+	
+	//한 학생의 점수 합계 fnc
+	function setStSum(classNo) {
+		var point = 0;
+		$('[id^=point' + classNo + ']').each(function() {
+			point = Number(point) + Number($(this).val());
+		});
+		
+		$('#hiddenStSum' + classNo).val(point.toFixed(0));
+		$('#stSum' + classNo).text(point.toFixed(0));
+		
+		$('.chk'+classNo).prop('checked', true); //점수가 입력되면 체크박스 자동 체크
+		$('#chkCnt').text($('input[name=saveChk]:checked').length); //선택된 체크박스 개수
+		
+		setItemSum(); //table footer합계 함수 실행
+	}
+	
+	//table footer합계 fnc
+	function setItemSum() {
+		var itemPoint = 0; //문항별 합계
+		var itemAvg = 0;   //문항별 평균
+		
+		var stCnt = 0; //평가된 학생수
+		
+		if(stList != null && stList.length != 0 && stList[0].evalList != null) {
+			for(var j=0; j<stList[0].evalList.length; j++) {
+				stCnt = 0;     //학생수 초기화
+				$('input[name="point'+stList[0].evalList[j].evalItemSeq+'"]').each(function(){
+					itemPoint = itemPoint + Number($(this).val());
+					if($(this).val() != '' && $(this).val() != null) {
+						stCnt ++;
+					}
+				});
+				$('#ItemPoint'+stList[0].evalList[j].evalItemSeq).text(itemPoint);
+				
+				if(stCnt == 0) {stCnt = 1;} //데이터가 없으면 0으로 출력하기 위해 학생수를 1로 세팅
+				
+				itemAvg = itemPoint / stCnt; //합계점수÷전체학생수
+				$('#ItemAvg'+stList[0].evalList[j].evalItemSeq).text(Number(itemAvg).toFixed(2));
+				
+				itemPoint = 0; //합계 초기화
+				itemAvg = 0;   //평균 초기화
+			}
+		}
+		
+		var stPoint = 0; //모든 학생점수 합계
+		var stAvg = 0;   //모든 학생점수 평균
+		
+		$('[id^=hiddenStSum]').each(function() {
+			stPoint = Number(stPoint) + Number($(this).val());
+		});
+		$('#stTotSum').text(Number(stPoint).toFixed(0));
+		
+		stPoint = 0;
+		$('[id^=ItemAvg]').each(function() {
+			stPoint = Number(stPoint) + Number($(this).text());
+		});
+		
+		if(stList != null && stList.length != 0 && stList[0].evalList != null) {
+			stAvg = stPoint / Number(stList[0].evalList.length); //평균점수의 합계÷문항수
+		}
+		$('#stTotAvg').text(Number(stAvg).toFixed(2));
+	}
+	
+	//데이터 삭제 확인
+	function delChk(rowNum) {
+		var msg = '';
+		if(rowNum != 'AllDel') {
+			msg = '<span class="text-warning">'+$('#studentName'+rowNum).val()+'('+$('#classNo'+rowNum).val()+')</span> 의<br/>진단평가를 <span class="text-danger">삭제</span>하시겠습니까?';
+		} else {
+			msg = '전체 학생의 진단평가를 <span class="text-danger">삭제</span>하시겠습니까?';				
+		}
+		customDanger(function(){delData(rowNum);}, null, msg);
+	}
+	
+	//데이터 삭제
+	function delData(rowNum) {
+		var tmpClassNo = '';
+		
+		if(rowNum != 'AllDel') {
+			tmpClassNo = $('#classNo'+rowNum).val();
+		}
+		
+		/* 
+		$.ajax({
+			url : '/evaluation/diagnosticTotEval/delDataAjax',
+			data : {
+					    "year": year
+					    ,"majorCode": majorCode
+					    ,"subjectCode": subjectCode
+					    ,"grade": grade
+					    ,"semester": semester
+					    ,"classDivide": classDivide
+					    ,"professorCode": professorCode
+					    ,"evalSeq": evalSeq
+					    ,"classNo": tmpClassNo
+				    },
+			type : 'POST',
+			dataType : 'json',
+			beforeSend: function (request) {
+				// 권한체크를 위해서 Header에 Ajax 호출로 등록
+				request.setRequestHeader("authCheckAjax", true);
+			},
+			success : function(data) {
+				redAlert('삭제되었습니다', null);
+				
+				$('.modalRChkBtn').click(function(){
+					window.scrollTo(0,0); //저장완료 후, scroll top으로 이동
+					setEvalData(); //데이터 get
+				});
+			},
+			error : function(request, status, error) {
+				alert("데이터 삭제 실패하였습니다.\n관리자에게 문의해 주세요");
+				loadingProgressHide();
+			}
+		}).always(function() {
+			loadingProgressHide();
+		});
+		*/
+		 
+		redAlert('삭제되었습니다', null);
+		
+		$('.modalRChkBtn').click(function(){
+			window.scrollTo(0,0); //저장완료 후, scroll top으로 이동
+			setEvalData(); //데이터 get
+		}); 
+	}
+	
+	//선택 학생 저장
+	function saveData() {
+		if($('input[name=saveChk]:checked').length == 0) {
+			yellowAlert('저장할 학생을 선택하세요');
+			return;
+		}
+		
+		loadingProgressShow();
+		var rowNum = '';
+		var classNo = ''; //학번
+		var echSaveList = ''; //학생의 1개 문항에 대한 점수를 담을 임시 점수
+		var totSaveList = []; //학생의 모든 문항에 대한 점수를 담을 변수(최종 insert할 개수)
+		var totDelList = [];  //삭제 후 insert할 수 있도록 삭제 key를 담을 변수
+		var returnChk = 'true';
+		
+		$('input[name=saveChk]:checked').each(function(){
+			rowNum = $(this).next().attr('name');
+			classNo = $('#classNo'+rowNum).val();
+			totDelList[totDelList.length] = year+'@┐'+semester+'@┐'+grade+'@┐'+subjectCode+'@┐'+majorCode+'@┐'+professorCode+'@┐'+classDivide+'@┐'+classNo+'@┐'+evalSeq;
+			
+			if(stList != null && stList.length != 0 && stList[0].evalList != null) {
+				for(var j=0; j<stList[0].evalList.length; j++) {
+					echSaveList += year+ '@┐'+semester+ '@┐' +grade+ '@┐' +subjectCode+ '@┐'+majorCode+ '@┐'+professorCode;
+					echSaveList += '@┐'+classDivide+ '@┐'+classNo+ '@┐' +evalSeq+ '@┐' +stList[0].evalList[j].evalItemSeq;
+					
+					if($('#point'+classNo+stList[0].evalList[j].evalItemSeq).val() == '' || $('#point'+classNo+stList[0].evalList[j].evalItemSeq).val() == null) {
+						returnChk = 'noData';
+						break;
+					} else if($('#point'+classNo+stList[0].evalList[j].evalItemSeq).val() == 0) {
+						returnChk = 'zero';
+						break;
+					} 
+					
+					echSaveList += '@┐'+$('#point'+classNo+stList[0].evalList[j].evalItemSeq).val();
+					totSaveList[totSaveList.length] = echSaveList;
+					echSaveList = '';
+				}
+			}
+		});
+		
+		if(returnChk == 'true') {
+			/* 
+			$.ajaxSettings.traditional = true;
+			
+			$.ajax({
+				url : '/evaluation/diagnosticTotEval/saveDataAjax',
+				data : {"totDelList": totDelList, "totSaveList": totSaveList},
+				type : 'POST',
+				dataType : 'json',
+				beforeSend: function (request) {
+					// 권한체크를 위해서 Header에 Ajax 호출로 등록
+					request.setRequestHeader("authCheckAjax", true);
+				},
+				success : function(data) {
+					if(data == "fail") {
+						redAlert('저장실패', '데이터 저장에 실패하였습니다<br/>관리자에게 문의바랍니다');
+					} else if(data == "success") {						
+						greenAlert(null, null);
+						
+						$('.modalGChkBtn').click(function(){
+							window.scrollTo(0,0); //저장완료 후, scroll top으로 이동
+							setEvalData(); //데이터 get
+						});
+					}
+				},
+				error : function(request, status, error) {
+					alert("데이터 저장에 실패하였습니다.\n관리자에게 문의바랍니다");
+					loadingProgressHide();
+				}
+			}).always(function() {
+				loadingProgressHide();
+			}); 
+			*/
+			greenAlert(null, null);
+			
+			$('.modalGChkBtn').click(function(){
+				window.scrollTo(0,0); //저장완료 후, scroll top으로 이동
+				setEvalData(); //데이터 get
+			});
+		} else if(returnChk = 'noData'){
+			loadingProgressHide();
+			yellowAlert('점수가 입력되지 않은 항목이 있어<br/>저장할 수 없습니다');
+			return;
+		}  else if(returnChk = 'zero'){
+			loadingProgressHide();
+			yellowAlert('0점으로 입력된 항목이 있어<br/>저장할 수 없습니다');
+			return;
+		}
+	}
+	
+	//excel download를 위한 html그리기
+	function excelDownMode() {
+		var html = '';
+		var stSum = 0; //학생 개인 점수 합계
+		
+		var rowNum = 10;
+		var colNum = 2;
+		var sIdx = 'D';
+		var eIdx = 'A';
+		
+		html += '<table border="1">';
+		html += '	<thead>';
+		html += '		<tr>';
+		html += '			<th style="background-color:#fbf7de;text-align:left;"  colspan="' + (Number(evalItemList.length)+5) + '">';
+		html += '				유의 사항 (1) 엑셀파일 저장시, 다른이름으로 저장 -> <span style="color:#e65543;">*.xls 형식</span>으로 저장하셔야 엑셀파일 업로드가 가능합니다.<br/>';
+		html += '				유의 사항 (2) 진단평가 점수는 <span style="color:#e65543;">'+minPoint+'부터 '+maxPoint+' 까지</span> 정수만 입력 가능합니다.<br/>';
+		html += '				유의 사항 (3) 노란 배경의 학생만 점수입력이 가능합니다. 회색 배경 학생의 내용은 반영되지 않습니다.<br/>';
+		html += '               <span style="color:#e65543;">※ 기타 셀의 내용을 변경하거나 셀의 서식이 변경되었을 경우에는 정상적인 업로드가 불가능합니다.</span>';
+		html += '			</th>';
+		html += '		</tr>';
+		html += '		<tr style="background-color:#f4b04f;color:#fff;">';
+		html += '			<th style="background-color:#f4b04f;border:0;mso-number-format:\'\@\';">교과목 정보<span style="color:#e65543;"> ※변경하지 마세요※</span></th>';
+		html += '			<th style="background-color:#f4b04f;border:0;mso-number-format:\'\@\';">'+year+'</th>';
+		html += '			<th style="background-color:#f4b04f;border:0;mso-number-format:\'\@\';">'+majorCode+'</th>';
+		html += '			<th style="background-color:#f4b04f;border:0;mso-number-format:\'\@\';">'+subjectCode+'</th>';
+		html += '			<th style="background-color:#f4b04f;border:0;mso-number-format:\'\@\';">'+professorCode+'</th>';
+		html += '			<th style="background-color:#f4b04f;border:0;mso-number-format:\'\@\';">'+grade+'</th>';
+		html += '			<th style="background-color:#f4b04f;border:0;mso-number-format:\'\@\';">'+semester+'</th>';
+		html += '			<th style="background-color:#f4b04f;border:0;mso-number-format:\'\@\';">'+classDivide+'</th>';
+		html += '			<th style="background-color:#f4b04f;border:0;mso-number-format:\'\@\';">'+evalSeq+'</th>';
+		html += '		</tr>';
+		html += '	</thead>';
+
+		html += '<tbody>';
+		//table-head에 해당하는 부분 =================================================================================================
+		html += 	'<tr>';
+		html += 		'<td width="300px" style="text-align:center;background-color:#5bc0de;color:#fff;" colspan="3">능력단위(코드)</td>';
+		if (evalItemList != null && evalItemList.length != 0) {
+			for (var i = 0; i < evalItemList.length; i++) {
+				html += '<td style="background-color:#EBF6F9;">';
+				if(evalItemList[i].freeYn != 'Y') {
+					html += evalItemList[i].ncsName + ' (' + evalItemList[i].ncsCode + ')';
+				} else {
+					html += '[자율]';
+				}
+				html += '</td>';
+			}
+		}
+		html += 		'<td width="160px" style="background-color:#F2F2F2;" colspan="2"></td>';
+		html +=		'</tr>';
+		
+		html += 	'<tr>';
+		html += 		'<td width="300px" style="text-align:center;background-color:#5bc0de;color:#fff;" colspan="3">능력단위요소(코드)</td>';
+		if (evalItemList != null && evalItemList.length != 0) {
+			for (var i = 0; i < evalItemList.length; i++) {
+				html += '<td width="250px" style="background-color:#EBF6F9;">';
+				if(evalItemList[i].freeYn != 'Y') {
+					html += evalItemList[i].abilUnitFacName + ' (' + evalItemList[i].ncsCode + '_' + evalItemList[i].abilUnitFacCode + ')';
+				} else {
+					html += '[자율]';
+				}
+				html += '</td>';
+			}
+		}
+		html += 		'<td width="160px" style="background-color:#F2F2F2;" colspan="2"></td>';
+		html += 	'</tr>';
+		
+		html += 	'<tr>';
+		html += 		'<td width="300px" style="text-align:center;background-color:#5bc0de;color:#fff;" colspan="3">진단평가 문항</td>';
+		if (evalItemList != null && evalItemList.length != 0) {
+			for (var i = 0; i < evalItemList.length; i++) {
+				html += '<td style="background-color:#EBF6F9;">';
+				if(evalItemList[i].freeYn == 'Y') {
+					html += '[자율] ';
+				}
+				html += evalItemList[i].evalContents;
+				html += '</td>';
+			}
+		}
+		html += 		'<td width="160px" style="background-color:#F2F2F2;" colspan="2"></td>';
+		html += 	'</tr>';
+		
+		html += 	'<tr>';
+		html += 		'<td width="40px" style="text-align:center;background-color:#078FD3;color:#fff;">#</td>';
+		html += 		'<td width="130px" style="text-align:center;background-color:#078FD3;color:#fff;">학번</td>';
+		html += 		'<td width="130px" style="text-align:center;background-color:#078FD3;color:#fff;">학생명</td>';
+		if (evalItemList != null && evalItemList.length != 0) {
+			for (var i = 0; i < evalItemList.length; i++) {
+				html += '<td style="text-align:center;background-color:#92D050;color:#fff;font-weight:bold;">'+(Number(evalItemList[i].evalItemSeq)+1)+'</td>';
+			}
+		}
+		html += 		'<td width="80px" style="text-align:center;background-color:#98a3a4;color:#fff;">점수합계</td>';
+		html += 		'<td width="80px" style="text-align:center;background-color:#98a3a4;color:#fff;">평가일</td>';
+		html += 	'</tr>';
+		
+		//table-body에 해당하는 부분 =================================================================================================
+		if (stList != null && stList.length != 0) {
+			for (var i = 0; i < stList.length; i++) {
+				html += 	'<tr>';
+				html += 		'<td style="text-align:center;">'+(i+1)+'</td>'; //index
+				//학번 ---------------------------------------------------------
+				html += 		'<td style="text-align:center;" style="mso-number-format:\'\@\';">'+stList[i].classNo+'</td>';
+				//학번 끝 -------------------------------------------------------
+				html += 		'<td style="text-align:center;">'+stList[i].studentName+'</td>'; //이름
+				
+				colNum = 2;					
+				//문항별 점수 =====================================================================================
+				for(var j=0; j<stList[i].evalList.length; j++) {
+					colNum++;
+					if(stList[i].evalList[0].userType == null || stList[i].evalList[0].userType == '') {
+						html += '<td style="text-align:center;background-color:#fbf7de;"></td>';
+					} else if(stList[i].evalList[0].userType == 'S') {
+						html += '<td style="text-align:center;background-color:#ebebeb;">'+stList[i].evalList[j].evalPoint+'</td>'
+					} else if(stList[i].evalList[0].userType == 'P') {
+						html += '<td style="text-align:center;background-color:#fbf7de;">'+stList[i].evalList[j].evalPoint+'</td>';
+					}
+				}
+				
+				eIdx = colChangeExcel(colNum);
+				
+				//점수합계&평가일
+				if(stList[i].evalList[0].userType == null || stList[i].evalList[0].userType == '') {
+					html += '<td style="text-align:center;">=SUM(' + sIdx + rowNum + ':' + eIdx + rowNum + ')</td>';
+					html += '<td style="text-align:center;">-</td>';
+				} else { 
+					html += '<td style="text-align:center;">=SUM(' + sIdx + rowNum + ':' + eIdx + rowNum + ')</td>';
+					html += '<td style="text-align:center;">'+moment(stList[i].evalList[0].uDate).format('YYYY-MM-DD')+'</td>';
+				} 
+				
+				html += 	'</tr>';
+				rowNum++;
+			}
+		}
+		
+		//table-foot에 해당하는 부분 =================================================================================================
+		html += 	'<tr>';
+		html += 		'<td style="text-align:center;background-color:#078FD3;color:#fff;" colspan="3">문항별 합계</td>';
+		colNum = 2;
+		if(stList != null && stList.length != 0 && stList[0].evalList != null) {
+			for(var j=0; j<stList[0].evalList.length; j++) {
+				colNum++;
+				sIdx = colChangeExcel(colNum);
+				html += 		'<td style="text-align:center;">=SUM(' + sIdx + 10 + ':' + sIdx + (rowNum-1) + ')</td>';
+			}
+		}
+		colNum++;
+		sIdx = colChangeExcel(colNum);
+		html += 		'<td style="text-align:center;">=SUM(' + sIdx + 10 + ':' + sIdx + (rowNum-1) + ')</td>';
+		html += 		'<td style="text-align:center;background-color:#f2f2f2;"></td>';
+		html += 	'</tr>';
+		
+		html += 	'<tr>';
+		html += 		'<td style="text-align:center;background-color:#078FD3;color:#fff;" colspan="3">문항별 평균점수</td>';
+		colNum = 2;
+		if(stList != null && stList.length != 0 && stList[0].evalList != null) {
+			for(var j=0; j<stList[0].evalList.length; j++) {
+				colNum++;
+				sIdx = colChangeExcel(colNum);
+				html += 		'<td style="text-align:center;mso-number-format:0\.00;">=AVERAGE(' + sIdx + 10 + ':' + sIdx + (rowNum-1) + ')</td>';
+			}
+		}
+		rowNum++;
+		sIdx = colChangeExcel(colNum);
+		html += 		'<td style="text-align:center;mso-number-format:0\.00;">=AVERAGE(D' + rowNum + ':' + sIdx + rowNum + ')</td>';
+		html += 		'<td style="text-align:center;background-color:#f2f2f2;"></td>';
+		html += 	'</tr>';
+		
+		html += '</tbody>';
+		html += '</table>';
+		
+		$('#excelSource').val(html);
+		$('#titleName').val(year+'-'+subjectInfo.semesterName+' '+$('#subjectInfoWrap .subjectNameInfo').text()+'_'+classDivide+' 분반'); //20170525 Jhee 학기명 추가
+	}
+	
+	// 160329 dy.kang col 번호를 확인하여 엑셀용 셀 번호를 넘겨준다. AB1에서 AB부분.
+	function colChangeExcel(col) {
+		var alpha = ['', 'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+		
+		// 160329 dy.kang 26으로 나눈 정수값을 넣는다.
+		// var tmpA = Number(Number(Number(col) / 26).toFixed(0)); 반올림이라서 사용 안함
+		// jsp 올림 버림 반올림
+		// var number = 123.6553; // 123.6543 이란 수가 있을 경우
+		// 올림
+		// Math.ceil(Number(number)); // 124
+		// 버림
+		// Math.floor(Number(number)); // 123
+		// 반올림
+		// Math.round(Number(number)); // 124
+		// 소수 둘째자리 올림, 버림, 반올림시
+		// 올림
+		// Math.ceil(Number(number) * 100) / 100; // 123.66
+		// 버림
+		// Math.floor(Number(number) * 100) / 100; // 123.65
+		// 반올림
+		// Math.round(Number(number) * 100) / 100; // 124.66
+		
+		// 160329 dy.kang 26으로 나눈 정수값(버림)을 넣는다.
+		var tmpA = Number(Math.floor(Number(col) / 26));
+		// 160329 dy.kang 26으로 나눈 나머지값을 넣는다.
+		var tmpB = Number(col) % 26;
+		
+		var tmpaA = alpha[tmpA];
+		var tmpaB = alpha[tmpB+1];
+		
+		if (Number(tmpA) != 0) {
+			return tmpaA + tmpaB;
+		} else {
+			return tmpaB;
+		}
+	}
+	
+	// 엑셀파일 파싱한 목록
+	function getExcelParserList(uploadFilePath) {
+		
+		$.ajax({
+			url: '/excel/listAjax',
+			data: {uploadFilePath:uploadFilePath},
+			type: 'POST',
+			dataType: 'json',
+			success: function(data) {				
+				var list = data.list;
+				var physicalNumberOfCells = data.physicalNumberOfCells;	// 셀개수
+				var errorYn = false;  //문제 데이터가 있었는지 여부를 판단하기 위한 변수 
+				
+				//파싱된 데이터가 없을 경우
+				if( list == null || list.length < 1 ) {
+					loadingProgressHide();
+					yellowAlert('적용할 내용이 없습니다', '엑셀파일 확인해주세요');
+					return;
+				}
+					
+				var isCodeCheck = false;
+
+				//기본 정보 확인
+				if(list[4][1] != year) {
+					alert("년도 정보가 일치하지 않습니다.");
+					return;
+				} else if(list[4][2] != majorCode) {
+					alert("학과 정보가 일치하지 않습니다.");
+					return;
+				} else if(list[4][3] != subjectCode) {
+					alert("과목 정보가 일치하지 않습니다.");
+					return;
+				} else if(list[4][4] != professorCode) {
+					alert("교수 정보가 일치하지 않습니다.");
+					return;
+				} else if(list[4][5] != grade) {
+					alert("학년 정보가 일치하지 않습니다.");
+					return;
+				} else if(list[4][6] != semester) {
+					alert("학기 정보가 일치하지 않습니다.");
+					return;
+				} else if(list[4][7] != classDivide) {
+					alert("분반 정보가 일치하지 않습니다.");
+					return;
+				} else if(list[4][8] != evalSeq) {
+					alert("차시 정보가 일치하지 않습니다.");
+					return;
+				} else {
+					isCodeCheck = true;
+				}
+				
+				var id = '';      //excel값을 적용시킬 객체의 id
+				var inputId = ''; //excel값을 적용시킬 객체의 id
+				
+				//세로 index(table headerd와 합계를 제외한 마지막 줄까지)
+				for(var i = 9; i < Number(list.length)-2 ; i++) { 
+					id = list[i][1]; //학번
+					id = id.replace('"', '').replace('"', ''); //필드 타입이 text이기 때문에 생기는 "" 제거
+					
+					for (var j = 3; j < Number(physicalNumberOfCells-2); j++) {   // 가로 index(순번,학점,이름 칸을 제외한 3칸부터 합계를 제외한 마지막 칸까지)
+						inputId = 'point'+id+(j-3); //점수 입력하는 input의 id
+					
+						//값이 없을 경우에는 0점을 입력
+						if (list[i][j] != null && list[i][j] != 'false' && list[i][j] != '') {
+							if ($.isNumeric(list[i][j]) == false) { //값이 숫자가 아닐경우에는 초기화
+								$('#'+inputId).val(0);	
+								$('#'+inputId).parent().addClass('has-warning');
+								errorYn = true;
+							} else if (Number(list[i][j]) < minPoint) { //값이 1보다 작을 경우 1로 세팅
+								$('#'+inputId).val(minPoint);
+								$('#'+inputId).parent().addClass('has-info');
+								errorYn = true;
+							} else if (Number(list[i][j]) > maxPoint) { //값이 5보다 큰 경우 5로 세팅
+								$('#'+inputId).val(maxPoint);
+								$('#'+inputId).parent().addClass('has-info');
+								errorYn = true;
+							} else {
+								$('#'+inputId).parent().removeClass('has-warning');
+								$('#'+inputId).parent().removeClass('has-info');
+								$('#'+inputId).val(Number(list[i][j]).toFixed(0)); //소수점 2자리로 제한
+							}
+						} else {
+							$('#'+inputId).parent().addClass('has-warning');
+							$('#'+inputId).val(0);	
+							errorYn = true;
+						}
+						
+						setStSum(list[i][1]);
+					}
+					
+				} //for문 끝
+				
+				if(errorYn) {
+					var msg = '다음에 해당하는 데이터는<br/>입력된 값이 정상적이지 않아 <span class="text-warning text-semibold">노란색</span>으로 표기됩니다.<br/>';
+					msg += '<span class="text-danger text-semibold">데이터 입력 유의사항</span>을 확인하여 주시기 바랍니다.<br/><br/>';
+					msg += '<div class="text-left text-dark-gray pl35">';
+					msg += '1. 점수가 입력되지 않은 경우<br/>';
+					msg += '2. 점수가 숫자가 아닌 경우<br/><br/>';
+					msg += '** 점수가 '+minPoint+'보다 작거나 '+maxPoint+'보다 큰 경우 각각<br/><span class="text-info text-semibold">최소, 최대값</span>으로 적용됩니다<br/>';
+					msg += '</div>';
+					
+					blueAlert('데이터 입력안내', msg);
+				}
+				
+				$('input[name=saveChk]').prop('checked',true); //체크박스 전체선택
+				chkCnt(); //체크박스 개수 적용
+				
+				loadingProgressHide();
+			}
+		});
+	}
+	
+	//진단평가 양식 popup호출
+	function diagnosticEvalPopup() {
+		var reportType = 'diag_template.jrf';
+		
+		//[post방식으로 리포트 파라메터 전달 ---------------------------------
+		var moveForm = document.moveToReport; //리포트페이지로 이동하기 위한 form
+		moveForm.action = 'https://www.daewon.ac.kr:5443/ubireport/ncs_ajax.jsp';
+
+		var parameter = '';
+		parameter += 'year,2018';
+		parameter += ',semester,1';
+		parameter += ',majorCode,218';
+		parameter += ',subjectCode,25004';
+		parameter += ',grade,1';
+		parameter += ',professorCode,28008';
+		parameter += ',classDivide,1';
+		parameter += ',';
+		
+		parameter = chgBase64('encode', parameter); //교과목정보 parameter암호화
+		
+		$('#params').val(parameter);
+		$('#jrf').val(reportType);
+
+		window.open('','report','width=900 height=700 menubar=no status=no');
+		moveForm.target = 'report';
+		moveForm.submit();
+		//post방식으로 리포트 파라메터 전달] ---------------------------------
+	}
+</script>
+</head>
+
+<body>
+
+<!-- 상단 메뉴 -->
+<nav class="navbar px-navbar">
+	<!-- 로고 이미지 div -->
+	<div class="navbar-header p-a-0">
+		<div style="float:left;cursor:pointer;padding:10px 0 10px 14px;">
+			<img alt="Pixel Admin" src="assets/img/main-navbar-logo.png">
+		</div>
+	</div>
+	<!-- /로고 이미지 div -->
+	
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#px-demo-navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
+	
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="px-demo-navbar-collapse">
+		<!-- 시스템 메뉴 -->
+		<ul id="topMenuList" class="nav navbar-nav">
+		</ul><!-- /시스템 메뉴 -->	
+		
+		<!-- 우측 사용자 메뉴 --> 		
+		<ul class="nav navbar-nav navbar-right">						
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<img src="assets/img/user_icon.png" alt="" class="px-navbar-image">
+					<span class="hidden-md">유XX 님</span>
+				</a>
+				
+				<ul class="dropdown-menu">
+					<li class="cursor-pointer" style="padding:5px 18px;"><i class="dropdown-icon fa fa-power-off pr10"></i>로그아웃</li>
+				</ul>
+			</li>
+		</ul> <!-- /우측 사용자 메뉴 -->
+	</div><!-- /.navbar-collapse -->
+</nav>
+<!-- /상단 메뉴 -->
+ 
+<div class="col-md-12 px-content">
+	<div class="content-top">
+		<!-- 20170630 Jhee 팝업과 같이 작은창에서의 호출을 위해 9,3으로 사이즈 조정 -->
+		<div class="col-md-9"><h4 id="subjectHeadInfo" class="text-light-info text-bold">2018년도 1학기</h4></div>
+		<div id="professorInfoWrap" class="col-md-3 margin-sm-t p-r-0">
+			<div class="col-md-6 bg-light padding-xs-vr border-light text-center text-bold">담당교수</div>
+			<div id="professorInfo" class="col-md-6 border-light padding-xs-vr text-center">정XX</div>
+		</div>
+	</div>
+	
+	<div id="subjectInfoWrap" class="table-light-info">
+		<table class="table table-bordered subjectInfoTbl">
+			<tbody>
+				<tr>
+					<!-- nowrap 속성을 주면 table의 width가 100%더라도 특정 td에는 px값을 부여할 수 있다 -->
+					<!-- (단, 모바일에서 테이블이 깨지기 때문에 모바일 custom이 필요) -->
+					<td width="100px" class="thead" nowrap>교과구분</td>
+					<td width="150px" class="text-light-info gubunNameInfo" nowrap>NCS</td>
+					<td width="100px" class="thead" nowrap>교과목명</td>
+					<td colspan="7" class="text-light-info subjectNameInfo">가족복지론</td>
+				</tr>
+				<tr id="subjectInfoTr2">
+					<td width="100px" class="thead" nowrap>학년</td>
+					<td width="150px" class="text-light-info gradeInfo">1</td>
+					<td width="100px" class="thead" nowrap>분반</td>
+					<td width="100px" class="text-light-info classDivideInfo" nowrap>1</td>
+					<td width="100px" class="thead" nowrap>이수구분</td>
+					<td width="100px" class="text-light-info majorTypeInfo">전필</td>
+					<td width="100px" class="thead" nowrap>학점</td>
+					<td class="text-light-info collegeCreditInfo">3</td>
+					<td width="130px" class="thead" nowrap>시수(이론/실습)</td>
+					<td class="text-light-info lessonTimeInfo">3(3/0)</td>
+				</tr>
+				<tr class="ncsTr">
+					<td width="100px" class="thead" nowrap>직무명</td>
+					<td colspan="2" class="text-light-info ncsGrInfo">03.사회복지면담</td>
+					<td width="100px" class="thead ncsInfoTitle" nowrap>능력단위</td>
+					<td colspan="7" class="text-light-info ncsInfo">가족상담 (0701020305)</td>
+				</tr>
+			</tbody>
+		</table>
+	</div><!-- /계획서 교과목 정보 테이블(모바일 custom 필요) -->
+   <!-- 교과목 정보 -->
+	
+	<div class="col-md-12 p-a-0">
+		<div class="float-left p-a-0">
+			<div class="table-light mb15">
+				<table class="table table-bordered wauto" width="450px">
+					<tbody>
+						<tr>
+							<td width="200px" id="diagSeq" class="bg-title-gray">진단평가</td>
+							<td width="250px" id="diagDate" class="bg-title-gray">평가기간</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="float-right p-a-0 ml5">
+			<button id="allDelBtn" type="button" class="btn btn-danger" onclick="delChk('AllDel')"><i class="fa fa-times mr5"></i>전체 학생 평가결과 삭제</button>
+		</div>
+		<div class="float-right p-a-0 ml5">
+			<button id="printTemplate" type="button" class="btn btn-primary" onclick="diagnosticEvalPopup();"><i class="fa fa-search mr5"></i>진단평가 양식</button>
+		</div>
+		<div class="col-md-12 p-a-0" id="evalWrap"></div>
+	</div>
+	
+	<div class="col-md-12 mt20 p-x-0">
+		<div class="col-md-1 pl0">
+			<button id="prevBtn" class="btn">이전</button>		
+		</div>
+		<div class="col-md-offset-4 col-md-7 pr0">
+			<form id="excelUploadForm" method="post" enctype="multipart/form-data">
+				<input type="hidden" name="pages" id="pages" value="" />
+				<input type="hidden" name="uploadFilePath" id="uploadFilePath" value="" />
+				
+				<button type="button" class="btn btn-success float-right ml5" id="saveBtn">선택한 학생 저장</button>								
+				<button type="button" class="btn btn-primary float-right ml5" id="btnExport">엑셀파일다운로드 <i class="fa fa-download"></i></button>
+				<button type="submit" class="btn btn-info float-right ml10">엑셀파일업로드 <i class="fa fa-upload"></i></button>	
+
+				<label class="custom-file px-file w350px float-right">
+					<input type="file" class="custom-file-input" id="FileData" name="FileData">
+					<span class="custom-file-control form-control">파일을 선택하세요</span>
+					<div class="px-file-buttons">
+						<button type="button" class="btn btn-danger px-file-clear">삭제</button>
+						<button type="button" class="btn btn-info px-file-browse">파일 첨부</button>
+					</div>
+				</label>
+			</form>
+		</div>
+	</div>
+	
+	<!-- excel upload -->
+	<iframe id="xlsFrame" name="xlsFrame" style="width: 0px; height: 0px; border: 0px;"></iframe>
+	<form id="excelForm" name="excelForm" method="post" target="xlsFrame" action="excel">
+		<input type="hidden" id="excelSource" name="excelSource">
+		<input type="hidden" id="titleName" name="titleName" value="진단평가 일괄입력">
+	</form>
+
+	<form id="templatePopupForm" name="templatePopupForm" class="col-md-10 col-xs-10" action="/evaluation.studDiagEval/popup" target="diagnosticEvaluationPopup" method="post" >
+		<input type="hidden" id="year" name="year" value="2018" />
+		<input type="hidden" id="subjectCode" name="subjectCode" value="25004" />
+		<input type="hidden" id="majorCode" name="majorCode" value="218" />
+		<input type="hidden" id="professorCode" name="professorCode" value="28008" />
+		<input type="hidden" id="semester" name="semester" value="1" />
+		<input type="hidden" id="grade" name="grade" value="1" />
+		<input type="hidden" id="classDivide" name="classDivide" value="1" />
+		<input type="hidden" id="evalSeq" name="evalSeq" value="1" />
+		<input type="hidden" id="classNo" name="classNo" value="" />
+		<input type="hidden" id="isTemplate" name="isTemplate" value="true" />
+	</form>
+	
+	<!-- report이동 form -->
+	<form name="moveToReport" method="post">
+		<input type="hidden" id="jrf" name="jrf" />      <!-- 산출물 파일명 -->
+		<input type="hidden" id="params" name="params" /><!-- 산출물 parameter -->
+	</form>
+</div> <!-- / #px-content -->
+ 
+<footer class="px-footer p-t-0 p-b-0 px-footer-bottom" id="px-demo-footer">
+	<div class="box m-a-0 bg-transparent">
+		<div class="box-cell col-md-1 valign-middle text-center">
+			
+		</div>
+		<div class="box-cell col-md-6 pt10 pb10 valign-middle">
+			<a class="display-block text-muted">COPYRIGHT © JheeLucci ALL RIGHTS RESERVED.</a>
+		</div>
+	</div>
+</footer>
+ 
+<script>
+	//footer와 content사이의 간격을 유지하기 위한 부분(삭제금지)
+	pxInit.unshift(function() {
+		$('#px-demo-footer').pxFooter();
+	});
+
+	for (var i = 0, len = pxInit.length; i < len; i++) {
+		pxInit[i].call(null);
+	}
+	//footer와 content사이의 간격을 유지하기 위한 부분 끝(삭제금지)
+</script>
+</body>
+</html>

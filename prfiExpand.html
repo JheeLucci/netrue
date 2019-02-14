@@ -1,0 +1,758 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]>         <html class="ie8"> <![endif]-->
+<!--[if IE 9]>         <html class="ie9 gt-ie8"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="gt-ie8 gt-ie9 not-ie"> <!--<![endif]-->
+
+<head>
+<!-- 프로파일 작성관리 -->
+<title>프로파일 작성관리</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+<!--[if lt IE 9]>
+	<script src="assets/js/ie.min.js"></script>
+<![endif]-->
+
+<!-- Get jQuery from Google CDN -->
+<!--[if !IE]> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- <![endif]-->
+<!--[if lte IE 9]>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<![endif]-->
+
+<!-- 외부 css -->
+<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="assets/css/pixeladmin.css" rel="stylesheet" type="text/css">
+<link href="assets/css/widgets.css" rel="stylesheet" type="text/css">
+<link href="assets/demo/demo.css" rel="stylesheet" type="text/css">
+<link href="assets/css/loading/iosOverlay.css" rel="stylesheet" type="text/css"><!-- 로딩 프로그레스를 위한 css -->
+<link href="assets/css/tree-style.css" rel="stylesheet" type="text/css">        <!-- 트리 구조를 위한 css -->
+<link href="assets/css/fixedHeader.css" rel="stylesheet" type="text/css">       <!-- 데이터 테이블 컬럼 고정 css -->
+<link href="assets/css/google-font.css" rel="stylesheet" type="text/css">       <!-- pixes-admin에서는 url호출이나, 외부 url을 차단하는 학교가 있을 수 있어 다운로드 받음 -->
+<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">  <!-- pixes-admin에서는 url호출이나, 외부 url을 차단하는 학교가 있을 수 있어 다운로드 받음 -->
+<link href="assets/css/ionicons.min.css" rel="stylesheet" type="text/css">      <!-- pixes-admin에서는 url호출이나, 외부 url을 차단하는 학교가 있을 수 있어 다운로드 받음 -->
+<!-- 외부 css 끝 -->
+
+<!-- body태그에 태마를 적용하기 위한 script(절대 삭제하지 마세요) -->
+<script>var r=(new RegExp(';\\s*'+encodeURIComponent('px-demo-theme')+'\\s*=\\s*([^;]+)\\s*;','g')).exec(';'+document.cookie+';');document.write('<link href="assets/css/themes/'+(r && r[1] ? decodeURIComponent(r[1]) : 'clean')+'.min.css" rel="stylesheet" type="text/css" class="px-demo-theme-stylesheet">');</script>
+
+<!-- custom css -->
+<link href="assets/css/miraecit/dashBoard.css" rel="stylesheet" type="text/css"><!-- dashBoard.jsp에서 사용하는 css파일 -->
+<link href="assets/css/miraecit/elements.css" rel="stylesheet" type="text/css"> <!-- 새로운 element 선언 css파일 -->
+<link href="assets/css/miraecit/subPage.css" rel="stylesheet" type="text/css">  <!-- subPage에서 사용하는 css파일 -->
+<link href="assets/css/miraecit/setUp.css" rel="stylesheet" type="text/css">    <!-- 기본 설정값을 변경한 css -->
+<link href="assets/css/miraecit/common.css" rel="stylesheet" type="text/css">   <!-- 공통 style속성 제어 css파일 -->
+<!-- custom css 끝 -->
+
+<!-- 외부 js -->
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/pixeladmin.js"></script>
+<script src="assets/demo/demo.js"></script>
+<script src="assets/js/moment/moment-2.5.1.js"></script><!-- moment함수를 위한 js -->
+<script src="assets/js/loading/iosOverlay.js"></script> <!-- 로딩 프로그레스를 위한 js -->
+<script src="assets/js/loading/spin.min.js"></script>   <!-- 로딩 프로그레스를 위한 js -->
+<script src="assets/js/jquery.tablesorter.js"></script> <!-- 테이블 소팅을 위한  js -->
+<script src="assets/js/jquery.fixedheadertable.min.js"></script><!-- 데이터 테이블 컬럼 고정 js -->
+<script src="assets/js/dataTables.tableTools.js"></script>      <!-- 데이터 테이블 엑셀 다운로드 등을 위한 js -->
+<script src="assets/js/jquery.doubletap.js"></script>   <!-- 더블클릭 evt js -->
+<!-- 외부 js 끝 -->
+ 
+<!-- custom js -->
+<script src="assets/js/customjs/CommonUtil.js"></script>
+<script src="assets/js/customjs/cmnChkFnc.js"></script>    <!-- 공통함수 js -->
+<script src="assets/js/customjs/common_dialog.js"></script><!-- 공통 Dialog -->
+<script src="assets/js/customjs/commonAlert.js"></script>  <!-- 공통 Alert js -->
+<script src="assets/js/customjs/commonModal.js"></script>  <!-- 공통Modal js -->
+<script src="assets/js/customjs/invalidDataChecker.js"></script><!-- invalidDataChecker -->
+<script src="assets/js/customjs/fixStepChecker.js"></script>
+<!-- custom js 끝 -->
+
+<script type="text/javascript">var context = '/';</script>
+
+<script type="text/javascript">
+	var pxInit = []; //pixel admin함수 활용을 위한 변수
+	
+	$(function() {
+		$(document).on("keyup", "input:text[numberOnly]", function() {$(this).val( $(this).val().replace(/[^0-9\.]/gi,"") );});
+	});
+</script>
+
+<title id="webTitle"></title>
+
+<script src="assets/js/customjs/totPageModal.js"></script>
+<script>	
+	var profList = JSON.parse('[{"authId":"2","prfiYn":"N","professorCode":"2016047","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2017241","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2007009","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2008045","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2011113","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2012094","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2014142","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2016120","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2005062","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2013061","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2014134","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2014141","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2005034","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"1980004","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"1998077","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"1999061","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2013032","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2015031","professorName":"김**"},{"authId":"2","prfiYn":"N","professorCode":"2002134","professorName":"김**"}]'); //프로파일 작성권한을 가진 교수 리스트
+	var professorCode = '';
+	var msgSelectAll = '<option value="">학과를 선택하세요</option>'; //검색모듈 기본값(현 페이지에서는 학과select에만 사용하기에 별도값 지정)
+	var addSubjIdx = 0; //추가된 교과목의 마지막 id값
+	
+	var profSubjList = []; //기본으로 작성권한을 가지는 과목리스트
+	var addSubjList = [];  //추가로 작성권한을 가지는 과목리스트
+	
+	$(function(){
+		//교수선택 selectbox css적용
+		$("#profSelect").select2({
+			allowClear: true,
+			placeholder: "사용자를 선택하세요"
+		});
+		
+		$('#delBtn').hide(); //삭제버튼의 기본은 hide
+		setSelectBox();      //selectBox객체 세팅
+		
+		//체크박스 전체선택 및 해제
+		$('#allChk').click(function(){
+			var chk = $(this).is(':checked');
+			
+			if(chk){
+				$('input[name=subjChk]').prop('checked',true);
+			} else {
+				$('input[name=subjChk]').prop('checked',false);
+			}
+		});
+		
+		$('#delBtn').click( function() {
+			customDanger(delData, null, '저장된 사용자 정보가 삭제됩니다.<br/>삭제하시겠습니까?');				
+		});
+	});
+	
+	//selectBox객체 세팅
+	function setSelectBox() {
+		var tmp = '';
+
+		//[사용자 selectbox세팅 --------------------
+		tmp = '<option value=""></option>';
+		
+		if(profList != null && profList.length != 0) {
+			for(var i=0; i<profList.length; i++) {
+				tmp += '<option value="'+profList[i].professorCode+'"';
+				if(professorCode == profList[i].professorCode) {
+					tmp += ' selected';
+				}
+				tmp += '>'+profList[i].professorName+' ('+profList[i].professorCode+')</option>';
+			}
+		}
+		$('#profSelect').append(tmp);
+		
+		//수정화면 진입 : 지정된 사용자이므로 사용자정보는 수정불가
+		if(professorCode != null && professorCode != '') {
+			$('#profSelect').attr('disabled', true);
+		}
+		//사용자 selectbox세팅] --------------------
+		
+		//setSearchModule('major', 'end', null, '2'); //학과 selectbox세팅 --------------totPageModal.js에서 처리하는 부분
+		var majList = [{majorCode:'070800', majorName: '세무회계과'},{majorCode:'070900', majorName: '유아교육과'}]
+		if(majList != null && majList.length != 0) {
+			var magHtml = '';
+			magHtml += '<option value="">학과를 선택하세요</option>';
+			for(var i=0; i<majList.length; i++){
+				magHtml += '<option value="' + majList[i].majorCode + '">';;
+				magHtml += 	majList[i].majorName;
+				magHtml += '</option>';
+			}
+
+			$('#majorSelect').empty();
+			$('#majorSelect').append(magHtml);
+		}
+		
+		
+		//[연도 학기 selectbox세팅 -------------------
+		/* $.ajax({			
+			url : context + "commonSearch/yearListAjax",
+			data : {
+				'useProfileVw' : false
+			},
+			type : 'POST',
+			dataType : 'json',
+			async : true,
+			success : function(data) {
+				$('#totYearSelect').empty();
+	
+				var yearlist = data.yearList;
+				var semesterlist = data.semesterList;
+				var defaultYearSemester = data.defaultYearSemester;
+				
+				var html = '';
+				for(var i=0; i < yearlist.length; i++) {					
+					html += '<option value="' + yearlist[i] + '"' + (defaultYearSemester.year == yearlist[i] ? ' selected' : '') + '>'+ yearlist[i] + '</option>';	
+				}
+				$('#totYearSelect').append(html);
+				
+				$('#totSemesterSelect').empty();
+				html = '';
+				for(var i=0; i < semesterlist.length; i++) {					
+					html += '<option value="' + semesterlist[i].semester + '"' + (defaultYearSemester.semester == semesterlist[i].semester ? ' selected' : '') + '>'+ semesterlist[i].semesterName + '</option>';	
+				}
+				$('#totSemesterSelect').append(html);
+				
+				//수정화면 진입 : 저장된 데이터와 기존 데이터 모두를 select
+				if(professorCode != null && professorCode != '') {
+					getList('modify');
+					$('#delBtn').show(); //삭제버튼 활성화
+				}
+			}
+			, error:function(request,status,error){
+				if(request.status == '403') {
+					alert("session 만료되었습니다.");
+					location.href = '/NCS_DEMO/login';
+				} else {
+					alert("데이터를 불러오지 못하였습니다.\n다시 시도해 주세요.");
+				}
+			}
+		}); */
+		
+		$('#totYearSelect').empty();
+		
+		var yearlist = ['2018','2017'];
+		var semesterlist = [{semester:1,semesterName:'1'},{semester:2,semesterName:'2'}];
+		var defaultYearSemester = {year: '2018', semester: 1};
+		
+		var html = '';
+		for(var i=0; i < yearlist.length; i++) {					
+			html += '<option value="' + yearlist[i] + '"' + (defaultYearSemester.year == yearlist[i] ? ' selected' : '') + '>'+ yearlist[i] + '</option>';	
+		}
+		$('#totYearSelect').append(html);
+		
+		$('#totSemesterSelect').empty();
+		html = '';
+		for(var i=0; i < semesterlist.length; i++) {					
+			html += '<option value="' + semesterlist[i].semester + '"' + (defaultYearSemester.semester == semesterlist[i].semester ? ' selected' : '') + '>'+ semesterlist[i].semesterName + '</option>';	
+		}
+		$('#totSemesterSelect').append(html);
+		
+		//수정화면 진입 : 저장된 데이터와 기존 데이터 모두를 select
+		if(professorCode != null && professorCode != '') {
+			getList('modify');
+			$('#delBtn').show(); //삭제버튼 활성화
+		}
+		//연도 학기 selectbox세팅] -------------------
+	}
+	
+	//select box onchange시 type에 따라 데이터를 가져오는 fnc
+	function getList(itemCode) {
+		/* 
+		//[사용자 정보를 변경한 경우 기등록된 사용자인지 체크
+		if(itemCode == 'viewProf') { 
+			var prfiYn = false;
+			
+			for(var i=0; i <profList.length; i++) {
+				if(profList[i].professorCode == $('#profSelect').val()){
+					if(profList[i].prfiYn == 'Y') {
+						prfiYn = true;
+					}
+					break;
+				}
+			}
+			
+			if(prfiYn) {
+				$('.select2-selection__clear').mousedown(); //selectbox초기화
+				alert('이미 프로파일 작성관리에 등록된 사용자 입니다');
+				return;
+			} else {
+				itemCode = 'viewSubj'; //기등록된 사용자가 아닌경우 과목리스트를 select하도록 itemCode변경
+			}
+			
+			profSubjList = []; //교수가 변경되면 교수의 기존 과목 리스트 변수 초기화
+		}
+		//사용자 정보를 변경한 경우 기등록된 사용자인지 체크]
+		
+		loadingProgressShow();
+		   
+		$.ajax({			
+			url : '/NCS_DEMO/prfiAdminExpand/getDataListAjax',
+			data : {
+				'year' : $('#totYearSelect').val(),
+				'semester' : $('#totSemesterSelect').val(),
+				'majorCode' : $('#majorSelect').val(),
+				'professorCode' : $('#profSelect').val(),
+				'itemCode' : itemCode
+				
+			},
+			type : 'POST',
+			dataType : 'json',
+			async : true,
+			success : function(data) {
+				drwData(itemCode, data.list); //테이블 그리는 fnc실행
+				
+				if(itemCode == 'modify') {
+					addSubj(data.profDeptList); //오른쪽 테이블 drw
+				}
+			}
+			, error:function(request,status,error){
+				if(request.status == '403') {
+					alert("session 만료되었습니다.");
+					location.href = '/NCS_DEMO/login';
+				} else {
+					alert("데이터를 불러오지 못하였습니다.\n다시 시도해 주세요.");
+				}
+			}
+		}).always(function() {
+			loadingProgressHide();
+		});
+		*/
+		
+		var drwDataList = '';
+		if(itemCode == 'viewProf' || itemCode == 'viewSubj') {
+			drwDataList = [
+				           {majorCode: "071000",majorName: "산업디자인과",semester: "1",subjectCode: "094026522100",subjectName: "3DCAD",year: "2018"}
+				          ,{majorCode: "071000",majorName: "산업디자인과",semester: "1",subjectCode: "094028022100",subjectName: "공모전디자인2",year: "2018"}
+				          ,{majorCode: "071000",majorName: "산업디자인과",semester: "1",subjectCode: "094026522200",subjectName: "디자인구체화",year: "2018"}
+				       	  ,{majorCode: "071000",majorName: "산업디자인과",semester: "1",subjectCode: "094026522300",subjectName: "멘토와함께하는인생설계",year: "2018"}
+				          ,{majorCode: "071000",majorName: "산업디자인과",semester: "1",subjectCode: "094026522400",subjectName: "생활가전제품디자인",year: "2018"}
+						  ];
+		} else {
+			drwDataList = [
+				           {majorCode: "070800",majorName: "세무회계과",semester: "1",subjectCode: "070800001",subjectName: "지방세법",year: "2018"}
+				          ,{majorCode: "070800",majorName: "세무회계과",semester: "1",subjectCode: "070800002",subjectName: "경영분석",year: "2018"}
+				          ,{majorCode: "070800",majorName: "세무회계과",semester: "1",subjectCode: "070800003",subjectName: "무역실무",year: "2018"}
+				       	  ,{majorCode: "070800",majorName: "세무회계과",semester: "1",subjectCode: "070800004",subjectName: "재산세제법",year: "2018"}
+				          ,{majorCode: "070800",majorName: "세무회계과",semester: "1",subjectCode: "070800005",subjectName: "전산회계",year: "2018"}
+				          ,{majorCode: "070800",majorName: "세무회계과",semester: "1",subjectCode: "070800007",subjectName: "부가세신고실무",year: "2018"}
+				          ,{majorCode: "070800",majorName: "세무회계과",semester: "1",subjectCode: "070800008",subjectName: "실전영어",year: "2018"}
+				          ,{majorCode: "070800",majorName: "세무회계과",semester: "1",subjectCode: "070800009",subjectName: "전산회계2",year: "2018"}
+				          ,{majorCode: "070800",majorName: "세무회계과",semester: "1",subjectCode: "070800010",subjectName: "소득세법",year: "2018"}
+				          ,{majorCode: "070800",majorName: "세무회계과",semester: "1",subjectCode: "070800011",subjectName: "원가회계",year: "2018"}
+						  ];
+		}
+		 
+		drwData(itemCode, drwDataList);
+	}
+	
+	//테이블 그리는 fnc
+	function drwData(itemCode, list) {
+		var html = '';
+		
+		if(itemCode != 'subjBox') { //좌측 테이블 데이터 세팅
+			if(list != null && list.length > 0) {
+				for(var i=0; i<list.length; i++) {
+					profSubjList[profSubjList.length] = list[i].majorCode + '┌└' + list[i].subjectCode; //전역변수 세팅
+					
+					html += '<tr>';
+					html += '<td class="text-center">'+list[i].majorName+'</td>';
+					html += '<td class="text-center">'+list[i].subjectCode+'</td>';
+					html += '<td class="text-center">'+list[i].subjectName+'</td>';
+					html += '</tr>';
+				}
+			} else {
+				profSubjList = []; //전역변수 초기화
+				
+				html += '<tr>';
+				html += '	<td class="text-center bg-white" colspan="3">데이터가 없습니다</td>';
+				html += '</tr>';
+			}
+			
+			$('#viewSubjTbody').empty();
+			$('#viewSubjTbody').append(html);
+		} else { //우측 교과목 selectbox 세팅
+			     //좌측 연도 학기 selectbox에 세팅된 값에 따른 교과목이 출력된다(현재 연도에 추가적 작성이 필요한 경우에 사용하는 것이 컨셉이므로)
+				 //comnt:└해당 연도,학기 별로 과목을 가져오지 않으면 기본 교수가 작성가능한 과목리스트와 추가하려는 과목 사이 중복체크에서 오류발생 가능
+			html += '<option value="">교과목을 선택하세요</option>'; 
+			
+			if(list != null && list.length > 0) {
+				for(var i=0; i<list.length; i++) {
+					html += '<option value="'+list[i].subjectName+'┌└'+list[i].subjectCode+'">'+list[i].subjectName+' ('+list[i].subjectCode+')</option>';
+				}
+			} 			
+			
+			$('#subjSelect').empty();
+			$('#subjSelect').append(html);
+		}
+	}
+	
+	//오른쪽 추가 작성가능 교과목 tbl을 그리는 fnc(추가 버튼 click시에도 동작)
+	function addSubj(savData) {
+		var majorCode = '';
+		var majorName = '';
+		var subjCode  = '';
+		var subjName = '';
+
+		if(savData != null) { //수정화면 진입:저장된 데이터가 있는경우
+			if(addSubjList.length == 0 && savData.length != 0) {
+				$('#subjTbody').empty(); //데이터가 없습니다 row삭제
+			}
+		
+			addSubjIdx = 0;   //전역변수 초기화
+			addSubjList = []; //전역변수 초기화
+			
+			//저장된 교과목이 있는 경우 해당 교과목 데이터를 전역변수 세팅 후 tbl에 적용
+			for(var i=0; i<savData.length; i++) {
+				addSubjList[addSubjList.length] = savData[i].majorCode + '┌└' + savData[i].subjectCode;
+				addSubjIdx++; //선택한 과목 idx 증감
+				drwSubjTbl(savData[i].majorCode, savData[i].majorName, savData[i].subjectCode, savData[i].subjectName, savData[i].rUser, moment(savData[i].rDate).format('YYYY-MM-DD'));
+			}
+		} else {
+			if($('#profSelect').val() == null || $('#profSelect').val() == '') {
+				alert('프로파일 작성권한을 추가할 사용자를 선택하세요');
+				return;
+			} else if($('#majorSelect').val() == null || $('#majorSelect').val() == '') {
+				alert('학과를 선택하세요');
+				return;
+			} else if($('#subjSelect').val() == null || $('#subjSelect').val() == '') {
+				alert('교과목을 선택하세요');
+				return;
+			}
+			
+			majorCode = $('#majorSelect option:selected').val();
+			majorName = $('#majorSelect option:selected').text();
+			
+			var subj = $('#subjSelect option:selected').val().split('┌└'); //배열형태_0:과목명,1:과목코드
+			subjCode = subj[1];
+			subjName = subj[0];
+			
+			var overlapChk = false; //데이터 중복여부를 확인할 변수
+			
+			//[이미 추가된 과목과 중복되는지 chk
+			if(addSubjList.length != 0) {
+				for(var i=0; i<addSubjList.length; i++) {
+					if(addSubjList[i] == majorCode + '┌└' + subjCode) {
+						overlapChk = true;
+						break;
+					}
+				}
+				
+				if(overlapChk) {
+					alert('이미 추가된 교과목 입니다');
+					return;
+				}
+			} 
+			//이미 추가된 과목과 중복되는지 chk]
+			
+			//[사용자가 기본적으로 작성가능한 교과와 추가하려는 교과가 중복되는 지 chk
+			if(profSubjList != null && profSubjList.length > 0) {
+				for(var i=0; i<profSubjList.length; i++) {
+					if(profSubjList[i] == majorCode + '┌└' + subjCode) {
+						overlapChk = true;
+						break;
+					}
+				}
+				
+				if(overlapChk) {
+					alert('이미 기본적으로 사용자가 작성가능한 교과목입니다');
+					return;
+				}
+			}
+			//사용자가 기본적으로 작성가능한 교과와 추가하려는 교과가 중복되는 지 chk]
+			
+			if(addSubjList.length == 0) {
+				$('#subjTbody').empty();
+			}
+			
+			addSubjList[addSubjList.length] = majorCode + '┌└' + subjCode; //전역변수 세팅
+			addSubjIdx++; //선택한 과목 idx 증감
+			
+			drwSubjTbl(majorCode, majorName, subjCode, subjName, '', '');
+		}
+		
+		//실제 tbl을 그리는 fnc
+		function drwSubjTbl(majorCode, majorName, subjectCode, subjectName, rDate, rUser) {
+			var html = '';
+			
+			if(rDate == '') {
+				html += '<tr id="row'+addSubjIdx+'" style="background:#fffaf3;">'; //신규 추가된 데이터를 기존 등록된 데이터와 구분하기 위해 row컬러 변경
+			} else {
+				html += '<tr id="row'+addSubjIdx+'">';
+			}
+			
+			html += '<td>';
+			html += '	<label class="custom-control custom-checkbox custom-control-blank mb0 ml3">';
+			html += '		<input type="checkbox" id="'+addSubjIdx+'" name="subjChk" class="custom-control-input" value="'+majorCode+'┌└'+subjectCode+'"/>';
+			html += '		<span class="custom-control-indicator"></span>';
+			html += '	</label>';
+			html += '</td>';
+			html += '<td class="text-center">'+majorName+'</td>';
+			html += '<td class="text-center">'+subjectCode+'</td>';
+			html += '<td>'+subjectName+'</td>';
+			html += '<td class="text-center">'+rDate+'</td>';
+			html += '<td class="text-center">'+rUser+'</td>';
+			html += '</tr>';
+			
+			if(addSubjList.length != 1) {
+				$(html).insertBefore('#row'+(addSubjIdx-1));
+			} else {
+				$('#subjTbody').append(html);
+			}
+		}
+		
+	}
+	
+	//화면에서 과목 제거
+	function delSubj() {
+		if($('input[name=subjChk]:checked').length == 0) {
+			alert('선택된 과목이 없습니다\n과목을 선택하세요');
+			return;
+		}
+		
+		$('input[name=subjChk]:checked').each(function(){
+			$('#row'+$(this).attr('id')).remove();
+		});
+		
+		var html = '';
+		
+		addSubjList = [];
+		$('input[name=subjChk]').each(function(){
+			addSubjList[addSubjList.length] = $(this).val(); //전역변수 세팅
+		});
+		
+		if(addSubjList.length == 0) {
+			html += '<tr>';
+			html += '	<td class="text-center" colspan="6">데이터가 없습니다</td>';
+			html += '</tr>';
+			
+			$('#subjTbody').append(html);
+			$('#allChk').prop('checked', false);
+		}
+	}
+	
+	//데이터 저장
+	function saveData() {
+		if($('#profSelect').val() == null || $('#profSelect').val() == '') {
+			alert('선택된 사용자가 없습니다\n사용자를 선택하세요');
+			return;
+		} else if(addSubjList == null || addSubjList.length == 0) {
+			alert('지정된 과목이 없습니다\n추가 프로파일 작성 과목을 지정하세요');
+			return;
+		}
+		
+		loadingProgressShow();
+		
+		$.ajaxSettings.traditional = true;
+		
+		$.ajax({
+			url : '/NCS_DEMO/prfiAdminExpand/saveDataAjax',
+			data : {"professorCode": $('#profSelect').val()
+				  , "addSubjList": addSubjList},
+			type : 'POST',
+			dataType : 'json',
+			beforeSend: function (request) {
+				// 권한체크를 위해서 Header에 Ajax 호출로 등록
+				request.setRequestHeader("authCheckAjax", true);
+			},
+			success : function(data) {
+				if(data == "fail") {
+					redAlert('저장실패', '데이터 저장에 실패하였습니다<br/>관리자에게 문의바랍니다');
+				} else if(data == "success") {						
+					greenAlert(null, null);
+					
+					$('.modalGChkBtn').click(function(){
+						location.href="/NCS_DEMO/prfiAdminExpand/list";
+					});
+				}
+			},
+			error : function(request, status, error) {
+				/* alert("code:" + request.status + "\n" + "message:"
+						+ request.responseText + "\n" + "error:"
+						+ error); */
+				alert("저장 실패하였습니다.\n다시 시도해 주세요.");
+				loadingProgressHide();
+			}
+		}).always(function() {
+			loadingProgressHide();
+		});	
+	}
+	
+	//데이터 삭제
+	function delData() {
+		loadingProgressShow();
+		
+		$.ajaxSettings.traditional = true;
+		
+		$.ajax({
+			url : '/NCS_DEMO/prfiAdminExpand/delDataAjax',
+			data : {"professorCode": $('#profSelect').val()},
+			type : 'POST',
+			dataType : 'json',
+			beforeSend: function (request) {
+				// 권한체크를 위해서 Header에 Ajax 호출로 등록
+				request.setRequestHeader("authCheckAjax", true);
+			},
+			success : function(data) {
+				redAlert('데이터 삭제', '삭제되었습니다');
+				
+				$('.modalRChkBtn').click(function(){
+					location.href="/NCS_DEMO/prfiAdminExpand/list";
+				});
+			},
+			error : function(request, status, error) {
+				alert("삭제 실패하였습니다.\n다시 시도해 주세요.");
+				loadingProgressHide();
+			}
+		}).always(function() {
+			loadingProgressHide();
+		});	
+	}
+</script>
+</head>
+
+<body>
+
+<!-- 상단 메뉴 -->
+<nav class="navbar px-navbar">
+	<!-- 로고 이미지 div -->
+	<div class="navbar-header p-a-0">
+		<div style="float:left;cursor:pointer;padding:10px 0 10px 14px;">
+			<img alt="Pixel Admin" src="assets/img/main-navbar-logo.png">
+		</div>
+	</div>
+	<!-- /로고 이미지 div -->
+	
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#px-demo-navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
+	
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="px-demo-navbar-collapse">
+		<!-- 시스템 메뉴 -->
+		<ul id="topMenuList" class="nav navbar-nav">
+		</ul><!-- /시스템 메뉴 -->	
+		
+		<!-- 우측 사용자 메뉴 --> 		
+		<ul class="nav navbar-nav navbar-right">						
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<img src="assets/img/user_icon.png" alt="" class="px-navbar-image">
+					<span class="hidden-md">유XX 님</span>
+				</a>
+				
+				<ul class="dropdown-menu">
+					<li class="cursor-pointer" style="padding:5px 18px;"><i class="dropdown-icon fa fa-power-off pr10"></i>로그아웃</li>
+				</ul>
+			</li>
+		</ul> <!-- /우측 사용자 메뉴 -->
+	</div><!-- /.navbar-collapse -->
+</nav>
+<!-- /상단 메뉴 -->
+ 
+<div class="px-content">
+	<div class="wrapDiv">
+		<div class="panel float-left" style="width:300px;">
+			<div class="panel-body">
+				<label for="profSelect" class="control-label float-left mt7 mr10">사용자</label>
+				<div class="float-left" style="width:200px;">
+					<select id="profSelect" class="form-control" onChange="getList('viewProf')" title="프로파일 작성권한이 있는 사용자만 조회됩니다"></select>
+				</div>
+			</div>
+		</div>
+		<div class="bg-white b-a-1 p-a-1 float-left ml20" style="position:relative;">
+			<a class="label label-success label-corner right">
+				<span class="label-corner-content"><i class="fa fa-star"></i></span>
+			</a>
+			사용자는 기본적으로 <span class="text-flare">소속학과의 전 교과목</span>에 대한 프로파일 작성이 가능합니다. <br/>
+			좌측 테이블에는 선택한 사용자가 프로파일 작성이 가능한 교과목이 표기됩니다. <br/>
+			<span class="text-warning">우측 테이블에 추가된 교과목</span>에 대하여 사용자는 추가적으로 프로파일 작성이 가능합니다.
+		</div>
+	</div>
+	
+	<div class="wrapDiv bordered" style="padding: 20px 0;">
+		<!-- 좌측 기존 교과목 데이터 -->
+		<div class="col-md-5">
+			<div class="content-top mb20 has-info">
+				<select id="totYearSelect" class="form-control float-left w100px" onChange="getList('viewSubj')" title="사용자의 기본적인 프로파일 작성가능 교과목을 조회할 수 있습니다">
+				</select>
+				<label class="float-left font-size-13 mt7 ml10 mr10">년도</label>
+			
+				<select id="totSemesterSelect" class="form-control float-left" style="width:80px;" onChange="getList('viewSubj')" title="사용자의 기본적인 프로파일 작성가능 교과목을 조회할 수 있습니다">
+				</select>
+				<label class="float-left font-size-13 mt7 ml10">학기</label>
+			</div>
+
+			<div class="table-light-info" style="height:310px; overflow-y:auto;">
+				<div class="table-header">
+					<div class="table-caption text-left">현재 프로파일 작성가능 학과 및 교과목</div>
+				</div>
+				<table class="table table-bordered table-striped mb0">
+					<thead>
+						<tr height="39px"> <!-- 우측 테이블과 height를 맞춤 -->
+							<th width="35%">학과</th>
+							<th width="20%">과목코드</th>
+							<th width="45%">과목명</th>
+						</tr>
+					</thead>
+					<tbody id="viewSubjTbody">
+						<tr>
+							<td class="text-center bg-white" colspan="3">데이터가 없습니다</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- /좌측 기존 교과목 데이터 -->
+		
+		<!-- 우측 선택한 데이터 -->
+		<div class="col-md-7">
+			<div class="content-top mb20 has-warning">
+				<input type="hidden" id="departSelect" value="notSet" /> <!-- departSelect를 notSet으로 설정하면 계열조건 없이 학과검색 가능 -->
+				<select id="majorSelect" name="majorSelect" class="form-control float-left mr10" style="width:170px;" onChange="getList('subjBox')" title="학과별 개설 교과목을 조회할 수 있습니다">
+				</select>
+			
+				<select id="subjSelect" name="subjSelect" class="form-control float-left" style="width:220px;">
+					<option>교과목을 선택하세요</option>
+				</select>
+				<button type="button" class="btn btn-outline btn-success ml10" onclick="addSubj()" title="옵션에서 선택한 과목을 목록에 추가합니다">추가 <i class="fa fa-plus"></i></button>
+				<button class="btn btn-outline btn-danger" onclick="delSubj()" title="체크박스가 선택된 과목을 목록에서 제거합니다">선택 과목 제거<i class="fa fa-minus ml5"></i></button>
+			</div>
+			
+			<div class="table-light-warning" style="height:310px; overflow-y:auto;">
+				<div class="table-header">
+					<div class="table-caption text-left">추가 프로파일 작성가능 학과 및 교과목</div>
+				</div>
+				<table class="table table-bordered mb0">
+					<thead>
+						<tr>
+							<th width="40px">
+								<label class="custom-control custom-checkbox custom-control-blank mb0 ml3" for="allChk">
+									<input type="checkbox" id="allChk" class="custom-control-input" />
+									<span class="custom-control-indicator"></span>
+								</label>
+							</th>
+							<th width="20%">학과</th>
+							<th width="15%">과목코드</th>
+							<th width="30%">과목명</th>
+							<th>등록자 ID</th>
+							<th>등록일</th>
+						</tr>
+					</thead>
+					<tbody id="subjTbody">
+						<tr>
+							<td class="text-center" colspan="6">데이터가 없습니다</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<!-- /우측 선택한 데이터 -->
+	</div>
+	
+	<div class="mt20 text-right">
+		<button type="button" id="delBtn" class="btn btn-danger">삭제</button>
+		<button type="button" class="btn btn-success" onclick="saveData();">저장</button>
+	</div>
+	
+	<form id="moveForm" method="post">
+		<input type="hidden" id="boardType" name="boardType" value="" /> 
+		<input type="hidden" id="boardId" name="boardId" value="" />
+	</form>
+</div> <!-- / #px-content -->
+ 
+<footer class="px-footer p-t-0 p-b-0 px-footer-bottom" id="px-demo-footer">
+	<div class="box m-a-0 bg-transparent">
+		<div class="box-cell col-md-1 valign-middle text-center">
+			
+		</div>
+		<div class="box-cell col-md-6 pt10 pb10 valign-middle">
+			<a class="display-block text-muted">COPYRIGHT © JheeLucci ALL RIGHTS RESERVED.</a>
+		</div>
+	</div>
+</footer>
+ 
+<script>
+	//footer와 content사이의 간격을 유지하기 위한 부분(삭제금지)
+	pxInit.unshift(function() {
+		$('#px-demo-footer').pxFooter();
+	});
+
+	for (var i = 0, len = pxInit.length; i < len; i++) {
+		pxInit[i].call(null);
+	}
+	//footer와 content사이의 간격을 유지하기 위한 부분 끝(삭제금지)
+</script>
+</body>
+</html>

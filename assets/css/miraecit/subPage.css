@@ -1,0 +1,169 @@
+/*subpageì˜ css
+
+*íŠ¹ì • subpageì—ì„œ ì‚¬ìš©í•œ cssë¥¼ ê¸°ìž…í•œë‹¤
+
+*íƒ€ íŽ˜ì´ì§€ì— ì˜í–¥ì„ ì£¼ì§€ ì•Šë„ë¡ ì£¼ì˜í•˜ë©° í•œ íŽ˜ì´ì§€ì—ì„œ ì‚¬ìš©ë˜ëŠ” cssê°€ ë§Žì„ ê²½ìš°, ë‹¨ë… íŒŒì¼ë¡œ ì œì™¸í•œë‹¤
+
+*css ìœ—ë¶€ë¶„ì— ë‹¤ìŒê³¼ ê°™ì´ ì£¼ì„ì„ ê¸°ìž…í•œë‹¤(ë‚ ì§œ ë‹´ë‹¹ìž ì„¤ëª…)
+*(ex.20151101 Jhee ë°ì´í„°í…Œì´ë¸” ë²„íŠ¼ ì†ì„± ì œì–´)
+
+*ì‚¬ìš©ë˜ëŠ” íŽ˜ì´ì§€ê°€ ë‹¬ë¼ì§ˆ ê²½ìš° <> ì•ˆì— íŽ˜ì´ì§€ ë˜ëŠ” íŒŒì¼ëª…ì„ ê¸°ìž…í•œë‹¤(íŒŒì¼ëª…ì„ ê¸°ìž…í•  ê²½ìš°, í™•ìž¥ìžê¹Œì§€ ê¸°ìž…í•œë‹¤)
+*(ex.< ì§ˆê´€ë¦¬ ì§ë¬´ëŠ¥ë ¥ ì„±ì·¨ë„ list >)
+
+*ì£¼ì˜ : ìµœëŒ€í•œ pixel-adminê³¼ ìœ ì‚¬í•œ namingì„ ìœ ì§€í•œë‹¤(_(under bar)ì‚¬ìš© ì§€ì–‘) 
+      @media() ì˜ ë‚´ìš©ì€ ê°€ìž¥ ë§ˆì§€ë§‰ì— ìœ„ì¹˜í•˜ë„ë¡ í•œë‹¤
+*/
+
+/* ==================================< login.jsp >==================================  */
+/* ë¡œê·¸ì¸íŽ˜ì´ì§€ íŒ¨í„´ì„ ìœ„í•œ css (ë³„ë„ì˜ ì´ë¯¸ì§€ê°€ ì‚½ìž…ë  ê²½ìš°, ì£¼ì„ì²˜ë¦¬í•œë‹¤) */
+#page-signin-bg .overlay {
+	background-image: url("../../img/climpek.png");
+	bottom:0;
+	left:0;
+	position:absolute;
+	right:0;
+	top:0;
+}
+
+/* ==================================< footer.jsp >==================================  */
+/* 20151001 Jhee footer ì „ì²´ë¥¼ ê°ì‹¸ëŠ” div */
+#footerbar {
+	min-height: 10px; 
+	background-color: #f5f5f5; 
+	text-align: center; 
+	-webkit-transition: all .3s;
+	transition: all .3s; 
+	padding: 10px 18px 10px 18px;
+	font-size: 10px;
+}
+
+/* 20151001 Jhee footer logoë¥¼ ê°ì‹¸ëŠ” div */
+#footerbar_logo {
+	top:5px;
+	text-align: right;
+}
+
+/* 20151001 Jhee footer content(ì£¼ì†Œ, ì „í™”ë²ˆí˜¸ ë“±)ë¥¼ ê°ì‹¸ëŠ” div */
+#footerbar_content {
+	text-align:left; 
+}
+
+/* Jhee ëª¨ë°”ì¼ í™”ë©´ */
+@media (max-width: 768px) {
+	/* 20151001 Jhee ëª¨ë°”ì¼ì˜ ê²½ìš°, footerì˜ ë¡œê³ ì™€ ì£¼ì†ŒëŠ” ë³´ì´ì§€ ì•Šê³  copyrightë§Œ centerë¡œ ë³´ì—¬ì§€ë„ë¡ ì²˜ë¦¬ */
+  	#footerbar_logo {
+  		display: none;
+  	}	
+  	#footerbar_content {
+  		text-align: center !important;
+  		font-size: 10px;
+  	}
+  	#footerbar_content #address {
+  		display: none;
+  	}
+  	#footerbar_content #copyRight {
+  		padding:0;
+  	}
+}
+
+/* ==================================< í‰ê°€ê³„íšì„œ ìž‘ì„± modify >==================================  */
+/* 20151113 Jhee width:100% ì†ì„±ì´ ì—†ëŠ” form-control css */
+.form-control-noWidth {
+	display:block;
+	padding:6px 12px;
+	font-size:13px; 
+	border:1px solid #d6d6d6;
+	border-radius:2px;
+	border-top-color:#c2c2c2;
+}
+
+/* 20151113 Jhee í¼ì„¼íŠ¸(%) í…ìŠ¤íŠ¸ì˜ ìœ„ì¹˜ë¥¼ ì¡°ì •í•˜ê¸° ìœ„í•œ divì˜ css */
+.float-marginDiv {
+	float:left;
+	margin-top:7px;
+	margin-left: 7px;
+}
+
+/* ==================================< sample4.jsp >==================================  */
+/* í•™ê³¼ì„ íƒ modal th ì§™ì€ bg-color */
+.bg-dark-blue {
+	background: #b9cde5;
+    border-color: #b9cde5;
+}
+
+/* í•™ê³¼ì„ íƒ modal td ì˜…ì€ bg-color */
+.td-light-blue {
+    background: #dce6f2;
+    border-color: #dce6f2;
+    padding: 15px;
+}
+
+/* ==================================< sample12.jsp >==================================  */
+/* 20170110 Jhee íƒ€ìž„ë¼ì¸ í—¤ë” ì†ì„± ë³€ê²½ */
+.tl-header {
+	*zoom:1;
+	width:80%; /* default:140px */
+	background-color:rgba(255,255,255,0.5);
+}
+.tl-header:after {
+	content:' ';
+	clear:both;
+	display:block;
+}
+.tl-header {
+	background:rgba(255,255,255,0.5);
+	font-size: 14px;
+}
+
+/* 20160106 Jhee íƒ€ìž„ë¼ì¸ í—¤ë”ì˜ íƒ€ì´í‹€ ì†ì„± */
+.tl-title {
+	padding: 5px;
+	background-color: #b6df89;
+	border: 1px solid #95d054;
+}
+.tl-title2 {
+	padding: 5px;
+	background-color: #e3f2d2;
+	border: 1px solid #b6df89;
+}
+.tl-title3 {
+	padding: 5px;
+	background-color: #e3f2d2;
+	border: 1px solid #b6df89;
+}
+
+.tl-body .panel-title {
+	font-size: 13px;
+}
+
+/* íƒ€ìž„ë¼ì¸ tl-bodyì•ˆì˜ well */
+.timeline .well {
+	margin: 6px 0 0 0;
+	background-color: rgba(0, 0, 0, 0.03);
+	border: 1px solid rgba(0, 0, 0, 0.06);
+	-webkit-box-shadow: none;
+	box-shadow: none;
+	*zoom: 1;
+}
+.timeline .well:after {
+	content: ' ';
+	clear: both;
+	display: block;
+}
+
+/* íƒ€ìž„ë¼ì¸ wellì•ˆì˜ ì›í˜• ì•„ì´ì½˜ */
+.well-icon {
+	width: 20px;
+	height: 20px;
+	border-radius: 999px;
+	text-align: center;
+	float: left;
+	overflow: hidden;
+}
+
+/* íƒ€ìž„ë¼ì¸ wellì•ˆì˜ label marginê°’ì„ ì£¼ì–´ ìœ„ì¹˜ë§žì¶¤ */
+.timeline .well > label {
+	margin-top: 2px;
+	font-weight: 400;
+}
+

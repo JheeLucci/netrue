@@ -1,0 +1,552 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]>         <html class="ie8"> <![endif]-->
+<!--[if IE 9]>         <html class="ie9 gt-ie8"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="gt-ie8 gt-ie9 not-ie"> <!--<![endif]-->
+
+<head>
+<!-- 학생 메인화면 -->
+<title>학생 메인화면</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+<!--[if lt IE 9]>
+	<script src="assets/js/ie.min.js"></script>
+<![endif]-->
+
+<!-- Get jQuery from Google CDN -->
+<!--[if !IE]> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<!-- <![endif]-->
+<!--[if lte IE 9]>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<![endif]-->
+
+<!-- 외부 css -->
+<link href="assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="assets/css/pixeladmin.css" rel="stylesheet" type="text/css">
+<link href="assets/css/widgets.css" rel="stylesheet" type="text/css">
+<link href="assets/demo/demo.css" rel="stylesheet" type="text/css">
+<link href="assets/css/loading/iosOverlay.css" rel="stylesheet" type="text/css"><!-- 로딩 프로그레스를 위한 css -->
+<link href="assets/css/tree-style.css" rel="stylesheet" type="text/css">        <!-- 트리 구조를 위한 css -->
+<link href="assets/css/fixedHeader.css" rel="stylesheet" type="text/css">       <!-- 데이터 테이블 컬럼 고정 css -->
+<link href="assets/css/google-font.css" rel="stylesheet" type="text/css">       <!-- pixes-admin에서는 url호출이나, 외부 url을 차단하는 학교가 있을 수 있어 다운로드 받음 -->
+<link href="assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">  <!-- pixes-admin에서는 url호출이나, 외부 url을 차단하는 학교가 있을 수 있어 다운로드 받음 -->
+<link href="assets/css/ionicons.min.css" rel="stylesheet" type="text/css">      <!-- pixes-admin에서는 url호출이나, 외부 url을 차단하는 학교가 있을 수 있어 다운로드 받음 -->
+<!-- 외부 css 끝 -->
+
+<!-- body태그에 태마를 적용하기 위한 script(절대 삭제하지 마세요) -->
+<script>var r=(new RegExp(';\\s*'+encodeURIComponent('px-demo-theme')+'\\s*=\\s*([^;]+)\\s*;','g')).exec(';'+document.cookie+';');document.write('<link href="assets/css/themes/'+(r && r[1] ? decodeURIComponent(r[1]) : 'clean')+'.min.css" rel="stylesheet" type="text/css" class="px-demo-theme-stylesheet">');</script>
+
+<!-- custom css -->
+<link href="assets/css/miraecit/dashBoard.css" rel="stylesheet" type="text/css"><!-- dashBoard.jsp에서 사용하는 css파일 -->
+<link href="assets/css/miraecit/elements.css" rel="stylesheet" type="text/css"> <!-- 새로운 element 선언 css파일 -->
+<link href="assets/css/miraecit/subPage.css" rel="stylesheet" type="text/css">  <!-- subPage에서 사용하는 css파일 -->
+<link href="assets/css/miraecit/setUp.css" rel="stylesheet" type="text/css">    <!-- 기본 설정값을 변경한 css -->
+<link href="assets/css/miraecit/common.css" rel="stylesheet" type="text/css">   <!-- 공통 style속성 제어 css파일 -->
+<!-- custom css 끝 -->
+
+<!-- 외부 js -->
+<script src="assets/js/bootstrap.js"></script>
+<script src="assets/js/pixeladmin.js"></script>
+<script src="assets/demo/demo.js"></script>
+<script src="assets/js/moment/moment-2.5.1.js"></script><!-- moment함수를 위한 js -->
+<script src="assets/js/loading/iosOverlay.js"></script> <!-- 로딩 프로그레스를 위한 js -->
+<script src="assets/js/loading/spin.min.js"></script>   <!-- 로딩 프로그레스를 위한 js -->
+<script src="assets/js/jquery.tablesorter.js"></script> <!-- 테이블 소팅을 위한  js -->
+<script src="assets/js/jquery.fixedheadertable.min.js"></script><!-- 데이터 테이블 컬럼 고정 js -->
+<script src="assets/js/dataTables.tableTools.js"></script>      <!-- 데이터 테이블 엑셀 다운로드 등을 위한 js -->
+<script src="assets/js/jquery.doubletap.js"></script>   <!-- 더블클릭 evt js -->
+<!-- 외부 js 끝 -->
+ 
+<!-- custom js -->
+<script src="assets/js/customjs/CommonUtil.js"></script>
+<script src="assets/js/customjs/cmnChkFnc.js"></script>    <!-- 공통함수 js -->
+<script src="assets/js/customjs/common_dialog.js"></script><!-- 공통 Dialog -->
+<script src="assets/js/customjs/commonAlert.js"></script>  <!-- 공통 Alert js -->
+<script src="assets/js/customjs/commonModal.js"></script>  <!-- 공통Modal js -->
+<script src="assets/js/customjs/invalidDataChecker.js"></script><!-- invalidDataChecker -->
+<script src="assets/js/customjs/fixStepChecker.js"></script>
+<!-- custom js 끝 -->
+
+<script type="text/javascript">var context = '/';</script>
+
+<script type="text/javascript">
+	var pxInit = []; //pixel admin함수 활용을 위한 변수
+	
+	$(function() {
+		$(document).on("keyup", "input:text[numberOnly]", function() {$(this).val( $(this).val().replace(/[^0-9\.]/gi,"") );});
+	});
+</script>
+
+<title id="webTitle"></title>
+	
+	<script>
+		var year = '';         //학생 로그인 시 기준년도
+		var semester = '';     //학생 로그인 시 기준학기
+		var serverDate = '';   //학생 로그인 시 서버시간
+		var stCourseList = ''; //학생의 수강신청 교과목 리스트
+		var stDiagList = '';   //학생의 진단평가 리스트
+		var win = '';          //팝업을 호출하기 위한 전역변수
+		
+		var bNcsCombiYn = 'Y'; //비NCS 강의평가계획서 통합여부
+	
+		$(function() {
+			drawRowSt(); //데이터 select
+		});
+		
+		//데이터 get fnc
+		function drawRowSt() {
+			/* 
+			loadingProgressShow();
+			$.ajax({
+				url : '/main/getStListAjax',
+				type : 'POST',
+				dataType : 'json',
+				traditional : true,
+				success : function(data) {
+					year = data.year;
+					semester = data.semester;
+					serverDate = data.serverDate;
+					stCourseList = data.stCourseList; //학생의 수강교과 list
+					stDiagList = data.stDiagList;     //학생의 수강교과 별 진단평가 차시 list
+					
+					drawStTbl();
+				}
+				
+			}).always(function() {
+				loadingProgressHide();
+			}); 
+			*/
+			
+			year = '2019';
+			semester = '1';
+			serverDate = 20190213;
+			stCourseList = [
+							{classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "남XX", semester: "2", studentName: "유은지", subjectCode: "001", subjectName: "교육평가", subjectType: "A", year: "2018", lectStatus: "E", evalStatus: "E"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "황XX", semester: "2", studentName: "유은지", subjectCode: "002", subjectName: "교육행정및교육경영", subjectType: "A", year: "2018", lectStatus: "E", evalStatus: "E"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "김XX", semester: "2", studentName: "유은지", subjectCode: "003", subjectName: "아동관찰및행동연구", subjectType: "B", year: "2018", lectStatus: "E", evalStatus: "E"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "황XX", semester: "2", studentName: "유은지", subjectCode: "004", subjectName: "아동권리와복지", subjectType: "A", year: "2018", lectStatus: "E", evalStatus: "E"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "황XX", semester: "2", studentName: "유은지", subjectCode: "005", subjectName: "영유아상담", subjectType: "A", year: "2018", lectStatus: "E", evalStatus: "E"}
+						   ];
+			stDiagList = [
+							{classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "남기양", semester: "2", studentName: "유은지", subjectCode: "001", subjectName: "교육평가", subjectType: "A", evalSeq: "1", levelEvalSdate : 20190213, levelEvalEdate : 20190217, diagStatus : "E", year: "2018"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "남기양", semester: "2", studentName: "유은지", subjectCode: "001", subjectName: "교육평가", subjectType: "A", evalSeq: "2", levelEvalSdate : 20190213, levelEvalEdate : 20190217, diagStatus : "S", year: "2018"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "남기양", semester: "2", studentName: "유은지", subjectCode: "002", subjectName: "교육평가", subjectType: "A", evalSeq: "1", levelEvalSdate : 20190210, levelEvalEdate : 20190210, diagStatus : "S", year: "2018"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "남기양", semester: "2", studentName: "유은지", subjectCode: "002", subjectName: "교육평가", subjectType: "A", evalSeq: "2", levelEvalSdate : 20190213, levelEvalEdate : 20190217, diagStatus : "S", year: "2018"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "남기양", semester: "2", studentName: "유은지", subjectCode: "002", subjectName: "교육평가", subjectType: "A", evalSeq: "3", levelEvalSdate : null, levelEvalEdate : null, diagStatus : "S", year: "2018"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "남기양", semester: "2", studentName: "유은지", subjectCode: "003", subjectName: "교육평가", subjectType: "A", evalSeq: "1", levelEvalSdate : 20190213, levelEvalEdate : 20190217, diagStatus : "E", year: "2018"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "남기양", semester: "2", studentName: "유은지", subjectCode: "004", subjectName: "교육평가", subjectType: "A", evalSeq: "1", levelEvalSdate : 20190213, levelEvalEdate : 20190217, diagStatus : "E", year: "2018"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "남기양", semester: "2", studentName: "유은지", subjectCode: "004", subjectName: "교육평가", subjectType: "A", evalSeq: "2", levelEvalSdate : 20190213, levelEvalEdate : 20190217, diagStatus : "S", year: "2018"}
+							, {classDivide: "1", classNo: "201785018", departCode: "815", departName: "유아교육과", grade: "2", professorCode: "38031", professorName: "남기양", semester: "2", studentName: "유은지", subjectCode: "005", subjectName: "교육평가", subjectType: "A", evalSeq: "1", levelEvalSdate : 20190213, levelEvalEdate : 20190217, diagStatus : "E", year: "2018"}
+				         ];
+			
+			drawStTbl();
+		}
+	
+		//학생메인페이지 drw fnc
+		function drawStTbl() {
+			var html = '';
+			
+			if(stCourseList != null && stCourseList != '') {
+				$('#stTblCap').text(year+'년도 '+semester+'학기'); //title 세팅
+				
+				$('#stTblBody').empty(); //div초기화
+				
+				for(var i=0; i<stCourseList.length; i++) {
+					html += '<tr>';
+					html += '	<td class="text-center" data-cell-header="#">'+(i+1)+'</td>';
+					html += '	<td class="text-center" data-cell-header="교과목">'+stCourseList[i].subjectName+'</td>';
+					html += '	<td class="text-center" data-cell-header="교수명">'+stCourseList[i].professorName+'</td>';
+					html += '	<td class="text-center" data-cell-header="분반">'+stCourseList[i].classDivide+'</td>';
+					html += '	<td data-cell-header=" ">';
+					if(stCourseList[i].lectStatus == 'E'){
+						html += '	<div class="btnSet"><button type="button" class="btn btn-flare  btn-outline btn-sm" onclick="moveToStPlan(\'lectPlan\', '+i+')">강의계획서</button></div>';
+					}
+					
+					//비NCS 강의평가계획서 통합 : 강의평가계획서가 통합&비ncs교과가 아닐경우에만 평가계획서 칸을 노출한다
+					if(bNcsCombiYn != 'Y') {
+						if(stCourseList[i].evalStatus == 'E'){
+							html += '	<div class="btnSet btnMargin"><button type="button" class="btn btn-flare  btn-outline btn-sm" onclick="moveToStPlan(\'evalPlan\', '+i+')">평가계획서</button></div>';
+						}
+					} 
+					
+					if(stDiagList != null && stDiagList != '') {
+						for(var j=0;j<stDiagList.length;j++) {
+							if(stCourseList[i].subjectCode == stDiagList[j].subjectCode) {
+								if(stDiagList[j].levelEvalSdate == null || stDiagList[j].levelEvalSdate == '') { //20170308 Jhee 기간이 아닐때는 회색
+									html += '	<div class="btnSet btnMargin"><button type="button" class="btn btn-outline btn-sm" onclick="moveToStPlan(\'diagEval\', '+j+')" title="진단평가 기간이 아닙니다">진단평가 '+stDiagList[j].evalSeq+'차</button></div>';
+								} else if(serverDate < stDiagList[j].levelEvalSdate) { //진단평가 기간 전일 경우 문항을 볼 수 없도록 disabled
+									html += '	<div class="btnSet btnMargin"><button type="button" class="btn btn-outline btn-sm disabled" title="진단평가 기간이 아닙니다">진단평가 '+stDiagList[j].evalSeq+'차</button></div>';
+								} else if (serverDate > stDiagList[j].levelEvalEdate) { 
+									if(stDiagList[j].diagStatus == 'E') { //진단평가가 완료된 경우 파란버튼
+										html += '	<div class="btnSet btnMargin"><button type="button" class="btn btn-outline btn-flare btn-sm" onclick="moveToStPlan(\'diagEval\', '+j+')" title="평가가 완료된 차시입니다">진단평가 '+stDiagList[j].evalSeq+'차</button></div>';	
+									} else { //진단평가 기간이 지난경우 회색버튼
+										html += '	<div class="btnSet btnMargin"><button type="button" class="btn btn-outline btn-sm disabled" onclick="moveToStPlan(\'diagEval\', '+j+')" title="진단평가 기간이 초과된 차시입니다">진단평가 '+stDiagList[j].evalSeq+'차</button></div>';
+									}
+								} else { //진단평가 기간일 경우
+									if(stDiagList[j].diagStatus == 'E') { //진단평가가 완료된 경우 파란버튼
+										html += '	<div class="btnSet btnMargin"><button type="button" class="btn btn-outline btn-flare btn-sm" onclick="moveToStPlan(\'diagEval\', '+j+')" title="평가가 완료된 차시입니다">진단평가 '+stDiagList[j].evalSeq+'차</button></div>';	
+									} else { //진단평가 기간 내의 미작성일 경우 초록버튼
+										html += '	<div class="btnSet btnMargin"><button type="button" class="btn btn-outline btn-success btn-sm" onclick="moveToStPlan(\'diagEval\', '+j+')" title="미평가 차시입니다">진단평가 '+stDiagList[j].evalSeq+'차</button></div>';
+									}
+								}
+							}
+						}
+					}
+					html += '	</td>';
+					html += '</tr>';
+				}
+				
+				$('#stTblBody').append(html);
+			}
+		}
+	
+		//학생 로그인시, 팝업을 띄우는 fnc
+		function moveToStPlan(type, index) {
+			var reportType = '';
+
+			var parameter = '';
+			//20180827 Jhee 진단평가와 계획서의 index가 상이할 수 있기에 계획서와 진단평가의 parameter세팅을 분리
+			if(type != 'diagEval') {
+					parameter += 'year,'+stCourseList[index].year;
+					parameter += ',semester,'+stCourseList[index].semester;
+					parameter += ',majorCode,'+stCourseList[index].majorCode;
+					parameter += ',subjectCode,'+stCourseList[index].subjectCode;
+					parameter += ',grade,'+stCourseList[index].grade;
+					parameter += ',professorCode,'+stCourseList[index].professorCode;
+					parameter += ',classDivide,'+stCourseList[index].classDivide;
+					parameter += ',';
+		  }	
+			
+			if(type == 'lectPlan') {
+				if(stCourseList[index].subjectType == 'A') { //ncs교과목
+					reportType = 'lecture_plan.jrf';
+				} else if(stCourseList[index].subjectType == 'B') { //직업기초 교과목
+					reportType = 'lecture_plan_occu.jrf';
+				} else if(stCourseList[index].subjectType == 'C') { //비ncs교과목
+					reportType = 'lecture_plan_bncs.jrf';
+				}
+				
+				//[post방식으로 리포팅 파라메터 전달 ---------------------------------
+				var moveForm = document.moveToReport; //리포트페이지로 이동하기 위한 form으로 사용(기존 페이지이동 form)
+				moveForm.action = 'https://www.daewon.ac.kr:5443/ubireport/ncs_ajax.jsp';
+				
+				parameter = chgBase64('encode', parameter);
+				
+				$('#params').val(parameter);
+				$('#jrf').val(reportType);
+
+				window.open('','report','width=900 height=700 menubar=no status=no');
+				moveForm.target = 'report';
+				moveForm.submit();
+				//post방식으로 리포팅 파라메터 전달] ---------------------------------
+			} else if(type == 'evalPlan') {
+				if(stCourseList[index].subjectType == 'A') { //ncs교과목
+					reportType = 'eval_plan.jrf';
+				} else if(stCourseList[index].subjectType == 'B') { //직업기초 교과목
+					reportType = 'eval_plan_occu.jrf';
+				} else if(stCourseList[index].subjectType == 'C') { //비ncs교과목
+					reportType = 'eval_plan_bncs.jrf';
+				}
+				
+				//[post방식으로 리포팅 파라메터 전달 ---------------------------------
+				var moveForm = document.moveToReport; //리포트페이지로 이동하기 위한 form으로 사용(기존 페이지이동 form)
+				moveForm.action = 'https://www.daewon.ac.kr:5443/ubireport/ncs_ajax.jsp';
+				
+				parameter = chgBase64('encode', parameter);
+				
+				$('#params').val(parameter);
+				$('#jrf').val(reportType);
+
+				window.open('','report','width=900 height=700 menubar=no status=no');
+				moveForm.target = 'report';
+				moveForm.submit();
+				//post방식으로 리포팅 파라메터 전달] ---------------------------------
+			} else {                        //진단평가
+				//이미 띄워진 팝업이 있을경우 팝업을 닫음
+				if(win != '') {
+					win.close();	
+				}
+
+				//20170308 Jhee 진단평가 기간이 아닐때는 alert으로 대체(진단평가 진행 불가)
+				if(stDiagList[index].levelEvalSdate == null || stDiagList[index].levelEvalSdate == '') {
+					yellowAlert('진단평가 기간 미설정', '진단평가 기간이 설정되지 않아<br/>진단평가를 진행할 수 없습니다');
+					return;
+				}
+			
+				var url = '/evaluation.studDiagEval/popup';
+				$('#frmClassNo').val(stDiagList[index].classNo);
+				$('#frmSubjectCode').val(stDiagList[index].subjectCode);
+				$('#frmProfessorCode').val(stDiagList[index].professorCode);
+				$('#frmYear').val(stDiagList[index].year);
+				$('#frmGrade').val(stDiagList[index].grade);
+				$('#frmSemester').val(stDiagList[index].semester);
+				$('#frmClassDivide').val(stDiagList[index].classDivide);
+				$('#frmMajorCode').val(stDiagList[index].majorCode);
+				$('#frmEvalSeq').val(stDiagList[index].evalSeq);
+				win = window.open('about:blank', 'diagnosticEvaluationPopup', 'width=1000,height=950, scrollbars=yes, status=no');
+				$('#evalForm').prop('action', url);
+				$('#evalForm').submit();
+				
+				win.focus();
+				
+				url = '';
+			}
+		}
+	</script>
+	
+	<style>
+		/* 20160906 Jhee 모바일 화면에서 테이블 헤더가 좌측에 정렬되도록 변경하는 css */
+		table.afternoon-session {
+			width: 100%;
+			table-layout: fixed;
+		} 
+		table.afternoon-session thead tr {
+			width: 100%;
+		}
+		.btnSet {
+			display: inline-block !important;
+		}
+		@media only screen and (max-width: 650px) {
+			.note-info {
+				margin-bottom : 0 !important;
+			}
+			table.afternoon-session {
+				width: 100%;
+				margin-top: 0 !important;
+				border: 0px !important;
+			} 
+			table.afternoon-session [data-cell-header]:before {
+				content: attr(data-cell-header);
+				display: block;
+				position:absolute;
+				top:0;
+				left:0;
+		    	width:45%;
+		    	height: 100%;
+				text-align: left;
+				background: #4bb1d0;
+				/* padding: 0.3em 0.6em; */
+				padding: 8px;
+				color: #fff;
+		    	font-weight:bold;
+			} 
+			table.afternoon-session thead {
+				display: none;
+			} 
+			table.afternoon-session td {
+				position:relative;
+				display: block;
+				/* padding:0.3em 0 0.3em 50%; */
+				padding: 8px;
+				margin-bottom:1px;
+				text-align:right;
+			}
+			table.afternoon-session td:first-of-type {
+				margin-top:10px;
+			}
+			.btnSet {
+				display: block !important;
+			}
+			.btnMargin {
+				margin-top: 10px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+<!-- 상단 메뉴 -->
+<nav class="navbar px-navbar">
+	<!-- 로고 이미지 div -->
+	<div class="navbar-header p-a-0">
+		<div style="float:left;cursor:pointer;padding:10px 0 10px 14px;">
+			<img alt="Pixel Admin" src="assets/img/main-navbar-logo.png">
+		</div>
+	</div>
+	<!-- /로고 이미지 div -->
+	
+	<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#px-demo-navbar-collapse" aria-expanded="false"><i class="navbar-toggle-icon"></i></button>
+	
+	<!-- Collect the nav links, forms, and other content for toggling -->
+	<div class="collapse navbar-collapse" id="px-demo-navbar-collapse">
+		<!-- 시스템 메뉴 -->
+		<ul id="topMenuList" class="nav navbar-nav">
+		</ul><!-- /시스템 메뉴 -->	
+		
+		<!-- 우측 사용자 메뉴 --> 		
+		<ul class="nav navbar-nav navbar-right">						
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+					<img src="assets/img/user_icon.png" alt="" class="px-navbar-image">
+					<span class="hidden-md">유XX 님</span>
+				</a>
+				
+				<ul class="dropdown-menu">
+					<li class="cursor-pointer" style="padding:5px 18px;"><i class="dropdown-icon fa fa-power-off pr10"></i>로그아웃</li>
+				</ul>
+			</li>
+		</ul> <!-- /우측 사용자 메뉴 -->
+	</div><!-- /.navbar-collapse -->
+</nav>
+<!-- /상단 메뉴 -->
+ 
+<div class="px-content">
+	<div class="row" style="padding:0 10px 0 10px;"> 
+		<h4 id="stTblCap" class="text-dark-gray text-bold"></h4>
+		<div class="note note-info mb10">
+			조회가능한 항목은 <span class="text-flare text-semibold">파란색 버튼</span>으로 표기됩니다.<br/>
+			진단평가 작성 가능한 항목은 <span class="text-success text-semibold">연두색 버튼</span>으로 표기됩니다.<br/>
+		</div>
+		<table class="table table-info table-bordered afternoon-session">
+			<thead>
+				<tr>
+					<th class="text-center" scope="row" width="50px">#</th>
+					<th class="text-center" scope="row" width="20%">교과목</th>
+					<th class="text-center" scope="row" width="15%">교수명</th>
+					<th class="text-center" scope="row" width="100px">분반</th>
+					<th class="text-center" scope="row"> </th>
+				</tr>
+			</thead>
+			<tbody id="stTblBody">
+				<tr>
+					<td colspan="5" class="text-center">데이터가 없습니다</td>
+				</tr>
+			</tbody>
+		</table>
+	</div> 
+</div> <!-- / #px-content -->
+
+<form id="evalForm" target="diagnosticEvaluationPopup" name="evalForm" method="post" >
+	<input type="hidden" id="frmYear" name="year" value="" />
+	<input type="hidden" id="frmSubjectCode" name="subjectCode" value="" />
+	<input type="hidden" id="frmMajorCode" name="majorCode" value="" />
+	<input type="hidden" id="frmProfessorCode" name="professorCode" value="" />
+	<input type="hidden" id="frmSemester" name="semester" value="" />
+	<input type="hidden" id="frmClassNo" name="classNo" value="" />
+	<input type="hidden" id="frmGrade" name="grade" value="" />
+	<input type="hidden" id="frmClassDivide" name="classDivide" value="" />
+	<input type="hidden" id="frmEvalSeq" name="evalSeq" value="" />
+</form>
+
+<!-- report이동 form -->
+<form name="moveToReport" method="post">
+	<input type="hidden" id="jrf" name="jrf" />      <!-- 산출물 파일명 -->
+	<input type="hidden" id="params" name="params" /><!-- 산출물 parameter -->
+</form>	
+
+
+<script>
+	$(function() {
+		//20160609 Jhee textarea태그에 $,&,'," 4가지 특수기호를 입력하지 못하도록 제어하는 함수
+		$('textarea').keydown(function(){
+			var re = /[&"$']/gi;
+			var temp = $(this).val();
+			
+			if(re.test(temp)){ 
+				$(this).val(temp.replace(re,"")); //특수문자가 포함되면 삭제
+				return false;
+			}
+			
+			return true;
+		});
+		$('textarea').keyup(function(){
+			var re = /[&"$']/gi;
+			var temp = $(this).val();
+			
+			if(re.test(temp)){ 
+				$(this).val(temp.replace(re,"")); //특수문자가 포함되면 삭제
+				return false;
+			}
+			
+			return true;
+		});
+		
+		//20160609 Jhee input text태그에 $,&,'," 4가지 특수기호를 입력하지 못하도록 제어하는 함수
+		$('input[type=text]').keydown(function(){
+			var re = /[&"$']/gi;
+			var temp = $(this).val();
+			
+			if(re.test(temp)){ 
+				$(this).val(temp.replace(re,"")); //특수문자가 포함되면 삭제
+				return false;
+			}
+			
+			return true;
+		});
+		$('input[type=text]').keyup(function(){
+			var re = /[&"$']/gi;
+			var temp = $(this).val();
+			
+			if(re.test(temp)){ 
+				$(this).val(temp.replace(re,"")); //특수문자가 포함되면 삭제
+				return false;
+			}
+			
+			return true;
+		});
+	});
+	
+	// :: history 추적용  [[			
+	// courseHistory = 계획서 : 강의계획서, 평가계획서 관련 메뉴 선택시 courseHistory 셋팅을 해야합니다. 안하면 이전버튼 아몰랑..
+	function backPage() {
+		$.ajax({
+			url : '/moveToBackPageAjax',
+			dataType : 'json',
+			cache : false,
+			beforeSend: function (request) {
+				// 권한체크를 위해서 Header에 Ajax 호출로 등록
+				request.setRequestHeader("authCheckAjax", true);
+			},
+			success : function(data) {
+				if(data != '')
+					data += '/list';
+				location.href = '/'+data+'';
+			}
+		});
+	}
+
+	function pushHistory(dataParam) {
+		$.ajax({
+			url : '/pushHistoryAjax',
+			data : dataParam,
+			dataType : 'json',
+			cache : false,
+			beforeSend: function (request) {
+				// 권한체크를 위해서 Header에 Ajax 호출로 등록
+				request.setRequestHeader("authCheckAjax", true);
+			},
+			success : function(data) {
+				console.log(data);
+			}
+		});
+	}
+	// :: history 추적용  ]]
+</script>
+ 
+<footer class="px-footer p-t-0 p-b-0 px-footer-bottom" id="px-demo-footer">
+	<div class="box m-a-0 bg-transparent">
+		<div class="box-cell col-md-1 valign-middle text-center">
+			
+		</div>
+		<div class="box-cell col-md-6 pt10 pb10 valign-middle">
+			<a class="display-block text-muted">COPYRIGHT © JheeLucci ALL RIGHTS RESERVED.</a>
+		</div>
+	</div>
+</footer>
+ 
+<script>
+	//footer와 content사이의 간격을 유지하기 위한 부분(삭제금지)
+	pxInit.unshift(function() {
+		$('#px-demo-footer').pxFooter();
+	});
+
+	for (var i = 0, len = pxInit.length; i < len; i++) {
+		pxInit[i].call(null);
+	}
+	//footer와 content사이의 간격을 유지하기 위한 부분 끝(삭제금지)
+</script>
+</body>
+</html>

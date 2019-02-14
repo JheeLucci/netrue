@@ -1,0 +1,301 @@
+/*속성값을 변경한 css
+
+*태그 자체의 속성을 설정하거나 타 파일의 css를 name은 변경하지 않되 속성값만 변경할 경우 해당 파일에 기입한다
+
+*타 파일의 css를 수정할 경우, 전 페이지에 영향을 줄 수 있으므로 주의한다
+
+*css 윗부분에 다음과 같이 주석을 기입한다(날짜 담당자 설명 변경사항)
+*(ex.20151101 Jhee 데이터테이블 버튼 속성 제어)
+
+*/
+
+/* 20151001 Jhee body font size 13px->12px로 변경 */
+body {
+  /* font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+  font-family: 맑은 고딕,Malgun Gothic;
+  font-size: 12px;
+  line-height: 1.42857143;
+  color: #555555;
+  background-color: #ffffff;
+}
+
+/* 20151201 Jhee select cursor:pointer로 설정 */
+select {
+	cursor:pointer;
+}
+
+th {
+	text-align: center;
+	vertical-align: middle;
+	word-break: break-all;
+}
+
+td {
+	word-break: break-all;
+	vertical-align: middle !important;
+}
+
+/* 20170103 Jhee pixeladmin 설정값이 아닌 bootstrap설정값으로 변경 */
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 10.5px;
+	margin-bottom: 10.5px;
+	font-family: inherit;
+}
+
+
+/* ==================================div==================================  */
+
+/* 20160108 Jhee padding:20px->10px */
+.note {
+  margin-bottom: 20px;
+  padding: 10px;
+}
+
+/* 20160109 YH bootstrap.css */
+.modal-body {
+	*zoom: 1;
+}
+.modal-body:after {
+	content: ' ';
+	clear: both;
+	display: block;
+}
+
+.modal-footer {
+  padding: 12px 20px;
+  margin-top: 0;
+  background: #fff;
+  text-align: center;
+  border-top: 0;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+/* 20160109 하위 항목이 float 가능하도록 수정 */
+.tab-pane {
+	*zoom: 1;
+}
+.tab-pane:after {
+	content: ' ';
+	clear: both;
+	display: block;
+}
+
+/* 20160110 dy.kang wan-spinner.css */
+.wan-spinner .minus,
+.wan-spinner .plus,
+.wan-spinner input {
+  height: 25px; /* 15px; -> 25px; */
+  float: left;
+  line-height: 1em;
+  padding: 5px;
+  text-align: center;
+}
+
+.wan-spinner .minus,
+.wan-spinner .plus {
+  color: #333333;
+  cursor: pointer;
+  text-decoration: none;
+  width: 25px; /* 15px; -> 25px; */
+}
+
+/* Jhee 능력단위 선택 모달은 내용이 많기에 width값 조절 */
+body #ncsSelectModal .modal-dialog {
+	width: 60% !important;
+}
+
+/* Jhee 능력단위 선택 모달은 내용이 많기에 width값 조절 */
+body #ncsErrorModal .modal-dialog {
+	width: 60% !important;
+}
+
+/* Jhee 타임라인 float가능하도록 수정 */
+.tl-entry .tl-body {
+	*zoom: 1;
+}
+.tl-entry .tl-body:after {
+	content: ' ';
+	clear: both;
+	display: block;
+}
+
+/* pixel2로 인하여 모달 사이즈 조절 */
+.bootbox-sm .modal-dialog {
+	width: 300px;
+}
+/* ==================================table==================================  */
+.table > thead > tr > th {
+	vertical-align: middle;
+}
+
+/* Jhee 데이터테이블이 아닌 경우, sorter class 적용 */
+table.tablesorter .header,
+table.tablesorter .tablesorter-header {
+	cursor: pointer;
+}
+table.tablesorter thead tr th.headerSortUp:after,
+table.tablesorter thead tr th.headerSortDown:after,
+table.tablesorter thead tr th.header:after {
+	font-family: FontAwesome;
+	vertical-align: middle;
+	padding: 2px 2px 2px 10px;
+}
+table.tablesorter thead tr th.header:after {
+	content: "\f0dc";
+}
+table.tablesorter thead tr th.headerSortUp:after {
+	content: "\f0de";
+}
+table.tablesorter thead tr th.headerSortDown:after {
+	content: "\f0dd";
+}
+
+/* 20160108 Jhee font-size 변경(15px->12px) */
+.table-header .table-caption {
+  font-size: 12px; 
+  line-height: 24px;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  *zoom: 1;
+}
+.table-header .table-caption:after {
+  content: ' ';
+  clear: both;
+  display: block;
+}
+/* 20160729 Jhee 데이터 테이블 사용시, 데이터가 없을 경우 text-center */
+.dataTables_empty {
+	text-align: center;
+	vertical-align: middle;
+}
+/* ==================================font==================================  */
+/* 20151001 Jhee hover 시, 컬러 변동되지 않도록 수정 */
+.text-danger a:hover,
+.text-danger a:active {
+  color: #e14430;
+}
+
+.text-warning a:hover,
+.text-warning a:active {
+  color: #f29f29;
+}
+
+.text-success a:hover,
+.text-success a:active {
+  color: #46ac46;
+}
+
+/* 20151001 Jhee panel-dark의 글자는 hover 시, 흰색으로 설정 */
+.panel-dark > a:hover {
+  color: #fff;
+}
+
+/* 20151002 Jhee pageHeader의 메뉴명 bold 처리 */
+.page-header h1 {
+	font-weight: 600;
+}
+
+/* ==================================border==================================  */
+/* 20151001 Jhee border color를 빨간색으로 변경 (X로그인페이지) */
+.hasError {
+	border-color:#d38e99;	
+}
+
+/* ==================================button==================================  */
+/* 20160107 Jhee 엑셀 다운로드 버튼 wraper */
+div.DTTT_container {
+	position: relative;
+	/* float: right; */
+	text-align: right;
+	margin-bottom: 1em;
+}
+/* 20151002 Jhee 데이터테이블 엑셀 다운로드 버튼 css */
+button.DTTT_button,
+div.DTTT_button,
+a.DTTT_button {
+	position: relative;
+	display: inline-block;
+	margin-right: 3px;
+	padding: 7px 12px;
+	cursor: pointer;
+	*cursor: hand;
+	font-size: 0.88em;
+	color: #ffffff !important;
+	
+	border-color: #a5ce5d;
+	border-radius: 2px;
+	border-bottom:1px solid #a5ce5d;
+	background: #a1cc3d;
+	background-image: -webkit-linear-gradient(top,#a1cc3d 0,#a1cc3d 100%);
+	background-image: linear-gradient(to bottom,#a1cc3d 0,#a1cc3d 100%);
+	background-repeat: repeat-x;
+}
+button.DTTT_button:hover:not(.DTTT_disabled),
+div.DTTT_button:hover:not(.DTTT_disabled),
+a.DTTT_button:hover:not(.DTTT_disabled) {
+	position: relative;
+	display: inline-block;
+	margin-right: 3px;
+	padding: 7px 12px;
+	cursor: pointer;
+	*cursor: hand;
+	font-size: 0.88em;
+	
+	color: #ffffff !important;
+  	border-radius: 2px;
+  	border-color: #a5ce5d;
+	border-bottom:1px solid #426634;
+	background: #a1cc3d !important;
+	background-image: -webkit-linear-gradient(top, #a8d441 0,#a0cc3a 100%) !important;
+	background-image: linear-gradient(to bottom, #a8d441 0,#a0cc3a 100%) !important;
+  	background-repeat: repeat-x;
+}
+@media screen and (max-width: 640px) {
+	div.DTTT_container {
+		float: none !important;
+		text-align: right; /* center->right */
+	}
+
+	div.DTTT_container:after {
+		visibility: hidden;
+		display: block;
+		content: "";
+		clear: both;
+		height: 0;
+	}
+}
+
+/* ==================================other==================================  */
+/* 20151027 Jhee 검색조건의 label 위치를 select box와 맞추기  */
+.formLabel {
+	margin-top: 7px;
+}
+@media (max-width: 990px) {
+	.formLabel {
+		padding-left:11px !important;
+	}
+	/* 20151027 Jhee 가장 마지막 라인의 검색 form은 margin을 주어 조회버튼과 간격을 유지하도록 한다. */
+	#lastForm {
+		margin-bottom:15px;
+	}
+}
+
+/* 20160707 Jhee 기본적으로 radio및checkbox에 'margin-top:4px;' 속성이 있으므로 해당 css에도 추가한다  */
+.px-single {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  margin: 4px 0 0 0;
+  font-weight: 400 !important;
+}
+
+/* 20170523 Jhee 메뉴크기에 맞춰 max-width값 수정(991->1030) */
+@media (min-width: 768px) and (max-width: 1030px) {
+  .hidden-md {
+    display: none !important; } }
+/* 20170523 Jhee 메뉴크기에 맞춰 max-width값 수정(992->1031) */
+@media (min-width: 1031px) {
+  .hidden-lg {
+    display: none !important; } }

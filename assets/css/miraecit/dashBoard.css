@@ -1,0 +1,331 @@
+/* 20151021 Jhee dashBoard row ì‚¬ì´ í° ê°„ê²©*/
+.dashLRow {
+	margin-top:20px;
+}
+
+/* 20151021 Jhee dashBoard row ì‚¬ì´ ì¤‘ê°„ ê°„ê²©*/
+.dashMRow {
+	margin-top:10px;
+}
+
+/* 20151021 Jhee personal ìž‘ì„± ê·¸ëž˜í”„ì˜ title */
+.personalGraphTitle {
+	font-weight:bold;
+	font-size:15px;
+	margin:20px 0 0 20px;
+}
+
+/* 20151021 Jhee personal Panel Headì˜ title */
+.personalPanelHeadTitle {
+	font-weight:bold;
+	font-size:15px;
+}
+
+/* 20151021 Jhee ë„ë„› ê·¸ëž˜í”„ë¥¼ ê°ì‹¸ëŠ” divì˜ ì†ì„± ì¡°ì ˆ */
+.docutG {
+	height:180px;
+	padding:0;
+}
+
+/* 20151021 Jhee personal Blue Panel Head ì§„ë‹¨í‰ê°€ divì˜ ì†ì„± */
+.bPanelLHead {
+	background-color:#2480bd !important;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
+/* 20151021 Jhee personal Blue Panel Head ì§ë¬´ìˆ˜í–‰ëŠ¥ë ¥í‰ê°€ divì˜ ì†ì„± */
+.bPanelCHead {
+	background-color:#2177b0 !important;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
+/* 20151021 Jhee personal Blue Panel Head í‰ê°€ê²°ê³¼ì„œ divì˜ ì†ì„± */
+.bPanelRHead {
+	background-color:#2470a3 !important;
+	border-top-right-radius: 0;
+	border-top-left-radius: 0;
+}
+
+/* 20151021 Jhee personal Blue Panel Headì˜ title ì†ì„± */
+.bPanelTitle {
+	font-weight:bold;
+	font-size:15px;
+	color:#fff;
+}
+
+/* 20151021 Jhee personal Blue Panel Headì˜ favicon ì»¬ëŸ¬ ë³€ê²½ */
+.blueFa {
+	color:#a7cce5;
+}
+
+/* 20151021 Jhee personal Blue Panel Bodyì˜ ì†ì„± */
+.bPanelBody {
+	padding:0 10px 0 10px;
+	min-height:224px;
+}
+
+/* 20151021 Jhee personal Blue Panel Bodyì˜ subject rowë¥¼ ê°ì‹¸ëŠ” div ì†ì„± */
+.bPanelSubject {
+	margin:0 -10px;
+	padding:5px 20px 5px 20px !important;
+}
+
+/* 20151021 Jhee personal Blue Panel Bodyì˜ ê³¼ëª©ëª… í°íŠ¸ì»¬ëŸ¬ ë¸”ë£¨ */
+.bTicketTitle {
+	color:#4083a9;
+}
+
+/* 20151021 Jhee personal Blue progress wrap div ì†ì„± */
+.bProgress {
+	width: 20%;
+	float:right;
+	margin:9px 0 0 0;
+	height:14px;
+	background-color:#fff;
+	border:1px solid #5bc0de;
+	border-radius: 0;
+}
+
+/* 20151021 Jhee personal Blue progress Info div ì†ì„± */
+.bProgressInfo {
+	font-size: 8px;
+	padding:0;
+	text-align:center;
+}
+
+/* 20151021 Jhee personal Blue progress Info divì˜ í¼ì„¼íŠ¸ ê¸€ì”¨ div ì†ì„± */
+.bProgressInfoTitle {
+	margin:-4px 0 0 0;
+	padding:0;
+	text-align:center;
+}
+
+/* 20151021 Jhee ì„¤ë¬¸ì¡°ì‚¬ Panel Head  */
+.enquetePanelHead {
+	background-color:#EAE8E8;
+}
+
+/* 20151021 Jhee Dash Board ì„  */
+.rowLine {
+	padding-bottom:10px;
+}
+
+/* 20151021 Jhee ncsë°ì´í„°í˜„í™© íƒ€ì´í‹€ paddingê°’ */
+.ncsDataStateTopPanelHead {
+	padding:11px 20px 9px 20px !important;
+}
+
+/* 20151021 Jhee ncsë°ì´í„°í˜„í™© í‰ê³¼ê²°ê³¼ì„œ panel ì†ì„± */
+.ncsDataStateBPanel {
+	border-radius:0;
+}
+
+/* 20151021 Jhee ncsë°ì´í„°í˜„í™© í‰ê³¼ê²°ê³¼ì„œ panelHead ì†ì„± */
+.ncsDataStateBottomPanelHead {
+	padding:11px 20px 9px 20px !important;
+	background-color:#ebebeb;
+	font-weight:600;
+	border-bottom:1px solid #e4e4e4;
+}
+
+/* 20151021 Jhee ncsë°ì´í„°í˜„í™© body */
+.ncsDataStatePanelBody {
+	min-height:170px;
+	padding:20px !important;
+}
+
+/* 20151021 Jhee ncsë°ì´í„°í˜„í™© ê°€ë¡œ ê·¸ëž˜í”„ wrap div ì†ì„± */
+.ncsDataStateProgress {
+	width: 70%;
+	margin-top:2px;
+	margin-left:5px;
+	float:left;
+	height:13px;
+	background-color:#fff;
+	margin-bottom:10px;
+}
+
+/* 20151021 Jhee ncsë°ì´í„°í˜„í™© ê°€ë¡œê·¸ëž˜í”„ íƒ€ì´í‹€(ê³„ì—´) ì†ì„± */
+.ncsDataStateProgressInfo {
+	font-size: 8px;
+	padding:0;
+}
+
+/* 20151021 Jhee ncsë°ì´í„°í˜„í™© ê³„ì—´ div overflow */
+.departGraph {
+	max-height:130px; 
+	overflow-y: auto;
+}
+
+/* 20151021 Jhee ncsë°ì´í„°í˜„í™© ì›í˜•ê·¸ëž˜í”„ ì†ì„± */
+.ncsDataStateChart {
+	text-align:center;
+}
+
+/* 20151021 Jhee ì„¤ë¬¸ì¡°ì‚¬ ì§„í–‰ì¤‘ text*/
+#ncsEnqueteState a, a:hover {
+	text-decoration:none;
+	color:#999999;
+}
+
+/* 20151021 Jhee ê²Œì‹œíŒ ë‚ ì§œ ì†ì„±(ì„¤ë¬¸ì¡°ì‚¬ëŠ” ì œì™¸) */
+.widget-messages .message .date {
+	display: block;
+	position: absolute;
+	color: #888;
+	width:100px;
+	text-align:right;
+	top: 9px;
+}
+
+/* 20151013 Jhee ì—°í•œ danger colorì˜ í”„ë¡œê·¸ëž˜ìŠ¤ ë°” */
+.progress .progress-bar.progress-bar-white-danger {
+  background: #f2dede;
+  border-color: #ebccd1;
+}
+
+/* 20151013 Jhee ì—°í•œ warning colorì˜ í”„ë¡œê·¸ëž˜ìŠ¤ ë°” */
+.progress .progress-bar.progress-bar-white-warning {
+  background: #f9f1c7;
+  border-color: #f6deac;
+}
+
+/* 20151013 Jhee ì—°í•œ success colorì˜ í”„ë¡œê·¸ëž˜ìŠ¤ ë°” */
+.progress .progress-bar.progress-bar-white-#f6deac {
+  background: #dff0d8;
+  border-color: #d0e6be;
+}
+
+
+/* Jhee ëª¨ë°”ì¼ í™”ë©´ */
+@media (max-width: 768px) {
+	/* 20151020 Jhee ëª¨ë°”ì¼ì˜ ê²½ìš°, dashBoardì˜ ë¶ˆí•„ìš”í•œ paddingê°’ ì œê±° */
+	/* dashBoardë¥¼ ìœ„í•˜ì—¬ ë³€ê²½í•œ colì˜ ì†ì„±ì´ê¸° ë•Œë¬¸ì— íƒ€ íŽ˜ì´ì§€ì—ì„œ ë¬¸ì œ ë°œìƒ ì‹œ, ì‚­ì œí•˜ë„ë¡ í•œë‹¤. */
+	.col-sm-12 {
+		padding-left:0;
+		padding-right:0;
+	}
+	
+	.col-sm-4 {
+		padding-left:0;
+		padding-right:0;
+	}
+	
+	.col-sm-6 {
+		padding-left:0;
+		padding-right:0;
+	}
+	
+	/* 20151020 Jhee ëª¨ë°”ì¼ì˜ ê²½ìš°, dashBoard personal ì§„ë‹¨í‰ê°€ì— border css ë³€ê²½ */
+	.bPanelL {
+		border-radius:2px !important;
+		border:1px solid #2480bd !important;
+	}
+	
+	.bPanelM {
+		border-radius:2px !important;
+		border:1px solid #2480bd !important;
+	}
+	
+	.bPanelR {
+		border-radius:2px !important;
+		border:1px solid #2480bd !important;
+	}
+	
+	.bPanelStL {
+		border-radius:2px !important;
+		border:1px solid #2480bd !important;
+	}
+	
+	/* 20151021 Jhee ncsë°ì´í„°í˜„í™© body */
+	.ncsDataStatePanelBody {
+		min-height:170px;
+		padding:10px !important;
+	}
+	
+	
+}
+
+@media (min-width: 768px) {
+  	/* 20151001 Jhee ì§„ë‹¨í‰ê°€panel ìœ„ì¹˜ ë§žì¶”ê¸° */
+  	#levelPanel {
+		padding: 0;
+		padding-left: 11px;
+	}
+	
+	/* 20151001 Jhee ì§„ë‹¨í‰ê°€ í•™ìƒpanel ìœ„ì¹˜ ë§žì¶”ê¸° */
+	#levelPanelSt {
+		padding: 0;
+		padding-left: 11px;
+	}
+	
+	/* 20151001 Jhee ì§ë¬´ìˆ˜í–‰ëŠ¥ë ¥í‰ê°€ panel ìœ„ì¹˜ ë§žì¶”ê¸° */
+	#subjectEvalPanel {
+		padding: 0;
+	}
+	
+	/* 20151001 Jhee í‰ê°€ê²°ê³¼ì„œ panel ìœ„ì¹˜ ë§žì¶”ê¸° */
+	#evalPanel {
+		padding: 0;
+		padding-right: 11px;
+	}
+	
+	/* 20151001 Jhee í‰ê°€ê²°ê³¼ì„œ í•™ìƒpanel ìœ„ì¹˜ ë§žì¶”ê¸° */
+	#evalPanelSt {
+		padding: 0;
+		padding-right: 11px;
+	}
+	
+	/* 20151020 Jhee dashBoard personal ì§„ë‹¨í‰ê°€ */
+	.bPanelL {
+		border-top-left-radius:2px !important;
+		border-bottom-left-radius:2px !important;
+		border-top-right-radius:0 !important;
+		border-bottom-right-radius:0 !important;
+		border-right:0 !important;
+		border-left:1px solid #2480bd !important;
+		border-top:1px solid #2480bd !important;
+		border-bottom:1px solid #2480bd !important;
+	}
+	
+	.bPanelM {
+		border-radius:0 !important;
+		border:1px solid #2480bd !important;
+	}
+	
+	.bPanelR {
+		border-radius:0 !important;
+		border-top-right-radius:2px !important;
+		border-bottom-right-radius:2px !important;
+		border-left:0 !important;
+		border-top:1px solid #2480bd !important;
+		border-bottom:1px solid #2480bd !important;
+		border-right:1px solid #2480bd !important;
+	}
+	
+	/* 20151020 Jhee dashBoard personal í•™ìƒ ì§„ë‹¨í‰ê°€ */
+	.bPanelStL {
+		border-radius:0;
+		border-top-left-radius:2px !important;
+		border-bottom-left-radius:2px !important;
+		border:1px solid #2480bd !important;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1200px)  {
+	/* 20151027 Jhee ì„¤ë¬¸ì¡°ì‚¬ ì§„í–‰ì¤‘ ê¸€ì”¨ hide */
+	.panel-heading-text {
+		display:none;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1500px)  {
+	/* 20151027 Jhee ncsì„¼í„° ì„¤ë¬¸ì¡°ì‚¬ ì§„í–‰ì¤‘ ê¸€ì”¨ hide */
+	.panel-heading-text2 {
+		display:none;
+	}
+}
+
+

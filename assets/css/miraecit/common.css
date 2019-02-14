@@ -1,0 +1,674 @@
+/*style속성 제어 css
+
+*공통으로 전 문서에서 사용될 수 있는 css만을 기입한다
+
+*다른 테마의 pixel-admin에서 추출한 css도 해당 파일에 기입한다(하단 참조)
+
+*css 윗부분에 다음과 같이 주석을 기입한다(날짜 담당자 설명)
+*(ex.20151101 Jhee 데이터테이블 버튼 속성 제어)
+  
+*주의 : 최대한 pixel-admin과 유사한 naming을 유지한다(_(under bar)사용 지양) 
+      @media() 의 내용은 가장 마지막에 위치하도록 한다
+*/
+
+/* ==================================padding==================================  */
+.no-padding-r {padding-right: 0 !important;}
+.no-padding-l {padding-left: 0 !important;}
+
+.padding-xs {padding: 5px;}
+.padding-xs-r {padding-right: 5px;}
+.padding-xs-hr {padding-right: 5px !important;padding-left: 5px !important;}
+.padding-xs-vr {padding-top: 5px !important;padding-bottom: 5px !important;}
+
+.padding-sm {padding: 10px;}
+.padding-sm-t {padding-top: 10px;}
+.padding-sm-b {padding-bottom: 10px;}
+.padding-sm-l {padding-left: 10px;}
+.padding-sm-r {padding-right: 10px;}
+.padding-sm-hr {padding-right: 10px;padding-left: 10px;}
+
+.padding-md-hr {padding-right: 15px;padding-left: 15px;}
+.padding-md-t {padding-top: 15px;}
+.padding-md-b {padding-bottom: 15px;}
+.padding-md-r {padding-right: 15px;}
+.padding-md-l {padding-left: 15px;}
+
+.padding-lg {padding: 15px;}
+
+.padding-xlg {padding: 20px;}
+.padding-xlg-l {padding-left: 20px !important;}
+
+/* ==================================margin==================================  */
+.margin-xs {margin: 5px;}
+.margin-xs-t {margin-top: 5px;}
+.margin-xs-l {margin-left: 5px;}
+.margin-xs-r {margin-right: 5px;}
+.margin-xs-b {margin-bottom: 5px;}
+.margin-xs-vr {margin-top: 5px;margin-bottom: 5px;}
+
+.margin-sm {margin: 10px;}
+.margin-sm-t {margin-top: 10px;}
+.margin-sm-l {margin-left: 10px;}
+.margin-sm-r {margin-right: 10px;}
+.margin-sm-b {margin-bottom: 10px;}
+.margin-sm-hr {margin-right: 10px;margin-left: 10px;}
+.margin-sm-vr {margin-top: 10px;margin-bottom: 10px;}
+
+.margin-md {margin: 15px;}
+.margin-md-t {margin-top: 15px;}
+.margin-md-l {margin-left: 15px;}
+.margin-md-r {margin-right: 15px;}
+.margin-md-b {margin-bottom: 15px;}
+
+.margin-lg {margin: 20px;}
+.margin-lg-t {margin-top: 20px;}
+.margin-lg-l {margin-left: 20px;}
+.margin-lg-r {margin-right: 20px;}
+.margin-lg-b {margin-bottom: 20px;}
+.margin-lg-vr {margin-top: 20px;margin-bottom: 20px;}
+.margin-lg-hr {margin-left: 20px;margin-right: 20px;}
+
+
+/* ==================================border==================================  */
+.no-border {border: 0 !important;}
+.no-border-radius {border-radius: 0 !important;}
+.no-border-vr {border-top: 0 !important;border-bottom: 0 !important;}
+.no-border-hr {border-left: 0 !important;border-right: 0 !important;}
+
+.bordered {border: 1px solid #dcdcdc;} /* 20161229 Jhee pixel2에서 사라진 pixel1의 css 추가*/
+.border-only-l {border-top: 0 !important;border-right: 0 !important;border-bottom: 0 !important;}
+.border-only-r {border-top: 0 !important;border-left: 0 !important;border-bottom: 0 !important;}
+.border-only-t {border-right: 0 !important;border-left: 0 !important;border-bottom: 0 !important;}
+.border-only-b {border-top: 0 !important;border-left: 0 !important;border-right: 0 !important;}
+.border-only-vr {border-left: 0 !important;border-right: 0 !important;}
+.border-only-hr {border-top: 0 !important;border-bottom: 0 !important;}
+
+.no-border-color {border-color: #e8e8e8 !important;}
+.border-light {border: 1px solid #e4e4e4;border-color: #e4e4e4;}
+.border-light-danger {border: 1px solid #ebccd1;border-color: #ebccd1;}
+.border-light-success {border: 1px solid #d0e6be;border-color: #d0e6be;}
+.border-light-warning {border: 1px solid #f6deac;border-color: #f6deac;}
+.border-light-info {border: 1px solid #bce8f1;border-color: #bce8f1 !important;}
+
+.border-flare {border: 1px solid #1b7cd8;border-color: #1b7cd8 !important;}
+.border-info {border: 1px solid #5bc0de;border-color: #5bc0de !important;}
+
+.border-light-info > thead > tr > th,
+.border-light-info > tbody > tr > th,
+.border-light-info > tfoot > tr > th,
+.border-light-info > thead > tr > td,
+.border-light-info > tbody > tr > td,
+.border-light-info > tfoot > tr > td {border: 1px solid #bce8f1;border-color: #bce8f1;}
+
+.has-warning-bold .form-control {
+  border-color: #eebf5e;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-width: 2px;
+}
+.has-warning-bold .form-control:focus,
+.has-warning-bold .form-control.focus {
+  border-color: #e9ad30 !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-width: 2px;
+}
+
+.has-info .form-control {
+  border-color: #46b8da;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-width: 1px;
+}
+.has-info .form-control:focus,
+.has-info .form-control.focus {
+  border-color: #2caed5 !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-width: 1px;
+}
+
+.has-info-bold .form-control {
+  border-color: #46b8da;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-width: 2px;
+}
+.has-info-bold .form-control:focus,
+.has-info-bold .form-control.focus {
+  border-color: #2caed5 !important;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  border-width: 2px;
+}
+
+@media (max-width: 767px) {
+	.no-border-xs {border: 0 !important;}
+	.no-border-xs-l {border-left: 0 !important;}
+	.no-border-xs-r {border-right: 0 !important;}
+	.no-border-xs-t {border-top: 0 !important;}
+	.no-border-xs-b {border-bottom: 0 !important;}
+	.no-border-xs-vr {border-top: 0 !important;border-bottom: 0 !important;}
+	.no-border-xs-hr {border-left: 0 !important;border-right: 0 !important;}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	.no-border-sm {border: 0 !important;}
+	.no-border-sm-l {border-left: 0 !important;}
+	.no-border-sm-r {border-right: 0 !important;}
+	.no-border-sm-t {border-top: 0 !important;}
+	.no-border-sm-b {border-bottom: 0 !important;}
+	.no-border-sm-vr {border-top: 0 !important;border-bottom: 0 !important;}
+	.no-border-sm-hr {border-left: 0 !important;border-right: 0 !important;}
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.no-border-md {border: 0 !important;}
+	.no-border-md-l {border-left: 0 !important;}
+	.no-border-md-r {border-right: 0 !important;}
+	.no-border-md-t {border-top: 0 !important;}
+	.no-border-md-b {border-bottom: 0 !important;}
+	.no-border-md-vr {border-top: 0 !important;border-bottom: 0 !important;}
+	.no-border-md-hr {border-left: 0 !important;border-right: 0 !important;}
+}
+@media (min-width: 1200px) {
+	.no-border-lg {border: 0 !important;}
+	.no-border-lg-l {border-left: 0 !important;}
+	.no-border-lg-r {border-right: 0 !important;}
+	.no-border-lg-t {border-top: 0 !important;}
+	.no-border-lg-b {border-bottom: 0 !important;}
+	.no-border-lg-vr {border-top: 0 !important;border-bottom: 0 !important;}
+	.no-border-lg-hr {border-left: 0 !important;border-right: 0 !important;}
+}
+
+/* ==================================backgound color==================================  */
+/* 20151120 Jhee table light의 background-color custom css */
+.bg-light {
+	background-color: #ebebeb !important; 
+}
+
+.bg-white {
+	background-color: #fff !important;
+}
+
+.th-bg-info {background-color: #59c4e4 !important; color: #fff;}
+.th-bg-light-info {background-color: #d9edf7 !important; color: #078FD3;}
+.th-bg-fresh {background-color: #a1cc3d !important; color: #fff;}
+
+/* hover시, bg-color를 default(회색)으로 변경 */
+.changeBg {cursor: pointer;}
+.changeBg:hover {
+	background-color: #e4e4e4;
+	cursor: pointer;
+	transition:.2s;
+}
+
+.bg-light-danger {background: #f2dede !important;}  /* panel-danger-light의 bg 컬러 */
+.bg-light-success {background: #dff0d8 !important;} /* panel-success-light의 bg 컬러 */
+.bg-light-warning {background: #f9f1c7 !important;} /* 20151119 Jhee panel-warning-body의 옅은 background-color의 custom css*/
+.bg-light-info {background: #d9edf7 !important;}    /* panel-info-light의 bg 컬러 */ 
+
+/* 평가에서 사용된 bg컬러 (Jhee : 추후 활용을 위해 common으로 이동) */
+.bg-title-flare {background-color: #078FD3;color: white;}
+.bg-title-info {background-color: #30B5F8;}
+.bg-title-lightinfo {background-color: #EBF6F9;}
+.bg-title-success {background-color: #92D050;color: white;}
+.bg-title-darkprimary {background-color: #056EA3;color: white;}
+.bg-title-gray {background-color: #F2F2F2;}
+.bg-title-light {background-color: #ebebeb; color:#444; font-weight: 600; border: 1px solid #dbdbdb !important;}
+.bg-color-zero-point {background-color: #ffff8f;}
+
+/* ==================================button==================================  */
+.btn-long {padding: 7px 20px;}
+.btn-slong {padding: 7px 25px;}
+.btn-mlong {padding: 7px 30px;}
+.btn-xlong {padding: 7px 40px;}
+
+/* 토글버튼의 기본 아이콘을 사용하지 않을 경우 사용될 토글버튼 css */
+.custom-btn-toggle {
+	border-radius:0 2px 2px 0 !important; 
+	padding: 3px 5px 3px 5px !important;
+}
+.custom-btn-toggle .fa {
+	font-size: small;
+}
+
+.btn-light-success.btn-outline {
+    color: #6aa354 !important;
+    border-color: #6ea958 !important;
+    background: #dff0d8 !important;
+}
+.btn-light-success:hover, .btn-light-success:focus, .btn-light-success.focus,
+.btn-light-success.btn-outline:hover,
+.btn-light-success.btn-outline:focus,
+.btn-light-success.btn-outline.focus {
+  color: #fff !important;
+  border-color: #6aa354 !important;
+  border-bottom-color: #426634 !important;
+  background: #6fb952 !important;
+}
+.btn-light-success.btn-outline.disabled, .btn-light-success.btn-outline[disabled], fieldset[disabled] .btn-light-success.btn-outline
+,.btn-light-success.btn-outline.disabled.active,.btn-light-success.btn-outline[disabled].active, fieldset[disabled] .btn-light-success.btn-outline.active
+,.btn-light-success.btn-outline.disabled.hover,.btn-light-success.btn-outline[disabled].hover, fieldset[disabled] .btn-light-success.btn-outline.hover {
+  color: #6aa354 !important;
+  border-color: #6ea958 !important;
+  background: #dff0d8 !important;
+}
+/* ==================================font==================================  */
+.text-md {font-size: 15px;}
+.text-semibold {font-weight: 600 !important;}
+.text-bold {font-weight: 700 !important;}
+
+.text-yellow {color: yellow;}
+.text-gray {color: #98a3a4;}
+.text-dark-gray {color: #757272 !important;}
+.text-light-danger {color: #b94a48;}  /* panel-danger-light의 text 컬러 */
+.text-light-success {color: #468847;} /* panel-success-light의 text 컬러 */
+.text-light-warning {color: #af8640;} /* panel-warning-light의 text 컬러 */
+.text-light-info {color: #3a87ad !important;} /* panel-info-light의 text 컬러 */
+.text-flare {color: #2971b5;}
+.text-white {color: #fff;}
+.text-clean {color: #4d5e76;} /* clean테마의 메뉴 컬러에서 따온 text color */
+/* ==================================others==================================  */
+
+.float-left {float: left;}
+.float-right {float: right;}
+.cursor-pointer {cursor: pointer;}
+.cursor-default {cursor: default;}
+.no-cursor {cursor: not-allowed;}
+.no-pointer-event {pointer-events: none;}
+.text-right {text-align: right !important;}
+.display-inline {display: inline !important;}
+.display-none {display: none;}
+.valign-middle {vertical-align: middle;}
+.no-min-height {min-height:0;}
+.cursor-only[readonly] {cursor: pointer; background-color: #fff; opacity: 1;} /* 클릭시 모달 또는 팝업을 띄우는 input의 경우, 해당 class를 부여하도록 한다 */
+
+/* Jhee float을 가능하도록 감싸주는 div */
+.wrapDiv {*zoom: 1;}
+.wrapDiv:after {
+	content: ' ';
+	clear: both;
+	display: block;
+}
+
+/* ==================================col-==================================  */
+.col-xs-0, .col-sm-0, .col-md-0, .col-lg-0 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 11px;
+  padding-right: 11px;
+}
+.col-xs-0 {
+  visibility: hidden;
+}
+.col-xs-0 {
+  width: 0%;
+}
+
+@media (min-width: 768px) {
+	.col-xs-0 {
+	visibility: hidden;
+	}
+	.col-xs-0 {
+	  width: 0%;
+	}
+	.col-sm-0 {
+	  visibility: hidden;
+	}
+	.col-sm-0 {
+	  width: 0%;
+	}
+}
+@media (min-width: 992px) {
+	.col-md-0 {
+	  visibility: hidden;
+	}
+	.col-md-0 {
+	  width: 0%;
+	}
+}
+@media (min-width: 1200px) {
+	.col-lg-0 {
+	  visibility: hidden;
+	}
+	.col-lg-0 {
+	  width: 0%;
+	}
+}
+
+/*현재 테마 : clean
+*외의 테마에 해당하는 css를 pixel-admin에서 추출한 경우, 하단에 기입한다
+*주의 : 추출한 테마명 기입
+*	 naming변경은 추출한 테마명을 추가하는 것을 지향한다
+*	 (ex. btn-primary를 fresh 테마에서 추출한 경우: btn-fresh)
+*	  속성을 필요에 따라 변경할 수 있으나 변경내용을 주석으로 기록한다	  
+ */
+ 
+/* ==================================new theme==================================  */
+/* -----------------------------(button)-----------------------------  */
+/* 20151113 Jhee 새로운 버튼컬러(theme:fresh) */
+.btn-fresh,
+.btn-fresh:focus {
+  color: #ffffff;/* fresh에는 없는 속성이지만 폰트컬러를 맞춰주기 위하여 추가 */
+  border-color: #50b5d3;
+  border-bottom-color: #37abcd;
+  background: #64bed8;
+  background-image: -webkit-linear-gradient(top, #68c0d9 0%, #50b5d3 100%);
+  background-image: linear-gradient(to bottom, #68c0d9 0%, #50b5d3 100%);
+  background-repeat: repeat-x;
+}
+.btn-fresh:hover {
+  color: #ffffff;
+  border-color: #43b0d0;
+  border-bottom-color: #2d95b3;
+  background: #50b5d3 !important;
+  background-image: -webkit-linear-gradient(top, #5cbbd6 0%, #43b0d0 100%) !important;
+  background-image: linear-gradient(to bottom, #5cbbd6 0%, #43b0d0 100%) !important;
+  background-repeat: repeat-x;
+}
+.btn-fresh:active,
+.btn-fresh.active,
+.open .btn-fresh.dropdown-toggle {
+  background: none;
+  background: #54b7d4 !important;
+  border-color: #31a3c3;
+  border-bottom-color: #31a3c3 !important;
+  color: #ffffff;
+  -webkit-box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.1) inset;
+}
+.btn-fresh.btn-flat {
+  background: #58b9d5;
+}
+.btn-fresh.btn-flat:hover,
+.btn-fresh.btn-flat:active,
+.btn-fresh.btn-flat.active,
+.open .btn-fresh.btn-flat.dropdown-toggle {
+  background: #58b9d5 !important;
+  color: #ffffff;
+}
+.btn-fresh.btn-outline:hover,
+.btn-fresh.btn-outline.btn-flat:hover {
+  color: #ffffff;
+  border-color: #43b0d0;
+  border-bottom-color: #2d95b3;
+}
+.btn-fresh.btn-outline:active,
+.btn-fresh.btn-outline.btn-flat:active {
+  border-color: #31a3c3;
+}
+.btn-group .btn-fresh,
+.btn-group .btn-fresh:focus,
+.input-group-btn .btn-fresh,
+.input-group-btn .btn-fresh:focus {
+  border-left-color: #43b0d0;
+  border-right-color: #43b0d0;
+}
+.btn-group .btn-fresh:hover,
+.btn-group.open .btn-fresh.dropdown-toggle,
+.input-group-btn .btn-fresh:hover,
+.input-group-btn.open .btn-fresh.dropdown-toggle {
+  border-color: #43b0d0;
+  border-bottom-color: #2d95b3;
+}
+.btn-group .btn-fresh:active,
+.btn-group .btn-fresh.active,
+.input-group-btn .btn-fresh:active,
+.input-group-btn .btn-fresh.active {
+  border-left-color: #31a3c3;
+  border-right-color: #31a3c3;
+}
+.open .btn.btn-fresh.dropdown-toggle {
+  color: #fff;
+  border-bottom-color: #31a3c3 !important;
+  background: none;
+  background: #54b7d4 !important;
+}
+
+/* 20161230 Jhee 새로운 버튼컬러(theme:adminflare) */
+.btn-flare {
+  color: #fff;
+  border-color: #1c81e1;
+  background: #3690e6; }
+
+.btn-flare.btn-outline {
+  color: #1b7cd8;
+  border-color: #1c81e1;
+  background: none; }
+
+.btn-flare:hover, .btn-flare:focus, .btn-flare.focus,
+.btn-flare.btn-outline:hover,
+.btn-flare.btn-outline:focus,
+.btn-flare.btn-outline.focus {
+  color: #fff;
+  border-color: #1b7cd8;
+  border-bottom-color: #114d87;
+  background: #2888e4; }
+.btn-flare:active,
+.btn-flare.active,
+.open > .btn-flare.dropdown-toggle,
+.btn-flare.btn-outline:active,
+.btn-flare.btn-outline.active,
+.open > .btn-flare.dropdown-toggle.btn-outline {
+  color: #fff;
+  border-color: #1667b4;
+  background: #1c81e1; }
+  .btn-flare:active:hover, .btn-flare:active:focus, .btn-flare:active.focus,
+  .btn-flare.active:hover,
+  .btn-flare.active:focus,
+  .btn-flare.active.focus,
+  .open > .btn-flare.dropdown-toggle:hover,
+  .open > .btn-flare.dropdown-toggle:focus,
+  .open > .btn-flare.dropdown-toggle.focus,
+  .btn-flare.btn-outline:active:hover,
+  .btn-flare.btn-outline:active:focus,
+  .btn-flare.btn-outline:active.focus,
+  .btn-flare.btn-outline.active:hover,
+  .btn-flare.btn-outline.active:focus,
+  .btn-flare.btn-outline.active.focus,
+  .open > .btn-flare.dropdown-toggle.btn-outline:hover,
+  .open > .btn-flare.dropdown-toggle.btn-outline:focus,
+  .open > .btn-flare.dropdown-toggle.btn-outline.focus {
+    border-color: #1667b4;
+    background: #1b7cd8; }
+.btn-flare.disabled,
+.btn-flare[disabled],
+fieldset[disabled] .btn-flare {
+  border-color: #1c81e1 !important;
+  background: #3690e6 !important; }
+
+.btn-flare.btn-outline.disabled,
+.btn-flare.btn-outline[disabled],
+fieldset[disabled] .btn-flare.btn-outline {
+  color: #1b7cd8;
+  border-color: #1c81e1 !important;
+  background: none !important; }
+
+.btn-flare.disabled.active,
+.btn-flare[disabled].active,
+fieldset[disabled] .btn-primary.active {
+  color: #fff !important;
+  border-color: #1667b4 !important;
+  background: #1c81e1 !important; }    
+    
+    
+/* 20160115 ATOZ LMS 새로운 버튼컬러 */
+.btn.btn-labeled.dark{
+	background:#ddd !important;
+}
+/* -----------------------------(table)-----------------------------  */
+/* 20160107 Jhee 새로운 테이블컬러(theme:adminflare) */
+.table-flare table {
+  border-top-color: #2971b5 !important;
+}
+.table-flare thead,
+.table-flare thead tr,
+.table-flare thead th,
+.table-flare .table-header {
+  border-color: #2971b5 !important;
+  color: #ffffff;
+  text-align: center; /* 20160120 Jhee */
+}
+.table-flare thead tr,
+.table-flare thead th {
+  background: #2681d7;
+}
+.table-flare .table-header {
+  background: #3690e6;
+}
+.table-flare .pagination > li > a:hover {
+  border-color: #3690e6;
+}
+.table-flare .pagination > li.active > a,
+.table-flare .pagination > li.active > a:hover,
+.table-flare .pagination > li.active > a:focus,
+.table-flare .pagination > li.active > span {
+  background: #3690e6;
+  border-color: #3690e6;
+}
+
+/* 20160107 Jhee 새로운 테이블컬러(theme:adminflare) */
+.table-light-info table {
+  border-top-color: #bce8f1 !important;
+}
+.table-light-info thead,
+.table-light-info thead tr,
+.table-light-info thead th,
+.table-light-info .table-header {
+  border-color: #bce8f1 !important;
+  color: #3a87ad;
+  text-align: center; /* 20160120 Jhee */
+}
+.table-light-info thead tr,
+.table-light-info thead th {
+  background: #d9edf7;
+}
+.table-light-info .table-header {
+  background: #d9edf7;
+}
+.table-light-info .pagination > li > a:hover {
+  border-color: #bce8f1;
+}
+.table-light-info .pagination > li.active > a,
+.table-light-info .pagination > li.active > a:hover,
+.table-light-info .pagination > li.active > a:focus,
+.table-light-info .pagination > li.active > span {
+  background: #d9edf7;
+  border-color: #bce8f1;
+}
+
+.table-light-warning table {
+  border-top-color: #f6deac !important;
+}
+.table-light-warning thead,
+.table-light-warning thead tr,
+.table-light-warning thead th,
+.table-light-warning .table-header {
+  border-color: #f6deac !important;
+  color: #af8640;
+  text-align: center; /* 20160120 Jhee */
+}
+.table-light-warning thead tr,
+.table-light-warning thead th {
+  background: #f9f1c7;
+}
+.table-light-warning .table-header {
+  background: #f9f1c7;
+}
+.table-light-warning .pagination > li > a:hover {
+  border-color: #f6deac;
+}
+.table-light-warning .pagination > li.active > a,
+.table-light-warning .pagination > li.active > a:hover,
+.table-light-warning .pagination > li.active > a:focus,
+.table-light-warning .pagination > li.active > span {
+  background: #f9f1c7;
+  border-color: #f6deac;
+}
+
+/* -----------------------------(tab)-----------------------------  */
+/* 새로운 tab 컬러(theme:adminflare) */
+.nav-flare > li.active > a,
+.nav-flare > li.active > a:hover,
+.nav-flare > li.active > a:focus {
+  background: #3690e6 !important;
+  border-bottom: 2px solid #1f83e3 !important;
+}
+.nav-flare .nav-justified > .active > a {
+  border-bottom-color: #1f83e3 !important;
+}
+
+/* 새로운 tab 컬러(theme:adminfresh의 상단bar 컬러) */
+.nav-yg > li.active > a,
+.nav-yg > li.active > a:hover,
+.nav-yg > li.active > a:focus {
+  background: #94c53e !important;
+  border-bottom: 2px solid #83b035 !important;
+}
+.nav-yg .nav-justified > .active > a {
+  border-bottom-color: #83b035 !important;
+}
+
+
+/* -----------------------------(panel group)-----------------------------  */
+.panel-group.panel-group-light-info .accordion-toggle {
+  background: #d9edf7;
+  color: #3a87ad;
+}
+.panel-group.panel-group-light-info .accordion-toggle:after,
+.panel-group.panel-group-light-info .accordion-toggle:hover:after,
+.panel-group.panel-group-light-info .accordion-toggle.collapsed:hover:after {
+  color: #3a87ad;
+}
+.panel-group.panel-group-light-info .panel,
+.panel-group.panel-group-light-info .panel-heading,
+.panel-group.panel-group-light-info .panel-body,
+.panel-group.panel-group-light-info.panel-group .panel-heading + .panel-collapse .panel-body {
+  border-color: #bce8f1;
+}
+
+.panel-group.panel-group-light-success .accordion-toggle {
+  background: #dff0d8;
+  color: #468847;
+}
+.panel-group.panel-group-light-success .accordion-toggle:after,
+.panel-group.panel-group-light-success .accordion-toggle:hover:after,
+.panel-group.panel-group-light-success .accordion-toggle.collapsed:hover:after {
+  color: #468847;
+}
+.panel-group.panel-group-light-success .panel,
+.panel-group.panel-group-light-success .panel-heading,
+.panel-group.panel-group-light-success .panel-body,
+.panel-group.panel-group-light-success.panel-group .panel-heading + .panel-collapse .panel-body {
+  border-color: #d0e6be;
+}
+
+
+/* -----------------------------(setting)-----------------------------  */
+/* 20160113  */
+/*** margin setting ***/
+.m-auto {margin:0 auto}.m0 {margin:0px !important}.m1 {margin:1px !important}.m2 {margin:2px !important}.m3 {margin:3px !important}.m4 {margin:4px !important}.m5 {margin:5px !important}.m6 {margin:6px !important}.m7 {margin:7px !important}.m8 {margin:8px !important}.m9 {margin:9px !important}.m10 {margin:10px !important}.m11 {margin:11px !important}.m12 {margin:12px !important}.m13 {margin:13px !important}.m14 {margin:14px !important}.m15 {margin:15px !important}.m16 {margin:16px !important}.m17 {margin:17px !important}.m18 {margin:18px !important}.m19 {margin:19px !important}.m20 {margin:20px !important}.m21 {margin:21px !important}.m22 {margin:22px !important}.m23 {margin:23px !important}.m24 {margin:24px !important}.m25 {margin:25px !important}.m26 {margin:26px !important}.m27 {margin:27px !important}.m28 {margin:28px !important}.m29 {margin:29px !important}.m30 {margin:30px !important}.m31 {margin:31px !important}.m32 {margin:32px !important}.m33 {margin:33px !important}.m34 {margin:34px !important}.m35 {margin:35px !important}.m36 {margin:36px !important}.m37 {margin:37px !important}.m38 {margin:38px !important}.m39 {margin:39px !important}.m40 {margin:40px !important}.m41 {margin:41px !important}.m42 {margin:42px !important}.m43 {margin:43px !important}.m44 {margin:44px !important}.m45 {margin:45px !important}.m46 {margin:46px !important}.m47 {margin:47px !important}.m48 {margin:48px !important}.m49 {margin:49px !important}.m50 {margin:50px !important}
+.mt-2{margin-top: -2px !important}.mt0 {margin-top:0px !important}.mt1 {margin-top:1px !important}.mt2 {margin-top:2px !important}.mt3 {margin-top:3px !important}.mt4 {margin-top:4px !important}.mt5 {margin-top:5px !important}.mt6 {margin-top:6px !important}.mt7 {margin-top:7px !important}.mt8 {margin-top:8px !important}.mt9 {margin-top:9px !important}.mt10 {margin-top:10px !important}.mt11 {margin-top:11px !important}.mt12 {margin-top:12px !important}.mt13 {margin-top:13px !important}.mt14 {margin-top:14px !important}.mt15 {margin-top:15px !important}.mt16 {margin-top:16px !important}.mt17 {margin-top:17px !important}.mt18 {margin-top:18px !important}.mt19 {margin-top:19px !important}.mt20 {margin-top:20px !important}.mt21 {margin-top:21px !important}.mt22 {margin-top:22px !important}.mt23 {margin-top:23px !important}.mt24 {margin-top:24px !important}.mt25 {margin-top:25px !important}.mt26 {margin-top:26px !important}.mt27 {margin-top:27px !important}.mt28 {margin-top:28px !important}.mt29 {margin-top:29px !important}.mt30 {margin-top:30px !important}.mt31 {margin-top:31px !important}.mt32 {margin-top:32px !important}.mt33 {margin-top:33px !important}.mt34 {margin-top:34px !important}.mt35 {margin-top:35px !important}.mt36 {margin-top:36px !important}.mt37 {margin-top:37px !important}.mt38 {margin-top:38px !important}.mt39 {margin-top:39px !important}.mt40 {margin-top:40px !important}.mt41 {margin-top:41px !important}.mt42 {margin-top:42px !important}.mt43 {margin-top:43px !important}.mt44 {margin-top:44px !important}.mt45 {margin-top:45px !important}.mt46 {margin-top:46px !important}.mt47 {margin-top:47px !important}.mt48 {margin-top:48px !important}.mt49 {margin-top:49px !important}.mt50 {margin-top:50px !important}.mt51 {margin-top:51px !important}.mt52 {margin-top:52px !important}.mt53 {margin-top:53px !important}.mt54 {margin-top:54px !important}.mt55 {margin-top:55px !important}.mt56 {margin-top:56px !important}.mt57 {margin-top:57px !important}.mt58 {margin-top:58px !important}.mt59 {margin-top:59px !important}.mt60 {margin-top:60px !important}.mt70 {margin-top:70px !important}.mt80 {margin-top:80px !important}.mt180 {margin-top:180px !important}
+.mr0 {margin-right:0px !important}.mr1 {margin-right:1px !important}.mr2 {margin-right:2px !important}.mr3 {margin-right:3px !important}.mr4 {margin-right:4px !important}.mr5 {margin-right:5px !important}.mr6 {margin-right:6px !important}.mr7 {margin-right:7px !important}.mr8 {margin-right:8px !important}.mr9 {margin-right:9px !important}.mr10 {margin-right:10px !important}.mr11 {margin-right:11px !important}.mr12 {margin-right:12px !important}.mr13 {margin-right:13px !important}.mr14 {margin-right:14px !important}.mr15 {margin-right:15px !important}.mr16 {margin-right:16px !important}.mr17 {margin-right:17px !important}.mr18 {margin-right:18px !important}.mr19 {margin-right:19px !important}.mr20 {margin-right:20px !important}.mr21 {margin-right:21px !important}.mr22 {margin-right:22px !important}.mr23 {margin-right:23px !important}.mr24 {margin-right:24px !important}.mr25 {margin-right:25px !important}.mr26 {margin-right:26px !important}.mr27 {margin-right:27px !important}.mr28 {margin-right:28px !important}.mr29 {margin-right:29px !important}.mr30 {margin-right:30px !important}.mr31 {margin-right:31px !important}.mr32 {margin-right:32px !important}.mr33 {margin-right:33px !important}.mr34 {margin-right:34px !important}.mr35 {margin-right:35px !important}.mr36 {margin-right:36px !important}.mr37 {margin-right:37px !important}.mr38 {margin-right:38px !important}.mr39 {margin-right:39px !important}.mr40 {margin-right:40px !important}.mr41 {margin-right:41px !important}.mr42 {margin-right:42px !important}.mr43 {margin-right:43px !important}.mr44 {margin-right:44px !important}.mr45 {margin-right:45px !important}.mr46 {margin-right:46px !important}.mr47 {margin-right:47px !important}.mr48 {margin-right:48px !important}.mr49 {margin-right:49px !important}.mr50 {margin-right:50px !important}.mr51 {margin-right:51px !important}.mr52 {margin-right:52px !important}.mr53 {margin-right:53px !important}.mr54 {margin-right:54px !important}.mr55 {margin-right:55px !important}.mr56 {margin-right:56px !important}.mr57 {margin-right:57px !important}.mr58 {margin-right:58px !important}.mr59 {margin-right:59px !important}.mr60 {margin-right:60px !important}
+.mb0 {margin-bottom:0px !important}.mb1 {margin-bottom:1px !important}.mb2 {margin-bottom:2px !important}.mb3 {margin-bottom:3px !important}.mb4 {margin-bottom:4px !important}.mb5 {margin-bottom:5px !important}.mb6 {margin-bottom:6px !important}.mb7 {margin-bottom:7px !important}.mb8 {margin-bottom:8px !important}.mb9 {margin-bottom:9px !important}.mb10 {margin-bottom:10px !important}.mb11 {margin-bottom:11px !important}.mb12 {margin-bottom:12px !important}.mb13 {margin-bottom:13px !important}.mb14 {margin-bottom:14px !important}.mb15 {margin-bottom:15px !important}.mb16 {margin-bottom:16px !important}.mb17 {margin-bottom:17px !important}.mb18 {margin-bottom:18px !important}.mb19 {margin-bottom:19px !important}.mb20 {margin-bottom:20px !important}.mb21 {margin-bottom:21px !important}.mb22 {margin-bottom:22px !important}.mb23 {margin-bottom:23px !important}.mb24 {margin-bottom:24px !important}.mb25 {margin-bottom:25px !important}.mb26 {margin-bottom:26px !important}.mb27 {margin-bottom:27px !important}.mb28 {margin-bottom:28px !important}.mb29 {margin-bottom:29px !important}.mb30 {margin-bottom:30px !important}.mb31 {margin-bottom:31px !important}.mb32 {margin-bottom:32px !important}.mb33 {margin-bottom:33px !important}.mb34 {margin-bottom:34px !important}.mb35 {margin-bottom:35px !important}.mb36 {margin-bottom:36px !important}.mb37 {margin-bottom:37px !important}.mb38 {margin-bottom:38px !important}.mb39 {margin-bottom:39px !important}.mb40 {margin-bottom:40px !important}.mb41 {margin-bottom:41px !important}.mb42 {margin-bottom:42px !important}.mb43 {margin-bottom:43px !important}.mb44 {margin-bottom:44px !important}.mb45 {margin-bottom:45px !important}.mb46 {margin-bottom:46px !important}.mb47 {margin-bottom:47px !important}.mb48 {margin-bottom:48px !important}.mb49 {margin-bottom:49px !important}.mb50 {margin-bottom:50px !important}.mb80 {margin-bottom:80px !important}.mb90 {margin-bottom:90px !important}
+.ml0 {margin-left:0px !important}.ml1 {margin-left:1px !important}.ml2 {margin-left:2px !important}.ml3 {margin-left:3px !important}.ml4 {margin-left:4px !important}.ml5 {margin-left:5px !important}.ml6 {margin-left:6px !important}.ml7 {margin-left:7px !important}.ml8 {margin-left:8px !important}.ml9 {margin-left:9px !important}.ml10 {margin-left:10px !important}.ml11 {margin-left:11px !important}.ml12 {margin-left:12px !important}.ml13 {margin-left:13px !important}.ml14 {margin-left:14px !important}.ml15 {margin-left:15px !important}.ml16 {margin-left:16px !important}.ml17 {margin-left:17px !important}.ml18 {margin-left:18px !important}.ml19 {margin-left:19px !important}.ml20 {margin-left:20px !important}.ml21 {margin-left:21px !important}.ml22 {margin-left:22px !important}.ml23 {margin-left:23px !important}.ml24 {margin-left:24px !important}.ml25 {margin-left:25px !important}.ml26 {margin-left:26px !important}.ml27 {margin-left:27px !important}.ml28 {margin-left:28px !important}.ml29 {margin-left:29px !important}.ml30 {margin-left:30px !important}.ml31 {margin-left:31px !important}.ml32 {margin-left:32px !important}.ml33 {margin-left:33px !important}.ml34 {margin-left:34px !important}.ml35 {margin-left:35px !important}.ml36 {margin-left:36px !important}.ml37 {margin-left:37px !important}.ml38 {margin-left:38px !important}.ml39 {margin-left:39px !important}.ml40 {margin-left:40px !important}.ml41 {margin-left:41px !important}.ml42 {margin-left:42px !important}.ml43 {margin-left:43px !important}.ml44 {margin-left:44px !important}.ml45 {margin-left:45px !important}.ml46 {margin-left:46px !important}.ml47 {margin-left:47px !important}.ml48 {margin-left:48px !important}.ml49 {margin-left:49px !important}.ml50 {margin-left:50px !important}.ml56 {margin-left:56px !important}
+
+/*** padding setting ***/
+.p0 {padding:0px !important}.p1 {padding:1px !important}.p2 {padding:2px !important}.p3 {padding:3px !important}.p4 {padding:4px !important}.p5 {padding:5px !important}.p6 {padding:6px !important}.p7 {padding:7px !important}.p8 {padding:8px !important}.p9 {padding:9px !important}.p10 {padding:10px !important}.p11 {padding:11px !important}.p12 {padding:12px !important}.p13 {padding:13px !important}.p14 {padding:14px !important}.p15 {padding:15px !important}.p16 {padding:16px !important}.p17 {padding:17px !important}.p18 {padding:18px !important}.p19 {padding:19px !important}.p20 {padding:20px !important}.p21 {padding:21px !important}.p22 {padding:22px !important}.p23 {padding:23px !important}.p24 {padding:24px !important}.p25 {padding:25px !important}.p26 {padding:26px !important}.p27 {padding:27px !important}.p28 {padding:28px !important}.p29 {padding:29px !important}.p30 {padding:30px !important}.p31 {padding:31px !important}.p32 {padding:32px !important}.p33 {padding:33px !important}.p34 {padding:34px !important}.p35 {padding:35px !important}.p36 {padding:36px !important}.p37 {padding:37px !important}.p38 {padding:38px !important}.p39 {padding:39px !important}.p40 {padding:40px !important}.p41 {padding:41px !important}.p42 {padding:42px !important}p43 {padding:43px !important}.p44 {padding:44px !important}.p45 {padding:45px !important}.p46 {padding:46px !important}.p47 {padding:47px !important}.p48 {padding:48px !important}.p49 {padding:49px !important}.p50 {padding:50px !important}
+.pt0 {padding-top:0px !important}.pt1 {padding-top:1px !important}.pt2 {padding-top:2px !important}.pt3 {padding-top:3px !important}.pt4 {padding-top:4px !important}.pt5 {padding-top:5px !important}.pt6 {padding-top:6px !important}.pt7 {padding-top:7px !important}.pt8 {padding-top:8px !important}.pt9 {padding-top:9px !important}.pt10 {padding-top:10px !important}.pt11 {padding-top:11px !important}.pt12 {padding-top:12px !important}.pt13 {padding-top:13px !important}.pt14 {padding-top:14px !important}.pt15 {padding-top:15px !important}.pt16 {padding-top:16px !important}.pt17 {padding-top:17px !important}.pt18 {padding-top:18px !important}pt19 {padding-top:19px !important}.pt20 {padding-top:20px !important}.pt21 {padding-top:21px !important}.pt22 {padding-top:22px !important}.pt23 {padding-top:23px !important}.pt24 {padding-top:24px !important}.pt25 {padding-top:25px !important}pt26 {padding-top:26px !important}.pt27 {padding-top:27px !important}.pt28 {padding-top:28px !important}.pt29 {padding-top:29px !important}.pt30 {padding-top:30px !important}.pt31 {padding-top:31px !important}.pt32 {padding-top:32px !important}.pt33 {padding-top:33px !important}.pt34 {padding-top:34px !important}.pt35 {padding-top:35px !important}.pt36 {padding-top:36px !important}.pt37 {padding-top:37px !important}.pt38 {padding-top:38px !important}.pt39 {padding-top:39px !important}.pt40 {padding-top:40px !important}.pt41 {padding-top:41px !important}.pt42 {padding-top:42px !important}.pt43 {padding-top:43px !important}.pt44 {padding-top:44px !important}.pt45 {padding-top:45px !important}.pt46 {padding-top:46px !important}.pt47 {padding-top:47px !important}.pt48 {padding-top:48px !important}.pt49 {padding-top:49px !important}.pt50 {padding-top:50px !important}.pt65 {padding-top:65px !important}.pt70 {padding-top:70px !important}.pt75 {padding-top:75px !important}
+.pr0 {padding-right:0px !important}.pr1 {padding-right:1px !important}.pr2 {padding-right:2px !important}.pr3 {padding-right:3px !important}.pr4 {padding-right:4px !important}.pr5 {padding-right:5px !important}.pr6 {padding-right:6px !important}.pr7 {padding-right:7px !important}pr8 {padding-right:8px !important}.pr9 {padding-right:9px !important}.pr10 {padding-right:10px !important}.pr11 {padding-right:11px !important}.pr12 {padding-right:12px !important}pr13 {padding-right:13px !important}.pr14 {padding-right:14px !important}.pr15 {padding-right:15px !important}.pr16 {padding-right:16px !important}.pr17 {padding-right:17px !important}.pr18 {padding-right:18px !important}.pr19 {padding-right:19px !important}pr20 {padding-right:20px !important}.pr21 {padding-right:21px !important}.pr22 {padding-right:22px !important}.pr23 {padding-right:23px !important}.pr24 {padding-right:24px !important}.pr25 {padding-right:25px !important}.pr26 {padding-right:26px !important}.pr27 {padding-right:27px !important}.pr28 {padding-right:28px !important}.pr29 {padding-right:29px !important}.pr30 {padding-right:30px !important}.pr31 {padding-right:31px !important}.pr32 {padding-right:32px !important}.pr33 {padding-right:33px !important}.pr34 {padding-right:34px !important}.pr35 {padding-right:35px !important}.pr36 {padding-right:36px !important}.pr37 {padding-right:37px !important}.pr38 {padding-right:38px !important}.pr39 {padding-right:39px !important}.pr40 {padding-right:40px !important}.pr41 {padding-right:41px !important}.pr42 {padding-right:42px !important}.pr43 {padding-right:43px !important}.pr44 {padding-right:44px !important}.pr45 {padding-right:45px !important}.pr46 {padding-right:46px !important}.pr47 {padding-right:47px !important}.pr48 {padding-right:48px !important}.pr49 {padding-right:49px !important}.pr50 {padding-right:50px !important}
+.pb0 {padding-bottom:0px !important}.pb1 {padding-bottom:1px !important}.pb2 {padding-bottom:2px !important}.pb3 {padding-bottom:3px !important}.pb4 {padding-bottom:4px !important}.pb5 {padding-bottom:5px !important}pb6 {padding-bottom:6px !important}.pb7 {padding-bottom:7px !important}.pb8 {padding-bottom:8px !important}.pb9 {padding-bottom:9px !important}.pb10 {padding-bottom:10px !important}.pb11 {padding-bottom:11px !important}.pb12 {padding-bottom:12px !important}pb13 {padding-bottom:13px !important}.pb14 {padding-bottom:14px !important}.pb15 {padding-bottom:15px !important}.pb16 {padding-bottom:16px !important}.pb17 {padding-bottom:17px !important}.pb18 {padding-bottom:18px !important}.pb19 {padding-bottom:19px !important}.pb20 {padding-bottom:20px !important}.pb21 {padding-bottom:21px !important}.pb22 {padding-bottom:22px !important}.pb23 {padding-bottom:23px !important}.pb24 {padding-bottom:24px !important}.pb25 {padding-bottom:25px !important}.pb26 {padding-bottom:26px !important}.pb27 {padding-bottom:27px !important}.pb28 {padding-bottom:28px !important}.pb29 {padding-bottom:29px !important}.pb30 {padding-bottom:30px !important}.pb31 {padding-bottom:31px !important}.pb32 {padding-bottom:32px !important}.pb33 {padding-bottom:33px !important}.pb34 {padding-bottom:34px !important}.pb35 {padding-bottom:35px !important}.pb36 {padding-bottom:36px !important}.pb37 {padding-bottom:37px !important}.pb38 {padding-bottom:38px !important}.pb39 {padding-bottom:39px !important}.pb40 {padding-bottom:40px !important}.pb41 {padding-bottom:41px !important}.pb42 {padding-bottom:42px !important}.pb43 {padding-bottom:43px !important}.pb44 {padding-bottom:44px !important}.pb45 {padding-bottom:45px !important}.pb46 {padding-bottom:46px !important}.pb47 {padding-bottom:47px !important}.pb48 {padding-bottom:48px !important}.pb49 {padding-bottom:49px !important}.pb50 {padding-bottom:50px !important}
+.pl0 {padding-left:0px !important}.pl1 {padding-left:1px !important}.pl2 {padding-left:2px !important}.pl3 {padding-left:3px !important}.pl4 {padding-left:4px !important}.pl5 {padding-left:5px !important}.pl6 {padding-left:6px !important}pl7 {padding-left:7px !important}.pl8 {padding-left:8px !important}.pl9 {padding-left:9px !important}.pl10 {padding-left:10px !important}.pl11 {padding-left:11px !important}.pl12 {padding-left:12px !important}.pl13 {padding-left:13px !important}pl14 {padding-left:14px !important}.pl15 {padding-left:15px !important}.pl16 {padding-left:16px !important}.pl17 {padding-left:17px !important}.pl18 {padding-left:18px !important}.pl19 {padding-left:19px !important}.pl20 {padding-left:20px !important}.pl21 {padding-left:21px !important}.pl22 {padding-left:22px !important}.pl23 {padding-left:23px !important}.pl24 {padding-left:24px !important}.pl25 {padding-left:25px !important}.pl26 {padding-left:26px !important}.pl27 {padding-left:27px !important}.pl28 {padding-left:28px !important}.pl29 {padding-left:29px !important}.pl30 {padding-left:30px !important}.pl31 {padding-left:31px !important}.pl32 {padding-left:32px !important}.pl33 {padding-left:33px !important}.pl34 {padding-left:34px !important}.pl35 {padding-left:35px !important}.pl36 {padding-left:36px !important}.pl37 {padding-left:37px !important}.pl38 {padding-left:38px !important}.pl39 {padding-left:39px !important}.pl40 {padding-left:40px !important}.pl41 {padding-left:41px !important}.pl42 {padding-left:42px !important}.pl43 {padding-left:43px !important}.pl44 {padding-left:44px !important}.pl45 {padding-left:45px !important}.pl46 {padding-left:46px !important}.pl47 {padding-left:47px !important}.pl48 {padding-left:48px !important}.pl49 {padding-left:49px !important}.pl50 {padding-left:50px !important}.pl51 {padding-left:51px !important}.pl52 {padding-left:52px !important}
+
+/***** width setting *****/
+.wauto{width:auto !important;}.w100{width:100% !important;} .w99{width:99% !important;} .w98{width:98% !important;} .w97{width:97% !important;} .w96{width:96% !important;} .w95{width:95% !important;} .w94{width:94% !important;}.w93{width:93% !important;} .w92{width:92% !important;} .w91{width:91% !important;} .w90{width:90% !important;} .w88{width:88% !important;} .w87{width:87% !important;} .w86{width:86% !important;} .w85{width:85% !important;} .w84{width:84% !important;} .w83{width:83% !important;} .w82{width:82% !important;} .w81{width:81% !important;} .w80{width:80% !important;} .w75{width:75% !important;} .w70{width:70% !important;} .w65{width:65% !important;} .w60{width:60% !important;} .w50{width:50% !important;} .w40{width:40% !important;} .w30{width:30% !important;} .w25{width:25% !important;} .w20{width:20% !important;} .w15{width:15% !important;} .w10{width:10% !important;} 
+.w100px{width:100px !important;}.w99px {width:99px !important;}.w98px {width:98px !important;}.w97px {width:97px !important;}.w96px {width:96px !important;} .w95px {width:95px !important;} .w94px {width:94px !important;}.w93px {width:93px !important;} .w92px {width:92px !important;} .w91px {width:91px !important;} .w90px {width:90px !important;} .w88px {width:88px !important;} .w87px {width:87px !important;} .w86px {width:86px !important;} .w85px {width:85px !important;} .w84px {width:84px !important;} .w83px {width:83px !important;} .w82px {width:82px !important;} .w81px {width:81px !important;} .w80px {width:80px !important;} .w75px {width:75px !important;} .w70px {width:70px !important;} .w65px {width:65px !important;} .w60px {width:60px !important;} .w50px {width:50px !important;} .w40px {width:40px !important;} .w30px {width:30px !important;} .w25px {width:25px !important;} .w20px {width:20px !important;} .w15px {width:15px !important;} .w10px {width:10px !important;}
+.w150px{width:150px !important;}.w160px{width:160px !important;}.w200px{width:200px !important;}.w250px{width:250px !important;}.w300px{width:300px !important;}.w350px{width:350px !important;}.w500px{width:500px !important;}
+.minW50px{min-width:50px !important;}.minW60px{min-width:60px !important;}.minW70px{min-width:70px !important;}.minW100px{min-width:100px !important;}.minW150px{min-width:150px !important;}.minW200px{min-width:200px !important;}.minW250px{min-width:250px !important;}.minW300px{min-width:300px !important;}
+.maxW60px{max-width:60px !important;}
+
+/***** height setting *****/
+.hauto{height:auto !important;}.h100{height:100% !important;} .h99{height:99% !important;} .h98{height:98% !important;} .h97{height:97% !important;} .h96{height:96% !important;} .h95{height:95% !important;} .h94{height:94% !important;}.h93{height:93% !important;} .h92{height:92% !important;} .h91{height:91% !important;} .h90{height:90% !important;} .h88{height:88% !important;} .h87{height:87% !important;} .h86{height:86% !important;} .h85{height:85% !important;} .h84{height:84% !important;} .h83{height:83% !important;} .h82{height:82% !important;} .h81{height:81% !important;} .h80{height:80% !important;} .h75{height:75% !important;} .h70{height:70% !important;} .h65{height:65% !important;} .h60{height:60% !important;} .h50{height:50% !important;} .h40{height:40% !important;} .h30{height:30% !important;} .h25{height:25% !important;} .h20{height:20% !important;} .h15{height:15% !important;} .h10{height:10% !important;}
+
+
+/* 160205 dy.kang 학교별 숨김메뉴가 많아서 추가 */
+.no-display{display: none !important;}
